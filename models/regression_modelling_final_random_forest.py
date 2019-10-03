@@ -3,21 +3,26 @@
 __doc__ = """
 Author: Bhishan Poudel
 
-Task: Regression modelling of King Country Seattle house price estimation.
-
-Model used: Random forest with n_estimators = 49
-  
-
-adjusted r-squared
+Task
 -------------------
-num + nologs + cats: 0.886 (plain)
-num + nologs + cats_encoded : 0.883  (ENCODING IS BAD)
-num + nologs + cats_age + cats_agernv: 0.847
-num + nologs + cats_age + cats_agernv + cats :0.885
+Regression modelling of King Country Seattle house price estimation.
+
+Model used
+-------------------------
+Random forest 
+n_estimators = 50
+max_depth = 50
+topN features = 40
+
+Result:
+---------------------------
+Adjusted R-Squared (test): 0.890
+
 
 """
-
+#=============================================================================
 # Imports
+#=============================================================================
 import numpy as np
 import pandas as pd
 
@@ -33,33 +38,15 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import cross_val_score
 
-
-def remove_outliers(df):
-    df = df.drop(df[df["bedrooms"]>=10].index )
-    df = df.drop(df[df["bathrooms"]>=7].index )
-    df = df.drop(df[df["grade"].isin([3,1])].index )
-    
-    # we must reset index after removing outliers
-    df = df.reset_index(drop=True)
-    return df
+# random state
+random_state=100
+np.random.seed=random_state
+np.random.set_state=random_state
 
 
-def standard_scaling(df):
-    from sklearn.preprocessing import StandardScaler
-
-    ss = StandardScaler()
-    array_scaled_feat = ss.fit_transform(df.drop('price',axis=1))
-    df_feat = pd.DataFrame(array_scaled_feat,
-                           columns = df.drop('price',axis=1).columns)
-    df = pd.concat([df_feat, df[target]], axis=1)
-
-    return df
-
-
-def adjustedR2(rsquared,nrows,kcols):
-    return rsquared- (kcols-1)/(nrows-kcols) * (1-rsquared)
-
-
+#=============================================================================
+# Utilities
+#=============================================================================
 def multiple_linear_regression(df,features,target,model,
                                verbose=1,cv=5,test_size=0.3):
     """ Multiple Linear Regression Modelling using given model.
@@ -71,9 +58,12 @@ def multiple_linear_regression(df,features,target,model,
     Returns:
     rmse, r2_train, ar2_train, r2_test, ar2_test, cv
     """
+    def adjustedR2(rsquared,nrows,kcols):
+        return rsquared- (kcols-1)/(nrows-kcols) * (1-rsquared)
+
     
     # train test split
-    train, test = train_test_split(df, test_size=test_size, random_state=100)
+    train, test = train_test_split(df, test_size=0.2, random_state=100)
 
     # train test values
     X = df[features].values
@@ -106,7 +96,7 @@ def multiple_linear_regression(df,features,target,model,
                            Xtest.shape[0] ,
                            len(features)).round(3)
     
-    return (rmse, r2_train, ar2_train, r2_test, ar2_test, cv)
+    return (model, rmse, r2_train, ar2_train, r2_test, ar2_test, cv)
 
 
 df_eval = pd.DataFrame({'Model': [],
@@ -117,106 +107,133 @@ df_eval = pd.DataFrame({'Model': [],
                            'R-squared (test)':[],
                            'Adjusted R-squared (test)':[],
                            '5-Fold Cross Validation':[]})
-#-----------------------------------------------------------------------------
-if __name__ == '__main__':
 
-    t0 = time.time()
-     
-    # load the data
-    df = pd.read_csv('../data/processed/data_cleaned_encoded.csv')
-    
-    
-    target = ['price']
+t0 = time.time()
+#=============================================================================
+# Data Loading
+#=============================================================================
+# load the data
+df_raw = pd.read_csv('../data/processed/data_cleaned_encoded.csv')
 
-    # plain features
-    features_num = ['bedrooms', 'bathrooms',  'yr_built', 'lat', 'long']
-    features_cat = ['waterfront', 'view', 'condition', 'grade','zipcode']
-    features_no_log = ['sqft_living','sqft_lot','sqft_above',
-                       'sqft_basement','sqft_living15','sqft_lot15']
-    
-    
-    # log
-    features_log = ['log1p_sqft_living','log1p_sqft_lot',
-                    'log1p_sqft_above','log1p_sqft_basement',
-                    'log1p_sqft_living15','log1p_sqft_lot15']
+#=============================================================================
+# Train test split
+#=============================================================================
+# train test split
+train, test = train_test_split(df_raw,train_size = 0.8,random_state=random_state)
 
-    # categorical encoding
-    features_cat_age = [ 'age_cat_0', 'age_cat_1', 'age_cat_2',
-                         'age_cat_3', 'age_cat_4', 'age_cat_5',
-                         'age_cat_6', 'age_cat_7', 'age_cat_8',
-                         'age_cat_9']
+#=============================================================================
+# Feature Selection
+#=============================================================================
+# feature selection
+features_orig = ['bedrooms', 'bathrooms', 'sqft_living',
+       'sqft_lot', 'floors', 'waterfront', 'view', 'condition', 'grade',
+       'sqft_above', 'sqft_basement', 'yr_built', 'yr_renovated', 'zipcode',
+       'lat', 'long', 'sqft_living15', 'sqft_lot15']
 
-    feature_cat_agernv = [
-                    'age_after_renovation_cat_0','age_after_renovation_cat_1',
-                    'age_after_renovation_cat_2', 'age_after_renovation_cat_3',
-                    'age_after_renovation_cat_4', 'age_after_renovation_cat_5',
-                    'age_after_renovation_cat_6', 'age_after_renovation_cat_7',
-                    'age_after_renovation_cat_8', 'age_after_renovation_cat_9']
-    
-    # newly created boolean features
-    features_bool = ['basement_bool', 'renovation_bool']
-    
-    # newly created number of houses in given zipcode
-    features_zipcode_extra = ['zipcode_houses']
-    
-    
-    # all categorical features encoded.
-    features_cat_encoded = [
-        # waterfront
-        'waterfront_0', 'waterfront_1',
-        # view
-        'view_0', 'view_1', 'view_2','view_3','view_4',
-        # condition
-        'condition_1', 'condition_2','condition_3', 'condition_4',
-        'condition_5',
-        # grade
-        'grade_1', 'grade_10', 'grade_11', 'grade_12',
-        'grade_13', 'grade_3', 'grade_4', 'grade_5', 'grade_6', 'grade_7',
-        'grade_8', 'grade_9',
-        # zipcode
-        'zipcode_top10_98004', 'zipcode_top10_98006','zipcode_top10_98033',
-        'zipcode_top10_98039', 'zipcode_top10_98040','zipcode_top10_98102',
-        'zipcode_top10_98105', 'zipcode_top10_98155','zipcode_top10_98177',
-        # age
-        'age_cat_0', 'age_cat_1', 'age_cat_2','age_cat_3', 'age_cat_4',
-        'age_cat_5', 'age_cat_6', 'age_cat_7','age_cat_8', 'age_cat_9',
-        # age after renovation
-        'age_after_renovation_cat_0',
-        'age_after_renovation_cat_1', 'age_after_renovation_cat_2',
-        'age_after_renovation_cat_3', 'age_after_renovation_cat_4',
-        'age_after_renovation_cat_5', 'age_after_renovation_cat_6',
-        'age_after_renovation_cat_7', 'age_after_renovation_cat_8',
-        'age_after_renovation_cat_9']
+cols_num = ['bedrooms', 'bathrooms',
+            'sqft_living', 'sqft_lot','sqft_above','sqft_basement',
+            'yr_built', 'yr_renovated',
+           'lat','long',
+           'sqft_living15', 'sqft_lot15', 'yr_sales']
 
-    
-    features = features_num + features_no_log + features_cat
-    df = df[features + target]
-    
-    # options
-    use_scaling = True
-    use_remove_outliers = False
-  
-    text = "use_scaling = {}, remove_outliers = {} ".format(
-        use_scaling, use_remove_outliers)
-        
-    if use_scaling:
-        df = standard_scaling(df)
-        
-    if use_remove_outliers:
-        df = remove_outliers(df)
+cols_bool = ['basement_bool', 'renovation_bool']
 
-    model = RandomForestRegressor(n_estimators= 50,random_state=100)
-    rmse, r2_train, ar2_train, r2_test, ar2_test, cv = \
-        multiple_linear_regression(df, features, target,model,
-                                   verbose=0,test_size=0.2)
+cols_new = ['zipcode_houses']
+
+cols_cat = [
+    # waterfront
+    'waterfront_0', 'waterfront_1',
+    
+    #view
+    'view_0', 'view_1', 'view_2', 'view_3','view_4',
+    
+    # condition
+    'condition_1', 'condition_2', 'condition_3',
+    'condition_4','condition_5',
+    
+    # grade
+    'grade_1', 'grade_10', 'grade_11', 'grade_12','grade_13',
+    'grade_3', 'grade_4', 'grade_5', 'grade_6', 'grade_7','grade_8', 'grade_9',
+            
+    # zipcode
+    'zipcode_top10_98004', 'zipcode_top10_98006',
+    'zipcode_top10_98033', 'zipcode_top10_98039',
+    'zipcode_top10_98040','zipcode_top10_98102',
+    'zipcode_top10_98105', 'zipcode_top10_98155',
+    'zipcode_top10_98177']
 
 
-    df_eval.loc[len(df_eval)] = ['Random Forest Regressor',
-                                 text, rmse,r2_train,ar2_train,
-                                 r2_test,ar2_test,cv]
-    
-    for k,v in df_eval.to_dict().items():
-        print(k, ':', v)
 
-    t1 = time.time() - t0
-    print('\n\nTime taken: {:.0f} min {:.0f} secs'.format(*divmod(t1,60)))
+cols_cat_age = [ 'age_cat_0', 'age_cat_1', 'age_cat_2',
+                               'age_cat_3', 'age_cat_4', 'age_cat_5',
+                               'age_cat_6', 'age_cat_7', 'age_cat_8',
+                               'age_cat_9']
+
+cols_cat_agernv = [
+                'age_after_renovation_cat_0','age_after_renovation_cat_1',
+                'age_after_renovation_cat_2', 'age_after_renovation_cat_3',
+                'age_after_renovation_cat_4', 'age_after_renovation_cat_5',
+                'age_after_renovation_cat_6', 'age_after_renovation_cat_7',
+                'age_after_renovation_cat_8', 'age_after_renovation_cat_9']
+
+features_all_encoded = cols_num + cols_bool + cols_new + cols_cat + cols_cat_age + cols_cat_agernv
+target = ['price']
+
+#=============================================================================
+# Random Forest All encoded features after grid search best model
+#=============================================================================
+target = ['price']
+features = features_all_encoded
+df = df_raw[features + target]
+
+model = RandomForestRegressor(n_estimators= 40,random_state=random_state,
+                              max_features=69,
+                              max_depth=50, bootstrap=True)
+
+fitted_model, rmse, r2_train, ar2_train, r2_test, ar2_test, cv = \
+    multiple_linear_regression(df, features, target,model,
+                               verbose=2,test_size=0.2)
+
+
+df_eval.loc[len(df_eval)] = ['Random Forest Regressor after grid search',
+                             ' all encoded features, best grid search,\
+                             n_estimators=40, max_features=69, max_depth=50',
+                             rmse,r2_train,ar2_train,
+                             r2_test,ar2_test,cv]
+
+#=============================================================================
+# Random Forest Feature Importance
+#=============================================================================
+importances = fitted_model.feature_importances_
+df_imp = pd.DataFrame({'feature': features, 'importance': importances})
+topN = 40
+top_cols = df_imp.head(topN)['feature'].values.tolist()
+
+features = top_cols
+target = ['price']
+
+df = df_raw[features + target]
+
+model = RandomForestRegressor(n_estimators= 50,random_state=random_state,
+                              max_depth=50, bootstrap=True)
+
+fitted_model, rmse, r2_train, ar2_train, r2_test, ar2_test, cv = \
+    multiple_linear_regression(df, features, target,model,
+                               verbose=2,test_size=0.2)
+
+df_eval.loc[len(df_eval)] = ['Random Forest Regressor',
+                             'n_estimators = 50, max_depth = 50,\
+                             topN features = '+str(topN),
+                             rmse,r2_train,ar2_train,
+                             r2_test,ar2_test,cv]
+
+#=============================================================================
+# Print Results
+#=============================================================================
+print('Features used:\n', df.columns.values)
+print()
+for k,v in df_eval.to_dict().items():
+    print(k, ':', v)
+
+t1 = time.time() - t0
+print('\n\nTime taken: {:.0f} min {:.0f} secs'.format(*divmod(t1,60)))
