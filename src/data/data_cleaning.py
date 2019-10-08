@@ -18,6 +18,11 @@ Task: Clean the data of King County House price and create new features
 import numpy as np
 import pandas as pd
 
+# random state
+random_state=100
+np.random.seed=random_state
+np.random.set_state=random_state
+
 
 # Load the data
 df = pd.read_csv('../data/raw/kc_house_data.csv')
@@ -91,7 +96,5 @@ for col in cols_log:
 df.drop('id',inplace=True,axis=1)
 
 # Save clean data
-ofile = '../data/processed/data_cleaned_encoded.csv'
-df_encoded.to_csv(ofile,index=False,header=True)
-
-print('output file: ', ofile)
+df_encoded.to_csv('../data/processed/data_cleaned_encoded.csv',
+                  index=False,header=True)
