@@ -13,6 +13,6 @@ project="Project_House_Price_Prediction/"
 notebook="blob/master/notebooks/"
 
 for fname in *.ipynb;
-    do echo "[$fname](""$pre""$user""$project""$notebook""$fname)" >> README.md;
+    do echo "[$fname](""$pre""$user""$project""$notebook""$fname)\n" >> README.md;
     done;
 
