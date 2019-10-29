@@ -20,7 +20,7 @@ import pandas as pd
 
 # random state
 random_state=100
-np.random.seed=random_state
+np.random.seed(random_state) # we need this in each cell
 np.random.set_state=random_state
 
 
