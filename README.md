@@ -31,7 +31,7 @@ Task: Try to estimate the price of house based on given features.
 - notebook:  `notebooks/a01_regression_data_processing.ipynb`
 - script:  `src/data/data_cleaning.py`
 
-In this house price dataset we have no missing values and some numerical featrues and
+In this house price dataset we have no missing values and some numerical features and
 some categorical features.
 
 Tree based algorithms such as Decision Tree and Random Forest, may not require
@@ -39,17 +39,17 @@ much feature engineering but linear models and svm benifits from creating new fe
 and doing feature engineering.
 
 Here, we have `date` as date feature, we can create `yr_sales` feature using
-this feature and then create another featrue age of house using `yr_sales` 
+this feature and then create another feature age of house using `yr_sales` 
 and `yr_built`. I also noted that some of the houses have negative age of -1,
 this means some houses are sold before they were even built.
 
 I also crated a new feature `age_after_renovation` using `yr_sales` and
-`yr_renovated` featrues.
+`yr_renovated` features.
 
 Some of the features are categorical features. I checked the unique numbers of
 all the categorical features and found that `zipcode` has 70 unique classes.
 Encoding `zipcode` to 70 features may give the overfitted result and I created only
-ten encoded featrues taking top10 zipcode corrosponding to the most expensive houses.
+ten encoded features taking top10 zipcode corrosponding to the most expensive houses.
 Note that it is one of the possible options and we could have chosen other number of
 classes and used another method of selection of top features such as most frequent zipcodes or something else.
 
