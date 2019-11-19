@@ -106,9 +106,9 @@
      - `ipynb <d02_regression_modelling_using_pyspark_random_forest_tuning.ipynb>`_, `rendered <https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/d02_regression_modelling_using_pyspark_random_forest_tuning.ipynb>`_
      - `Bhishan Poudel <https://bhishanpdl.github.io/>`_
 
-   * - c04_regression_modelling_random_forest.ipynb
-     - Plotly Visualzation
-     - `ipynb <c04_regression_modelling_random_forest.ipynb>`_, `rendered <https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c04_regression_modelling_random_forest.ipynb>`_
-     - `Bhishan Poudel <https://bhishanpdl.github.io/>`_
+   * - 
+     - 
+     - 
+     - 
 
 
