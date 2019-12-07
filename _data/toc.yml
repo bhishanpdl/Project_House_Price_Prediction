@@ -40,7 +40,6 @@
 - url: c07_regression_modelling_select_kbest
 - url: b02_regression_data_visualization_and_eda_bokeh
 - url: b03_regression_data_visualization_and_eda_plotly
-- url: c11_regression_modelling_boosting_catboost
 - url: a03_regression_statistics
 - url: b01_regression_data_visualization_and_eda
 - url: c04_regression_modelling_random_forest
