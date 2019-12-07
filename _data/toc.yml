@@ -27,24 +27,24 @@
 
 
 - url: README
-- url: a01_regression_data_processing
-- url: a02_regression_data_processing_script
-- url: a03_regression_statistics
-- url: b01_regression_data_visualization_and_eda
-- url: b02_regression_data_visualization_and_eda_bokeh
-- url: b03_regression_data_visualization_and_eda_plotly
-- url: b04_regression_data_visualization_and_eda_pixiedust
-- url: b05_regression_data_visualization_and_eda_with_pandas_profiling
-- url: c01_regression_modelling_linear_and_polynomial_sklearn
-- url: c02_regression_modelling_linear_ols_statsmodels
-- url: c03_regression_modelling_sklearn_methods
-- url: c04_regression_modelling_random_forest
-- url: c05_regression_modelling_random_forest_feature_importance
-- url: c06_regression_modelling_sklearn_best_r2
-- url: c07_regression_modelling_select_kbest
-- url: c08_regression_modelling_sklearn_gbr
-- url: c09_regression_modelling_boosting_xgb
-- url: c10_regression_modelling_boosting_lgb
-- url: d01_regression_modelling_using_pyspark
-- url: d02_regression_modelling_using_pyspark_random_forest_tuning
+- url: /a01_regression_data_processing
+- url: /a02_regression_data_processing_script
+- url: /a03_regression_statistics
+- url: /b01_regression_data_visualization_and_eda
+- url: /b02_regression_data_visualization_and_eda_bokeh
+- url: /b03_regression_data_visualization_and_eda_plotly
+- url: /b04_regression_data_visualization_and_eda_pixiedust
+- url: /b05_regression_data_visualization_and_eda_with_pandas_profiling
+- url: /c01_regression_modelling_linear_and_polynomial_sklearn
+- url: /c02_regression_modelling_linear_ols_statsmodels
+- url: /c03_regression_modelling_sklearn_methods
+- url: /c04_regression_modelling_random_forest
+- url: /c05_regression_modelling_random_forest_feature_importance
+- url: /c06_regression_modelling_sklearn_best_r2
+- url: /c07_regression_modelling_select_kbest
+- url: /c08_regression_modelling_sklearn_gbr
+- url: /c09_regression_modelling_boosting_xgb
+- url: /c10_regression_modelling_boosting_lgb
+- url: /d01_regression_modelling_using_pyspark
+- url: /d02_regression_modelling_using_pyspark_random_forest_tuning
 
