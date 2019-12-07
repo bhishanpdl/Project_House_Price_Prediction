@@ -26,7 +26,7 @@
 # ==============================
 
 
-- url: README
+- url: /README
 - url: /a01_regression_data_processing
 - url: /a02_regression_data_processing_script
 - url: /a03_regression_statistics
