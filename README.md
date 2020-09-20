@@ -155,6 +155,23 @@ Result:
 Adjusted R-Squared (test): 0.890
 ```
 
+# Boosting Models
+The bagging model Random forest after extensive hyperparameter search gave me adjusted r-squared score for test data 0.890.
+
+I also explored boosting method and after grid search I got following result:
+
+
+| Boosting Model | Test Adjusted R-squared | Description |
+| :---| :--- | ---: |
+| Catboost | 0.914417 | Tuned|
+| Lightgbm | 0.9112 | Grid search: Random Search|
+| Xgboost | 0.9111 | sequential grid search |
+| Lightgbm | 0.9091 | Grid search: hyperopt|
+| GradientBoostingRegressor | 0.90816  | Default  |
+| Catboost | 0.90059 | Using eval_set|
+| Lightgbm | 0.89179  | Default |
+
+
 # Big data modelling
 sklearn and pandas are great only when the dataset is small (few thousands), they
 can not handle millions of rows and often time in real world data can be much much
