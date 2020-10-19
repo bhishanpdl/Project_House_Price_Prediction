@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<h1 style="background-color:tomato;">
+Project Description
+</h1>
+<p>In this project, the dataset contains house sale prices for King County, which includes Seattle. It includes homes sold between May 2014 and May 2015. There are 19 house features and one dependent feature <code>price</code>. The aim of the project is to estimate the house price.</p>
+<h1 style="background-color:tomato;">
+Data processing
+</h1>
+<ul>
+<li>Linear models and svm benefits from scaling (and removing outliers), I did normalizing and robust scaling.</li>
+<li>Created a new feature <code>age_after_renovation</code> using <code>yr_sales</code> and <code>yr_renovated</code> features.</li>
+<li><code>zipcode</code> has too many unique values, reduced it to 70 values.</li>
+<li>Created a new feature called <code>zipcode_houses</code> which gives number of houses in each zipcode.</li>
+<li>Created binned features from <code>age</code> and <code>age_after_renovation</code>.</li>
+<li>Did <code>log1p</code> transformation of continuous numerical features.</li>
+</ul>
+<h1 style="background-color:tomato;">
+Best Results
+</h1>
+<p>I tried various scikit learn algorithms including stacking and blending. The random forest gave me the best <code>Adjusted R-squared Value</code>.</p>
+<div class="figure">
+<img src="images/stacking_blending.png" />
+
+</div>
+<h1 style="background-color:tomato;">
+Big data modelling
+</h1>
+<ul>
+<li><code>scikit-learn</code> and <code>pandas</code> can not deal with large data (<code>&gt;1GB</code>). To scale up the project, I used big data platform <code>PySpark</code>.</li>
+<li><code>spark</code> is a scala package and <code>pyspark</code> is the a python wrapper around it.</li>
+<li>In <code>pyspark</code>, <code>mllib</code> is deprecated, so, I used only <code>pyspark.ml</code>.</li>
+<li>I used <code>Random Forest</code> in pyspark and tuned the hyper parameters to get the best Adjusted R-squared value.</li>
+</ul>
+<h1 style="background-color:tomato;">
+Some of the EDA results
+</h1>
+<p><img src="images/correlation_matrix.png" /> <img src="images/correlation_matrix2.png" /> <img src="images/sns_heatmap.png" /> <img src="images/some_histograms.png" /> <img src="images/bedroom_bathrooms_waterfron_view.png" /> <img src="images/bedroom_counts.png" /></p>
+<h1 style="background-color:tomato;">
+Project Notebooks
+</h1>
+<table style="width:22%;">
+<colgroup>
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Notebook</th>
+<th>Rendered</th>
+<th>Description</th>
+<th>Author</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>a01_regression_data_processing.ipynb</td>
+<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/a01_regression_data_processing.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/a01_regression_data_processing.ipynb">rendered</a></td>
+<td></td>
+<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
+</tr>
+<tr class="even">
+<td>a02_regression_data_processing_script.ipynb</td>
+<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/a02_regression_data_processing_script.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/a02_regression_data_processing_script.ipynb">rendered</a></td>
+<td></td>
+<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
+</tr>
+<tr class="odd">
+<td>a03_regression_statistics.ipynb</td>
+<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/a03_regression_statistics.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/a03_regression_statistics.ipynb">rendered</a></td>
+<td></td>
+<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
+</tr>
+<tr class="even">
+<td>b01_regression_data_visualization_and_eda.ipynb</td>
+<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/b01_regression_data_visualization_and_eda.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/b01_regression_data_visualization_and_eda.ipynb">rendered</a></td>
+<td></td>
+<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
+</tr>
+<tr class="odd">
+<td>b02_regression_data_visualization_and_eda_bokeh.ipynb</td>
+<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/b02_regression_data_visualization_and_eda_bokeh.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/b02_regression_data_visualization_and_eda_bokeh.ipynb">rendered</a></td>
+<td></td>
+<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
+</tr>
+<tr class="even">
+<td>b03_regression_data_visualization_and_eda_plotly.ipynb</td>
+<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/b03_regression_data_visualization_and_eda_plotly.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/b03_regression_data_visualization_and_eda_plotly.ipynb">rendered</a></td>
+<td></td>
+<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
+</tr>
+<tr class="odd">
+<td>b04_regression_data_visualization_and_eda_pixiedust.ipynb</td>
+<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/b04_regression_data_visualization_and_eda_pixiedust.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/b04_regression_data_visualization_and_eda_pixiedust.ipynb">rendered</a></td>
+<td></td>
+<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
+</tr>
+<tr class="even">
+<td>b05_regression_data_visualization_and_eda_with_pandas_profiling.ipynb</td>
+<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/b05_regression_data_visualization_and_eda_with_pandas_profiling.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/b05_regression_data_visualization_and_eda_with_pandas_profiling.ipynb">rendered</a></td>
+<td></td>
+<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
+</tr>
+<tr class="odd">
+<td>c01_regression_modelling_linear_and_polynomial_sklearn.ipynb</td>
+<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c01_regression_modelling_linear_and_polynomial_sklearn.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c01_regression_modelling_linear_and_polynomial_sklearn.ipynb">rendered</a></td>
+<td></td>
+<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
+</tr>
+<tr class="even">
+<td>c02_regression_modelling_linear_ols_statsmodels.ipynb</td>
+<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c02_regression_modelling_linear_ols_statsmodels.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c02_regression_modelling_linear_ols_statsmodels.ipynb">rendered</a></td>
+<td></td>
+<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
+</tr>
+<tr class="odd">
+<td>c03_regression_modelling_sklearn_methods.ipynb</td>
+<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c03_regression_modelling_sklearn_methods.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c03_regression_modelling_sklearn_methods.ipynb">rendered</a></td>
+<td></td>
+<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
+</tr>
+<tr class="even">
+<td>c04_regression_modelling_random_forest.ipynb</td>
+<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c04_regression_modelling_random_forest.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c04_regression_modelling_random_forest.ipynb">rendered</a></td>
+<td></td>
+<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
+</tr>
+<tr class="odd">
+<td>c05_regression_modelling_random_forest_feature_importance.ipynb</td>
+<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c05_regression_modelling_random_forest_feature_importance.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c05_regression_modelling_random_forest_feature_importance.ipynb">rendered</a></td>
+<td></td>
+<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
+</tr>
+<tr class="even">
+<td>c06_regression_modelling_sklearn_best_r2.ipynb</td>
+<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c06_regression_modelling_sklearn_best_r2.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c06_regression_modelling_sklearn_best_r2.ipynb">rendered</a></td>
+<td></td>
+<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
+</tr>
+<tr class="odd">
+<td>c07_regression_modelling_select_kbest.ipynb</td>
+<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c07_regression_modelling_select_kbest.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c07_regression_modelling_select_kbest.ipynb">rendered</a></td>
+<td></td>
+<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
+</tr>
+<tr class="even">
+<td>c08_regression_modelling_sklearn_gbr.ipynb</td>
+<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c08_regression_modelling_sklearn_gbr.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c08_regression_modelling_sklearn_gbr.ipynb">rendered</a></td>
+<td></td>
+<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
+</tr>
+<tr class="odd">
+<td>c09_regression_modelling_boosting_xgb.ipynb</td>
+<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c09_regression_modelling_boosting_xgb.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c09_regression_modelling_boosting_xgb.ipynb">rendered</a></td>
+<td></td>
+<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
+</tr>
+<tr class="even">
+<td>c10_regression_modelling_boosting_lgb.ipynb</td>
+<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c10_regression_modelling_boosting_lgb.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c10_regression_modelling_boosting_lgb.ipynb">rendered</a></td>
+<td></td>
+<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
+</tr>
+<tr class="odd">
+<td>c11_regression_modelling_boosting_catboost.ipynb</td>
+<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c11_regression_modelling_boosting_catboost.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c11_regression_modelling_boosting_catboost.ipynb">rendered</a></td>
+<td></td>
+<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
+</tr>
+<tr class="even">
+<td>d01_regression_modelling_using_pyspark.ipynb</td>
+<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/d01_regression_modelling_using_pyspark.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/d01_regression_modelling_using_pyspark.ipynb">rendered</a></td>
+<td></td>
+<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
+</tr>
+<tr class="odd">
+<td>d02_regression_modelling_using_pyspark_random_forest_tuning.ipynb</td>
+<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/d02_regression_modelling_using_pyspark_random_forest_tuning.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/d02_regression_modelling_using_pyspark_random_forest_tuning.ipynb">rendered</a></td>
+<td></td>
+<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
+</tr>
+<tr class="even">
+<td>e01_regression_model_interpretation_random_forest.ipynb</td>
+<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/e01_regression_model_interpretation_random_forest.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/e01_regression_model_interpretation_random_forest.ipynb">rendered</a></td>
+<td></td>
+<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

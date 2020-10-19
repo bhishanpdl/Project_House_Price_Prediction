@@ -1,7 +1,11 @@
-# Project Description
+
+<h1 style="background-color:tomato;">Project Description</h1>
+
 In this project, the dataset contains house sale prices for King County, which includes Seattle. It includes homes sold between May 2014 and May 2015. There are 19 house features and one dependent feature `price`. The aim of the project is to estimate the house price.
 
-# Data processing
+
+<h1 style="background-color:tomato;">Data processing</h1>
+
 - Linear models and svm benefits from scaling (and removing outliers), I did normalizing and robust scaling.
 - Created a new feature `age_after_renovation` using `yr_sales` and `yr_renovated` features.
 - `zipcode` has too many unique values, reduced it to 70 values.
@@ -9,18 +13,23 @@ In this project, the dataset contains house sale prices for King County, which i
 - Created binned features from `age` and `age_after_renovation`.
 - Did `log1p` transformation of continuous numerical features.
 
-# Best Results
+
+<h1 style="background-color:tomato;">Best Results</h1>
 I tried various scikit learn algorithms including stacking and blending. The random forest gave me the best `Adjusted R-squared Value`.
 
 ![](images/stacking_blending.png)
 
-# Big data modelling
+
+<h1 style="background-color:tomato;">Big data modelling</h1>
+
 - `scikit-learn` and `pandas` can not deal with large data (`>1GB`). To scale up the project, I used big data platform `PySpark`.
 - `spark` is a scala package and `pyspark` is the a python wrapper around it.
 - In `pyspark`, `mllib` is deprecated, so, I used only `pyspark.ml`.
 - I used `Random Forest` in pyspark and tuned the hyper parameters to get the best Adjusted R-squared value.
 
- # Some of the EDA results
+
+<h1 style="background-color:tomato;">Some of the EDA results</h1>
+
 ![](images/correlation_matrix.png)
 ![](images/correlation_matrix2.png)
 ![](images/sns_heatmap.png)
@@ -29,7 +38,9 @@ I tried various scikit learn algorithms including stacking and blending. The ran
 ![](images/bedroom_counts.png)
 
 
-# Project Notebooks
+
+<h1 style="background-color:tomato;">Project Notebooks</h1>
+
 |  Notebook | Rendered   | Description  |  Author |
 |---|---|---|---|
 | a01_regression_data_processing.ipynb  | [ipynb](https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/a01_regression_data_processing.ipynb), [rendered](https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/a01_regression_data_processing.ipynb)  |   | [Bhishan Poudel](https://bhishanpdl.github.io/)  |
