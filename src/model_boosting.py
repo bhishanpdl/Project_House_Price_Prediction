@@ -31,12 +31,12 @@ from lightgbm import LGBMRegressor
 from catboost import CatBoostRegressor
 
 #===================== parameters
-ifile = config.data_path
-params_rf = config.params_rf
+data_path_clean = config.data_path_clean
 target = config.target
 train_size = config.train_size
+
 cols_drop = config.cols_drop
-cols_log = config.cols_log
+cols_sq = config.cols_sq
 
 params_xgb = config.params_xgb
 params_lgb = config.params_lgb
@@ -60,12 +60,12 @@ else:
     sys.exit(1)
 
 #=================== load the data
-df = pd.read_csv(ifile)
+df = pd.read_csv(data_path_clean)
+df = df.drop(cols_drop, axis=1)
 
 #========================== data processing
-df = df.drop(cols_drop,axis=1)
-for col in cols_log:
-    df[col] = np.log1p(df[col].to_numpy())
+for col in cols_sq:
+    df[col + '_sq'] = df[col]**2
 
 #======================== train test split
 df_Xtrain,df_Xtest,ser_ytrain,ser_ytest = train_test_split(
@@ -87,10 +87,7 @@ Xtest  = scaler.transform(df_Xtest)
 model.fit(df_Xtrain,ser_ytrain)
 
 #======================= model evaluation
-# NOTE: we need to do inverse log transform of target
 ypreds = model.predict(df_Xtest).flatten()
-ytest = np.expm1(ytest)
-ypreds = np.expm1(ypreds)
 util.print_regr_eval(ytest,ypreds,ncols=df_Xtest.shape[1])
 
 #========================= time taken
@@ -100,9 +97,27 @@ util.print_time_taken(time_taken)
 
 # results
 res = """
-             RMSE : 113,922.65
-         R-Squared: 0.9037
-Adjusted R-squared: 0.9033
+$ py model_boosting.py --name xgb
 
-Time Taken: 14.03 sec sec
+             RMSE : 3,675.98
+         R-Squared: 0.9999
+Adjusted R-squared: 0.9999
+
+Time Taken: 50.49 sec
+
+$ py model_boosting.py --name lgb
+
+             RMSE : 50,256.59
+         R-Squared: 0.9813
+Adjusted R-squared: 0.9808
+
+Time Taken: 4.19 sec
+
+$ py model_boosting.py --name cb
+
+             RMSE : 52,299.88
+         R-Squared: 0.9797
+Adjusted R-squared: 0.9792
+
+Time Taken: 51.76 sec
 """

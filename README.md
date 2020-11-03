@@ -15,6 +15,7 @@ In this project, the dataset contains house sale prices for King County, which i
 
 
 <h1 style="background-color:tomato;">Best Results</h1>
+After comprehensive data cleaning and variable encodings,
 I tried various scikit learn algorithms including stacking and blending. The random forest gave me the best `Adjusted R-squared Value`.
 
 ![](images/stacking_blending.png)

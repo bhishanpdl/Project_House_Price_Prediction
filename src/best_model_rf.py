@@ -59,14 +59,3 @@ util.print_regr_eval(ytest,ypreds,ncols=df_Xtest.shape[1])
 #========================= time taken
 time_taken = time.time() - time_start_notebook
 util.print_time_taken(time_taken)
-
-# results
-res = """"
-$ py model_rf.py 
-
-             RMSE : 26,075.80
-         R-Squared: 0.9950
-Adjusted R-squared: 0.9948
-
-Time Taken: 1 min 49.76 sec
-"""

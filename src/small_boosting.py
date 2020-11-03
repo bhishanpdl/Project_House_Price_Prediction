@@ -3,6 +3,7 @@ import time
 time_start_notebook = time.time()
 import numpy as np
 import pandas as pd
+import argparse
 
 # local imports
 import config
@@ -10,6 +11,7 @@ import util
 
 # random state
 import os
+import sys
 import random
 import numpy as np
 SEED=config.SEED
@@ -24,7 +26,8 @@ from sklearn.model_selection import train_test_split
 from sklearn import preprocessing
 
 # special
-import catboost
+from xgboost import XGBRegressor
+from lightgbm import LGBMRegressor
 from catboost import CatBoostRegressor
 
 #===================== parameters
@@ -35,7 +38,26 @@ train_size = config.train_size
 cols_drop = config.cols_drop
 cols_log = config.cols_log
 
+params_xgb = config.params_xgb
+params_lgb = config.params_lgb
 params_cb = config.params_cb
+
+# parse arguments
+parser = argparse.ArgumentParser()
+parser.add_argument('-name','--name',help='name of booster eg. xgb lgb cb',type=str,required=True)
+args = parser.parse_args()
+name = args.name
+
+# boosting model
+if name == 'xgb':
+    model = XGBRegressor(**params_xgb)
+elif name == 'lgb':
+    model = LGBMRegressor(**params_lgb)
+elif name == 'cb':
+    model = CatBoostRegressor(**params_cb)
+else:
+    print('Please use one of boosting model: xgb, lgb, cb')
+    sys.exit(1)
 
 #=================== load the data
 df = pd.read_csv(ifile)
@@ -62,7 +84,6 @@ Xtrain = scaler.transform(df_Xtrain)
 Xtest  = scaler.transform(df_Xtest)
 
 #===================== modelling
-model = CatBoostRegressor(**params_cb)
 model.fit(df_Xtrain,ser_ytrain)
 
 #======================= model evaluation
