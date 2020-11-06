@@ -16,10 +16,9 @@ In this project, the dataset contains house sale prices for King County, which i
 
 <h1 style="background-color:tomato;">Best Results</h1>
 After comprehensive data cleaning and variable encodings,
-I tried various scikit learn algorithms including stacking and blending. The random forest gave me the best `Adjusted R-squared Value`.
+I tried various scikit learn algorithms including stacking and blending. I had created many categorical features and the catboost algorithm after standard scaling gave me the best adjusted r-squared value.
 
-![](images/stacking_blending.png)
-
+![](images/boost_res.png)
 
 <h1 style="background-color:tomato;">Big data modelling</h1>
 

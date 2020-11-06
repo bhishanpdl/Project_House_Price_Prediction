@@ -19,8 +19,115 @@ def print_regr_eval(ytest,ypreds,ncols):
     rmse = np.sqrt(metrics.mean_squared_error(ytest,ypreds))
     r2 = metrics.r2_score(ytest,ypreds)
     ar2 = adjustedR2(r2,len(ytest),ncols)
+    evs = metrics.explained_variance_score(ytest, ypreds)
 
-    print(f"""
+    print('ytest :', ytest[:3])
+    print('ypreds:', ypreds[:3])
+
+    print(f"""           
+Explained Variance: {evs:.6f}
+         R-Squared: {r2:,.6f}
+
              RMSE : {rmse:,.2f}
-         R-Squared: {r2:,.4f}
-Adjusted R-squared: {ar2:,.4f}""")
+Adjusted R-squared: {ar2:,.6f}
+
+""")
+
+def write_regr_eval(ytest,ypreds,ncols,ofile):
+    rmse = np.sqrt(metrics.mean_squared_error(ytest,ypreds))
+    r2 = metrics.r2_score(ytest,ypreds)
+    ar2 = adjustedR2(r2,len(ytest),ncols)
+    evs = metrics.explained_variance_score(ytest, ypreds)
+
+    df_out = pd.DataFrame(
+        {'Explained Variance': [evs],
+         'R-Squared'         : [r2],
+         'RMSE'              : [rmse],
+         'Adjusted R-squared': [ar2]
+        })
+
+    df_out.to_csv(ofile, index=False)
+
+def clean_data(df,log=True,sq=True,logsq=True,dummy=True,dummy_cat=False):
+    # log sq
+    if logsq:
+        log = True
+        sq = True
+
+    df = df.copy()
+
+    # Date time features
+    df['date'] = pd.to_datetime(df['date'])
+    df['yr_sales'] = df['date'].dt.year
+    df['age'] = df['yr_sales'] - df['yr_built']
+    df['yr_renovated2'] = np.where(df['yr_renovated'].eq(0), df['yr_built'], df['yr_renovated'])
+    df['age_after_renovation'] = df['yr_sales'] - df['yr_renovated2']
+
+    # Categorical Features
+    cols_str = ['waterfront', 'view', 'condition', 'grade','zipcode']
+    for c in cols_str:
+        df[c] = df[c].astype(str)
+
+    cols_obj = df.select_dtypes(['object','category']).columns
+    cols_obj_small = ['waterfront', 'view', 'condition', 'grade']
+
+    # Boolean data types
+    df['basement_bool'] = df['sqft_basement'].apply(lambda x: 1 if x>0 else 0)
+    df['renovation_bool'] = df['yr_renovated'].apply(lambda x: 1 if x>0 else 0)
+
+    # Numerical features binning
+    cols_bin = ['age','age_after_renovation']
+    df['age_cat'] = pd.cut(df['age'], 10, labels=range(10)).astype(str)
+    df['age_after_renovation_cat'] = pd.cut(df['age_after_renovation'],
+                                            10, labels=range(10))
+
+    # Create dummy variables from object and categories
+    cols_obj_cat = df.select_dtypes(include=[np.object, 'category']).columns
+    cols_dummy = ['waterfront', 'view', 'condition', 'grade']
+    if dummy:
+        df_dummy = pd.get_dummies(df[cols_dummy],drop_first=False)
+        df = pd.concat([df,df_dummy], axis=1)
+
+    cols_dummy_cat = ['age_cat', 'age_after_renovation_cat']
+    if dummy_cat:
+        df_dummy = pd.get_dummies(df[cols_dummy_cat],drop_first=False)
+        df = pd.concat([df,cols_dummy_cat], axis=1)
+
+    # after creating dummy, make the columns number
+    for c in cols_obj_cat:
+        df[c] = df[c].astype(np.int8)
+
+    # Log transformation of large numerical values
+    cols_log = ['sqft_living', 'sqft_lot', 'sqft_above',
+                'sqft_basement', 'sqft_living15', 'sqft_lot15']
+    if log:
+        for col in cols_log:
+            df['log1p_' + col] = np.log1p(df[col])
+
+    # squared columns
+    cols_sq = [
+        # cats
+        'bedrooms','bathrooms','floors','waterfront','view',
+
+        # created nums
+        'age','age_after_renovation']
+
+    if sq:
+        for col in cols_sq:
+            df[col + '_sq'] = df[col]**2
+
+    cols_log_sq = [
+        # log nums
+        'log1p_sqft_living','log1p_sqft_lot',
+        'log1p_sqft_above','log1p_sqft_basement',
+        'log1p_sqft_living15','log1p_sqft_lot15'
+        ]
+    if logsq:
+        for col in cols_log_sq:
+            df[col + '_sq'] = df[col]**2
+
+    # Drop unwanted columns
+    cols_drop = ['id','date']
+    df = df.drop(cols_drop,axis=1)
+
+    return df

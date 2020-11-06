@@ -5,23 +5,35 @@ dat_dir = os.path.join('..','data')
 data_path = os.path.join(dat_dir, 'raw/kc_house_data.csv')
 data_path_raw = os.path.join(dat_dir, 'raw/kc_house_data.csv')
 data_path_clean = os.path.join(dat_dir, 'processed/data_cleaned_encoded.csv')
+
+data_path_train = os.path.join(dat_dir, 'raw/train.csv')
+data_path_test = os.path.join(dat_dir, 'raw/test.csv')
 compression = None
 
 # params
+model_type = 'regression'
 target = 'price'
 train_size = 0.8
 test_size = 1-train_size
 SEED = 100
 
 # data Processing
-cols_log_small = ['price','sqft_living','sqft_living15',
-            'sqft_lot','sqft_lot15']
+# NOTE: do not do log transform of target here, do that in modelling
+cols_log_small = ['sqft_living',
+                'sqft_living15',
+                'sqft_lot',
+                'sqft_lot15'
+                ]
+
 cols_drop_small = ['id','date']
 
-cols_sq = ['bedrooms','bathrooms','floors','waterfront','view',
-    'age','age_after_renovation','log1p_sqft_living','log1p_sqft_lot',
-    'log1p_sqft_above','log1p_sqft_basement',
-    'log1p_sqft_living15','log1p_sqft_lot15']
+cols_sq = ['bedrooms','bathrooms',
+        'floors','waterfront','view',
+        'age','age_after_renovation',
+        'log1p_sqft_living','log1p_sqft_lot',
+        'log1p_sqft_above','log1p_sqft_basement',
+        'log1p_sqft_living15','log1p_sqft_lot15']
+
 cols_drop = ['id', 'date', 'zipcode_top10']
 
 # params
@@ -37,6 +49,25 @@ params_rf = dict(n_estimators=1200,
                 oob_score=True,
                 n_jobs=-1,
                 random_state=SEED)
+
+params_hgbr = dict(
+    l2_regularization=0.0,
+    learning_rate=0.01, # default 0.1
+    loss='least_squares',
+    max_bins=255,
+    max_depth=None,
+    max_iter=5000, # default 100
+    max_leaf_nodes=31,
+    min_samples_leaf=20,
+    n_iter_no_change=10,
+    random_state=SEED,
+    early_stopping=True, # default None
+    scoring=None,
+    tol=1e-07,
+    validation_fraction=0.1,
+    verbose=0,
+    warm_start=False
+    )
 
 params_xgb = dict(n_jobs=-1,
                 random_state=SEED,
@@ -63,19 +94,15 @@ params_lgb = {
     'reg_lambda': 0.604 # default 0.0
             }
 
-params_cb ={'depth': 7,
-'early_stopping_rounds': 200,
-'eval_metric': 'RMSE',
-'iterations':2503,
-'l2_leaf_reg': 3,
-'learning_rate': 0.03,
+params_cb ={
 'loss_function': 'RMSE',
-'random_state': 123,
-'subsample': 0.8,
-'verbose': False}
+'random_state': 0, # 0 gives better result
+'verbose': False
+}
 
 lst_cat_features = ['bedrooms','waterfront','view','condition','grade','zipcode']
-params_cb['cat_features'] = lst_cat_features
+# params_cb['cat_features'] = lst_cat_features
+# idx_cat_features = [list(df_Xtrain.columns).index(i) for i in lst_cat_features]
 
 
 # Default Parameters
@@ -119,5 +146,38 @@ lightgbm.LGBMClassifier(
     importance_type='split',
     **kwargs)
 
+#========================================================
+https://catboost.ai/docs/concepts/python-reference_catboostregressor.html
 
+CatBoostRegressor(
+iterations=None,
+learning_rate=None,
+loss_function='RMSE',
+use_best_model=None,
+verbose=None,
+silent=None,
+logging_level=None,
+one_hot_max_size=None,
+ignored_features=None,
+train_dir=None,
+custom_metric=None,
+eval_metric=None,
+subsample=None,
+max_depth=None,
+n_estimators=None,
+num_boost_round=None,
+num_trees=None,
+colsample_bylevel=None,
+random_state=None,
+reg_lambda=None,
+objective=None,
+eta=None,
+max_bin=None,
+early_stopping_rounds=None,
+cat_features=None,
+min_child_samples=None,
+max_leaves=None,
+num_leaves=None,
+score_function=None,
+)
 """
