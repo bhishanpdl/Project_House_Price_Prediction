@@ -41,179 +41,19 @@ Big data modelling
 <li>I used <code>Random Forest</code> in pyspark and tuned the hyper parameters to get the best Adjusted R-squared value.</li>
 </ul>
 <h1 style="background-color:tomato;">
+Deep Learning: Keras modelling
+</h1>
+<p>Using keras framework gave lower evaluation than boosting algorithms. I tried various artichitectures to deal with this regression problem.</p>
+<p>Some observations: - making dummy variables gave worse result. - doing log transform of target gave worse result.</p>
+<p>My results:</p>
+<pre><code>Explained Variance: 0.874334
+         R-Squared: 0.872386
+
+             RMSE : 131,142.79
+Adjusted R-squared: 0.871464</code></pre>
+<h1 style="background-color:tomato;">
 Some of the EDA results
 </h1>
 <p><img src="images/correlation_matrix.png" /> <img src="images/correlation_matrix2.png" /> <img src="images/sns_heatmap.png" /> <img src="images/some_histograms.png" /> <img src="images/bedroom_bathrooms_waterfron_view.png" /> <img src="images/bedroom_counts.png" /></p>
-<h1 style="background-color:tomato;">
-Project Notebooks
-</h1>
-<table>
-<thead>
-<tr class="header">
-<th>Notebook</th>
-<th>Rendered</th>
-<th>Description</th>
-<th>Author</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>a00_best_model2.ipynb</td>
-<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/a00_best_model2.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/a00_best_model2.ipynb">rendered</a></td>
-<td></td>
-<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
-</tr>
-<tr class="even">
-<td>a00_best_model_xgb.ipynb</td>
-<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/a00_best_model_xgb.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/a00_best_model_xgb.ipynb">rendered</a></td>
-<td></td>
-<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
-</tr>
-<tr class="odd">
-<td>a01_data_proc.ipynb</td>
-<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/a01_data_proc.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/a01_data_proc.ipynb">rendered</a></td>
-<td></td>
-<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
-</tr>
-<tr class="even">
-<td>a02_data_proc_script.ipynb</td>
-<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/a02_data_proc_script.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/a02_data_proc_script.ipynb">rendered</a></td>
-<td></td>
-<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
-</tr>
-<tr class="odd">
-<td>a03_stats.ipynb</td>
-<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/a03_stats.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/a03_stats.ipynb">rendered</a></td>
-<td></td>
-<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
-</tr>
-<tr class="even">
-<td>b01_eda.ipynb</td>
-<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/b01_eda.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/b01_eda.ipynb">rendered</a></td>
-<td></td>
-<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
-</tr>
-<tr class="odd">
-<td>b02_eda_bokeh.ipynb</td>
-<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/b02_eda_bokeh.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/b02_eda_bokeh.ipynb">rendered</a></td>
-<td></td>
-<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
-</tr>
-<tr class="even">
-<td>b03_eda_plotly.ipynb</td>
-<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/b03_eda_plotly.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/b03_eda_plotly.ipynb">rendered</a></td>
-<td></td>
-<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
-</tr>
-<tr class="odd">
-<td>b04_eda_pixiedust.ipynb</td>
-<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/b04_eda_pixiedust.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/b04_eda_pixiedust.ipynb">rendered</a></td>
-<td></td>
-<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
-</tr>
-<tr class="even">
-<td>b05_eda_pandas_profiling.ipynb</td>
-<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/b05_eda_pandas_profiling.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/b05_eda_pandas_profiling.ipynb">rendered</a></td>
-<td></td>
-<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
-</tr>
-<tr class="odd">
-<td>c01_sklearn_linear_and_polynomial.ipynb</td>
-<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c01_sklearn_linear_and_polynomial.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c01_sklearn_linear_and_polynomial.ipynb">rendered</a></td>
-<td></td>
-<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
-</tr>
-<tr class="even">
-<td>c02_statsmodels_ols.ipynb</td>
-<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c02_statsmodels_ols.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c02_statsmodels_ols.ipynb">rendered</a></td>
-<td></td>
-<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
-</tr>
-<tr class="odd">
-<td>c03_sklearn_methods.ipynb</td>
-<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c03_sklearn_methods.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c03_sklearn_methods.ipynb">rendered</a></td>
-<td></td>
-<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
-</tr>
-<tr class="even">
-<td>c04_rf.ipynb</td>
-<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c04_rf.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c04_rf.ipynb">rendered</a></td>
-<td></td>
-<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
-</tr>
-<tr class="odd">
-<td>c05_rf_feat_imp.ipynb</td>
-<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c05_rf_feat_imp.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c05_rf_feat_imp.ipynb">rendered</a></td>
-<td></td>
-<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
-</tr>
-<tr class="even">
-<td>c06_sklearn_methods.ipynb</td>
-<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c06_sklearn_methods.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c06_sklearn_methods.ipynb">rendered</a></td>
-<td></td>
-<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
-</tr>
-<tr class="odd">
-<td>c07_sklearn_select_kbest.ipynb</td>
-<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c07_sklearn_select_kbest.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c07_sklearn_select_kbest.ipynb">rendered</a></td>
-<td></td>
-<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
-</tr>
-<tr class="even">
-<td>c08_boosting_gbr.ipynb</td>
-<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c08_boosting_gbr.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c08_boosting_gbr.ipynb">rendered</a></td>
-<td></td>
-<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
-</tr>
-<tr class="odd">
-<td>c09_boosting_xgb.ipynb</td>
-<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c09_boosting_xgb.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c09_boosting_xgb.ipynb">rendered</a></td>
-<td></td>
-<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
-</tr>
-<tr class="even">
-<td>c10_boosting_lgb.ipynb</td>
-<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c10_boosting_lgb.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c10_boosting_lgb.ipynb">rendered</a></td>
-<td></td>
-<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
-</tr>
-<tr class="odd">
-<td>c11_boosting_catboost.ipynb</td>
-<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c11_boosting_catboost.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c11_boosting_catboost.ipynb">rendered</a></td>
-<td></td>
-<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
-</tr>
-<tr class="even">
-<td>c12_ensemble_stacking_blending.ipynb</td>
-<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c12_ensemble_stacking_blending.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c12_ensemble_stacking_blending.ipynb">rendered</a></td>
-<td></td>
-<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
-</tr>
-<tr class="odd">
-<td>c13_pycaret.ipynb</td>
-<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c13_pycaret.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/c13_pycaret.ipynb">rendered</a></td>
-<td></td>
-<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
-</tr>
-<tr class="even">
-<td>d01_bigdata_pyspark.ipynb</td>
-<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/d01_bigdata_pyspark.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/d01_bigdata_pyspark.ipynb">rendered</a></td>
-<td></td>
-<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
-</tr>
-<tr class="odd">
-<td>d02_bigdata_pyspark_rf_tuning.ipynb</td>
-<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/d02_bigdata_pyspark_rf_tuning.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/d02_bigdata_pyspark_rf_tuning.ipynb">rendered</a></td>
-<td></td>
-<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
-</tr>
-<tr class="even">
-<td>e01_model_interpretation_rf.ipynb</td>
-<td><a href="https://github.com/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/e01_model_interpretation_rf.ipynb">ipynb</a>, <a href="https://nbviewer.jupyter.org/github/bhishanpdl/Project_House_Price_Prediction/blob/master/notebooks/e01_model_interpretation_rf.ipynb">rendered</a></td>
-<td></td>
-<td><a href="https://bhishanpdl.github.io/">Bhishan Poudel</a></td>
-</tr>
-</tbody>
-</table>
 </body>
 </html>
