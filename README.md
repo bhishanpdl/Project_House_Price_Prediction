@@ -20,6 +20,17 @@ I tried various scikit learn algorithms including stacking and blending. I had c
 
 ![](images/boost_res.png)
 
+<h1 style="background-color:tomato;"> Modelling with featuretools</h1>
+I tried xgboost with transform primitive "divide_numeric" in the module featuretools and created large number of cross features. Then combined these featues with data cleaning features. Then I used the xgboost modelling and got the following results:
+
+```
+             RMSE : 109,087.18
+Explained Variance: 0.912569
+         R-Squared: 0.911701
+Adjusted R-squared: 0.907997
+```
+
+
 <h1 style="background-color:tomato;">Big data modelling</h1>
 
 - `scikit-learn` and `pandas` can not deal with large data (`>1GB`). To scale up the project, I used big data platform `PySpark`.
