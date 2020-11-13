@@ -14293,7 +14293,7 @@ It includes homes sold between May 2014 and May 2015.</p>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
@@ -14308,7 +14308,7 @@ It includes homes sold between May 2014 and May 2015.</p>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%capture</span>
@@ -14337,7 +14337,7 @@ It includes homes sold between May 2014 and May 2015.</p>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -14408,7 +14408,7 @@ It includes homes sold between May 2014 and May 2015.</p>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Bhishan Poudel 2020-11-11 
+<pre>Bhishan Poudel 2020-11-13 
 
 CPython 3.6.9
 IPython 5.5.0
@@ -14422,13 +14422,13 @@ CPU cores  : 2
 interpreter: 64bit
 
 xgboost      0.90
+numpy        1.18.5
+pandas       1.1.4
 watermark    2.0.2
-featuretools 0.21.0
+matplotlib   3.2.2
 sklearn      0.23.2
 seaborn      0.11.0
-numpy        1.18.5
-matplotlib   3.2.2
-pandas       1.1.4
+featuretools 0.21.0
 
 </pre>
 </div>
@@ -14446,47 +14446,7 @@ pandas       1.1.4
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">show_methods</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span><span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">inside</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Show all the attributes of a given method.</span>
-<span class="sd">    Example:</span>
-<span class="sd">    ========</span>
-<span class="sd">    show_method_attributes(list)</span>
-<span class="sd">     &quot;&quot;&quot;</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Object Type: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="n">lst</span> <span class="o">=</span> <span class="p">[</span><span class="n">elem</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="k">if</span> <span class="n">elem</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">!=</span><span class="s1">&#39;_&#39;</span> <span class="p">]</span>
-    <span class="n">lst</span> <span class="o">=</span> <span class="p">[</span><span class="n">elem</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">lst</span> 
-           <span class="k">if</span> <span class="n">elem</span> <span class="ow">not</span> <span class="ow">in</span> <span class="s1">&#39;os np pd sys time psycopg2&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="p">]</span>
-
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="nb">str</span><span class="p">):</span>
-        <span class="n">lst</span> <span class="o">=</span> <span class="p">[</span><span class="n">elem</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">lst</span> <span class="k">if</span> <span class="n">elem</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">start</span><span class="p">)]</span>
-        
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="nb">tuple</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="nb">list</span><span class="p">):</span>
-        <span class="n">lst</span> <span class="o">=</span> <span class="p">[</span><span class="n">elem</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">lst</span> <span class="k">for</span> <span class="n">start_elem</span> <span class="ow">in</span> <span class="n">start</span>
-               <span class="k">if</span> <span class="n">elem</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">start_elem</span><span class="p">)]</span>
-        
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inside</span><span class="p">,</span><span class="nb">str</span><span class="p">):</span>
-        <span class="n">lst</span> <span class="o">=</span> <span class="p">[</span><span class="n">elem</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">lst</span> <span class="k">if</span> <span class="n">inside</span> <span class="ow">in</span> <span class="n">elem</span><span class="p">]</span>
-        
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inside</span><span class="p">,</span><span class="nb">tuple</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inside</span><span class="p">,</span><span class="nb">list</span><span class="p">):</span>
-        <span class="n">lst</span> <span class="o">=</span> <span class="p">[</span><span class="n">elem</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">lst</span> <span class="k">for</span> <span class="n">inside_elem</span> <span class="ow">in</span> <span class="n">inside</span>
-               <span class="k">if</span> <span class="n">inside_elem</span> <span class="ow">in</span> <span class="n">elem</span><span class="p">]</span>
-
-    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array_split</span><span class="p">(</span><span class="n">lst</span><span class="p">,</span><span class="n">ncols</span><span class="p">))</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">adjustedR2</span><span class="p">(</span><span class="n">rsquared</span><span class="p">,</span><span class="n">nrows</span><span class="p">,</span><span class="n">ncols</span><span class="p">):</span>
@@ -14501,7 +14461,7 @@ pandas       1.1.4
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">print_regr_eval</span><span class="p">(</span><span class="n">ytest</span><span class="p">,</span><span class="n">ypreds</span><span class="p">,</span><span class="n">ncols</span><span class="p">):</span>
@@ -14524,26 +14484,6 @@ pandas       1.1.4
 </div>
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">plot_xgb_cv_res</span><span class="p">(</span><span class="n">df_cv_results</span><span class="p">):</span>
-    <span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_cv_results</span><span class="p">[</span><span class="s1">&#39;train-rmse-mean&#39;</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;train-rmse&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_cv_results</span><span class="p">[</span><span class="s1">&#39;test-rmse-mean&#39;</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;train-rmse&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Cross validation score mean plot&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
@@ -14552,7 +14492,7 @@ pandas       1.1.4
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">if</span> <span class="n">ENV_COLAB</span><span class="p">:</span>
@@ -14607,7 +14547,7 @@ pandas       1.1.4
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_path_train</span><span class="p">)</span>
@@ -14819,7 +14759,7 @@ Index([&#39;id&#39;, &#39;date&#39;, &#39;price&#39;, &#39;bedrooms&#39;, &#39;b
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;price&#39;</span>
@@ -14845,7 +14785,7 @@ Index([&#39;id&#39;, &#39;date&#39;, &#39;price&#39;, &#39;bedrooms&#39;, &#39;b
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
 
 
 
@@ -14863,7 +14803,7 @@ Index([&#39;id&#39;, &#39;date&#39;, &#39;price&#39;, &#39;bedrooms&#39;, &#39;b
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">features</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df_train</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
@@ -14883,7 +14823,7 @@ Index([&#39;id&#39;, &#39;date&#39;, &#39;price&#39;, &#39;bedrooms&#39;, &#39;b
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
 
 
 
@@ -14920,7 +14860,7 @@ Index([&#39;id&#39;, &#39;date&#39;, &#39;price&#39;, &#39;bedrooms&#39;, &#39;b
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">cols_drop</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
@@ -14949,7 +14889,7 @@ Index([&#39;id&#39;, &#39;date&#39;, &#39;price&#39;, &#39;bedrooms&#39;, &#39;b
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df_train.head(2)</span>
@@ -14963,7 +14903,7 @@ Index([&#39;id&#39;, &#39;date&#39;, &#39;price&#39;, &#39;bedrooms&#39;, &#39;b
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">cols_int</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;bathrooms&#39;</span><span class="p">,</span><span class="s1">&#39;floors&#39;</span><span class="p">]</span>
@@ -14980,7 +14920,7 @@ Index([&#39;id&#39;, &#39;date&#39;, &#39;price&#39;, &#39;bedrooms&#39;, &#39;b
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">cols_date</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span>
@@ -14997,7 +14937,7 @@ Index([&#39;id&#39;, &#39;date&#39;, &#39;price&#39;, &#39;bedrooms&#39;, &#39;b
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_train</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -15016,7 +14956,7 @@ Index([&#39;id&#39;, &#39;date&#39;, &#39;price&#39;, &#39;bedrooms&#39;, &#39;b
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[14]:</div>
 
 
 
@@ -15039,8 +14979,8 @@ Index([&#39;id&#39;, &#39;date&#39;, &#39;price&#39;, &#39;bedrooms&#39;, &#39;b
   <thead>
     <tr style="text-align: right;">
       <th></th>
+      <th>id</th>
       <th>date</th>
-      <th>price</th>
       <th>bedrooms</th>
       <th>bathrooms</th>
       <th>sqft_living</th>
@@ -15064,8 +15004,8 @@ Index([&#39;id&#39;, &#39;date&#39;, &#39;price&#39;, &#39;bedrooms&#39;, &#39;b
   <tbody>
     <tr>
       <th>0</th>
+      <td>2561340020</td>
       <td>2014-08-04</td>
-      <td>325000.0</td>
       <td>3</td>
       <td>1</td>
       <td>1780</td>
@@ -15087,8 +15027,8 @@ Index([&#39;id&#39;, &#39;date&#39;, &#39;price&#39;, &#39;bedrooms&#39;, &#39;b
     </tr>
     <tr>
       <th>1</th>
+      <td>8598200070</td>
       <td>2014-12-08</td>
-      <td>278000.0</td>
       <td>2</td>
       <td>2</td>
       <td>1420</td>
@@ -15122,7 +15062,7 @@ Index([&#39;id&#39;, &#39;date&#39;, &#39;price&#39;, &#39;bedrooms&#39;, &#39;b
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_train</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="o">.</span><span class="n">nunique</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span>
@@ -15141,32 +15081,32 @@ Index([&#39;id&#39;, &#39;date&#39;, &#39;price&#39;, &#39;bedrooms&#39;, &#39;b
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[15]:</div>
 
 
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>waterfront          2
-floors              3
-condition           5
-view                5
-bathrooms           9
-grade              12
-bedrooms           13
-yr_renovated       66
-zipcode            70
-yr_built          116
-sqft_basement     284
-date              366
-sqft_living15     713
-long              735
-sqft_above        844
-sqft_living       927
-price            3536
-lat              4832
-sqft_lot15       7562
-sqft_lot         8452
+<pre>waterfront           2
+floors               3
+condition            5
+view                 5
+bathrooms            9
+grade               12
+bedrooms            13
+yr_renovated        66
+zipcode             70
+yr_built           116
+sqft_basement      284
+date               366
+sqft_living15      713
+long               735
+sqft_above         844
+sqft_living        927
+lat               4832
+sqft_lot15        7562
+sqft_lot          8452
+id               17182
 dtype: int64</pre>
 </div>
 
@@ -15184,7 +15124,7 @@ dtype: int64</pre>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ft</span><span class="o">.</span><span class="n">list_primitives</span><span class="p">()</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;type==&#39;transform&#39;&quot;</span><span class="p">)[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
@@ -15203,27 +15143,27 @@ dtype: int64</pre>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[16]:</div>
 
 
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>array([&#39;diff&#39;, &#39;greater_than&#39;, &#39;is_null&#39;, &#39;multiply_numeric&#39;, &#39;cum_max&#39;,
-       &#39;subtract_numeric_scalar&#39;, &#39;time_since&#39;, &#39;add_numeric_scalar&#39;,
-       &#39;cum_mean&#39;, &#39;num_characters&#39;, &#39;multiply_boolean&#39;, &#39;cum_sum&#39;,
-       &#39;is_weekend&#39;, &#39;not_equal_scalar&#39;, &#39;and&#39;, &#39;equal_scalar&#39;, &#39;month&#39;,
-       &#39;age&#39;, &#39;less_than_equal_to_scalar&#39;, &#39;minute&#39;,
-       &#39;modulo_numeric_scalar&#39;, &#39;divide_by_feature&#39;, &#39;hour&#39;,
-       &#39;less_than_scalar&#39;, &#39;longitude&#39;, &#39;time_since_previous&#39;,
-       &#39;divide_numeric&#39;, &#39;greater_than_equal_to_scalar&#39;, &#39;percentile&#39;,
-       &#39;greater_than_scalar&#39;, &#39;absolute&#39;, &#39;multiply_numeric_scalar&#39;,
-       &#39;negate&#39;, &#39;isin&#39;, &#39;scalar_subtract_numeric_feature&#39;, &#39;cum_min&#39;,
-       &#39;num_words&#39;, &#39;subtract_numeric&#39;, &#39;add_numeric&#39;, &#39;cum_count&#39;, &#39;not&#39;,
-       &#39;weekday&#39;, &#39;not_equal&#39;, &#39;or&#39;, &#39;year&#39;, &#39;equal&#39;, &#39;modulo_by_feature&#39;,
+<pre>array([&#39;isin&#39;, &#39;scalar_subtract_numeric_feature&#39;, &#39;cum_min&#39;, &#39;num_words&#39;,
+       &#39;subtract_numeric&#39;, &#39;add_numeric&#39;, &#39;cum_count&#39;, &#39;weekday&#39;,
+       &#39;negate&#39;, &#39;not_equal&#39;, &#39;or&#39;, &#39;year&#39;, &#39;equal&#39;, &#39;modulo_by_feature&#39;,
        &#39;week&#39;, &#39;haversine&#39;, &#39;less_than_equal_to&#39;, &#39;modulo_numeric&#39;,
        &#39;second&#39;, &#39;day&#39;, &#39;divide_numeric_scalar&#39;, &#39;latitude&#39;, &#39;less_than&#39;,
-       &#39;greater_than_equal_to&#39;], dtype=object)</pre>
+       &#39;multiply_numeric_scalar&#39;, &#39;greater_than_equal_to&#39;,
+       &#39;multiply_boolean&#39;, &#39;not&#39;, &#39;time_since_previous&#39;, &#39;greater_than&#39;,
+       &#39;diff&#39;, &#39;is_null&#39;, &#39;multiply_numeric&#39;, &#39;cum_max&#39;,
+       &#39;subtract_numeric_scalar&#39;, &#39;time_since&#39;, &#39;add_numeric_scalar&#39;,
+       &#39;cum_mean&#39;, &#39;num_characters&#39;, &#39;cum_sum&#39;, &#39;is_weekend&#39;,
+       &#39;not_equal_scalar&#39;, &#39;and&#39;, &#39;equal_scalar&#39;, &#39;month&#39;, &#39;age&#39;,
+       &#39;less_than_equal_to_scalar&#39;, &#39;minute&#39;, &#39;modulo_numeric_scalar&#39;,
+       &#39;divide_by_feature&#39;, &#39;hour&#39;, &#39;less_than_scalar&#39;, &#39;longitude&#39;,
+       &#39;divide_numeric&#39;, &#39;greater_than_equal_to_scalar&#39;, &#39;absolute&#39;,
+       &#39;percentile&#39;, &#39;greater_than_scalar&#39;], dtype=object)</pre>
 </div>
 
 </div>
@@ -15232,10 +15172,10 @@ dtype: int64</pre>
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># data types</span>
@@ -15257,7 +15197,7 @@ dtype: int64</pre>
     <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">:</span>
         <span class="n">var_types</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">=</span> <span class="n">dtype</span>
 
-<span class="n">var_types</span>
+<span class="c1"># var_types</span>
 </pre></div>
 
      </div>
@@ -15265,51 +15205,10 @@ dtype: int64</pre>
 </div>
 </div>
 
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>{&#39;bathrooms&#39;: featuretools.variable_types.variable.Ordinal,
- &#39;bedrooms&#39;: featuretools.variable_types.variable.Ordinal,
- &#39;condition&#39;: featuretools.variable_types.variable.Categorical,
- &#39;date&#39;: featuretools.variable_types.variable.Datetime,
- &#39;floors&#39;: featuretools.variable_types.variable.Ordinal,
- &#39;grade&#39;: featuretools.variable_types.variable.Categorical,
- &#39;index&#39;: featuretools.variable_types.variable.Index,
- &#39;lat&#39;: featuretools.variable_types.variable.Numeric,
- &#39;long&#39;: featuretools.variable_types.variable.Numeric,
- &#39;sqft_above&#39;: featuretools.variable_types.variable.Numeric,
- &#39;sqft_basement&#39;: featuretools.variable_types.variable.Numeric,
- &#39;sqft_living&#39;: featuretools.variable_types.variable.Numeric,
- &#39;sqft_living15&#39;: featuretools.variable_types.variable.Numeric,
- &#39;sqft_lot&#39;: featuretools.variable_types.variable.Numeric,
- &#39;view&#39;: featuretools.variable_types.variable.Categorical,
- &#39;waterfront&#39;: featuretools.variable_types.variable.Boolean,
- &#39;yr_built&#39;: featuretools.variable_types.variable.Numeric,
- &#39;yr_renovated&#39;: featuretools.variable_types.variable.Numeric,
- &#39;zipcode&#39;: featuretools.variable_types.variable.ZIPCode}</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># variable types</span>
@@ -15344,7 +15243,7 @@ dtype: int64</pre>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_extra_features_from_ft</span><span class="p">(</span><span class="n">dfx</span><span class="p">,</span><span class="n">var_types</span><span class="o">=</span><span class="n">var_types</span><span class="p">,</span>
@@ -15398,7 +15297,7 @@ dtype: int64</pre>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[20]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_train_extra</span> <span class="o">=</span> <span class="n">get_extra_features_from_ft</span><span class="p">(</span><span class="n">df_train</span><span class="p">)</span>
@@ -15424,7 +15323,7 @@ dtype: int64</pre>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>Built 210 features
 EntitySet scattered to 2 workers in 2 seconds
-Elapsed: 01:02 | Progress: 100%|██████████
+Elapsed: 01:04 | Progress: 100%|██████████
 </pre>
 </div>
 </div>
@@ -15432,7 +15331,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[20]:</div>
 
 
 
@@ -15459,7 +15358,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <th>bathrooms / condition</th>
       <th>bathrooms / floors</th>
       <th>bathrooms / grade</th>
-      <th>bathrooms / price</th>
+      <th>bathrooms / id</th>
       <th>bathrooms / sqft_above</th>
       <th>bathrooms / sqft_basement</th>
       <th>bathrooms / sqft_living</th>
@@ -15473,7 +15372,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <th>bedrooms / condition</th>
       <th>bedrooms / floors</th>
       <th>bedrooms / grade</th>
-      <th>bedrooms / price</th>
+      <th>bedrooms / id</th>
       <th>bedrooms / sqft_above</th>
       <th>bedrooms / sqft_basement</th>
       <th>bedrooms / sqft_living</th>
@@ -15487,7 +15386,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <th>condition / bedrooms</th>
       <th>condition / floors</th>
       <th>condition / grade</th>
-      <th>condition / price</th>
+      <th>condition / id</th>
       <th>condition / sqft_above</th>
       <th>condition / sqft_basement</th>
       <th>condition / sqft_living</th>
@@ -15501,7 +15400,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <th>floors / bedrooms</th>
       <th>floors / condition</th>
       <th>floors / grade</th>
-      <th>floors / price</th>
+      <th>floors / id</th>
       <th>floors / sqft_above</th>
       <th>floors / sqft_basement</th>
       <th>floors / sqft_living</th>
@@ -15515,7 +15414,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <th>grade / bedrooms</th>
       <th>grade / condition</th>
       <th>grade / floors</th>
-      <th>grade / price</th>
+      <th>grade / id</th>
       <th>grade / sqft_above</th>
       <th>grade / sqft_basement</th>
       <th>grade / sqft_living</th>
@@ -15525,26 +15424,26 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <th>grade / view</th>
       <th>grade / yr_built</th>
       <th>grade / yr_renovated</th>
-      <th>price / bathrooms</th>
-      <th>price / bedrooms</th>
-      <th>price / condition</th>
-      <th>price / floors</th>
-      <th>price / grade</th>
-      <th>price / sqft_above</th>
-      <th>price / sqft_basement</th>
-      <th>price / sqft_living</th>
-      <th>price / sqft_living15</th>
-      <th>price / sqft_lot</th>
-      <th>price / sqft_lot15</th>
-      <th>price / view</th>
-      <th>price / yr_built</th>
-      <th>price / yr_renovated</th>
+      <th>id / bathrooms</th>
+      <th>id / bedrooms</th>
+      <th>id / condition</th>
+      <th>id / floors</th>
+      <th>id / grade</th>
+      <th>id / sqft_above</th>
+      <th>id / sqft_basement</th>
+      <th>id / sqft_living</th>
+      <th>id / sqft_living15</th>
+      <th>id / sqft_lot</th>
+      <th>id / sqft_lot15</th>
+      <th>id / view</th>
+      <th>id / yr_built</th>
+      <th>id / yr_renovated</th>
       <th>sqft_above / bathrooms</th>
       <th>sqft_above / bedrooms</th>
       <th>sqft_above / condition</th>
       <th>sqft_above / floors</th>
       <th>sqft_above / grade</th>
-      <th>sqft_above / price</th>
+      <th>sqft_above / id</th>
       <th>sqft_above / sqft_basement</th>
       <th>sqft_above / sqft_living</th>
       <th>sqft_above / sqft_living15</th>
@@ -15558,7 +15457,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <th>sqft_basement / condition</th>
       <th>sqft_basement / floors</th>
       <th>sqft_basement / grade</th>
-      <th>sqft_basement / price</th>
+      <th>sqft_basement / id</th>
       <th>sqft_basement / sqft_above</th>
       <th>sqft_basement / sqft_living</th>
       <th>sqft_basement / sqft_living15</th>
@@ -15572,7 +15471,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <th>sqft_living / condition</th>
       <th>sqft_living / floors</th>
       <th>sqft_living / grade</th>
-      <th>sqft_living / price</th>
+      <th>sqft_living / id</th>
       <th>sqft_living / sqft_above</th>
       <th>sqft_living / sqft_basement</th>
       <th>sqft_living / sqft_living15</th>
@@ -15586,7 +15485,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <th>sqft_living15 / condition</th>
       <th>sqft_living15 / floors</th>
       <th>sqft_living15 / grade</th>
-      <th>sqft_living15 / price</th>
+      <th>sqft_living15 / id</th>
       <th>sqft_living15 / sqft_above</th>
       <th>sqft_living15 / sqft_basement</th>
       <th>sqft_living15 / sqft_living</th>
@@ -15600,7 +15499,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <th>sqft_lot / condition</th>
       <th>sqft_lot / floors</th>
       <th>sqft_lot / grade</th>
-      <th>sqft_lot / price</th>
+      <th>sqft_lot / id</th>
       <th>sqft_lot / sqft_above</th>
       <th>sqft_lot / sqft_basement</th>
       <th>sqft_lot / sqft_living</th>
@@ -15614,7 +15513,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <th>sqft_lot15 / condition</th>
       <th>sqft_lot15 / floors</th>
       <th>sqft_lot15 / grade</th>
-      <th>sqft_lot15 / price</th>
+      <th>sqft_lot15 / id</th>
       <th>sqft_lot15 / sqft_above</th>
       <th>sqft_lot15 / sqft_basement</th>
       <th>sqft_lot15 / sqft_living</th>
@@ -15628,7 +15527,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <th>view / condition</th>
       <th>view / floors</th>
       <th>view / grade</th>
-      <th>view / price</th>
+      <th>view / id</th>
       <th>view / sqft_above</th>
       <th>view / sqft_basement</th>
       <th>view / sqft_living</th>
@@ -15642,7 +15541,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <th>yr_built / condition</th>
       <th>yr_built / floors</th>
       <th>yr_built / grade</th>
-      <th>yr_built / price</th>
+      <th>yr_built / id</th>
       <th>yr_built / sqft_above</th>
       <th>yr_built / sqft_basement</th>
       <th>yr_built / sqft_living</th>
@@ -15656,7 +15555,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <th>yr_renovated / condition</th>
       <th>yr_renovated / floors</th>
       <th>yr_renovated / grade</th>
-      <th>yr_renovated / price</th>
+      <th>yr_renovated / id</th>
       <th>yr_renovated / sqft_above</th>
       <th>yr_renovated / sqft_basement</th>
       <th>yr_renovated / sqft_living</th>
@@ -15887,7 +15786,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <td>0.333333</td>
       <td>1.0</td>
       <td>0.142857</td>
-      <td>0.000004</td>
+      <td>6.557037e-10</td>
       <td>0.000556</td>
       <td>inf</td>
       <td>0.000556</td>
@@ -15901,7 +15800,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <td>1.00</td>
       <td>3.0</td>
       <td>0.428571</td>
-      <td>0.000011</td>
+      <td>1.967111e-09</td>
       <td>0.001667</td>
       <td>inf</td>
       <td>0.001667</td>
@@ -15915,7 +15814,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <td>1.000000</td>
       <td>3.0</td>
       <td>0.428571</td>
-      <td>0.000011</td>
+      <td>1.967111e-09</td>
       <td>0.001667</td>
       <td>inf</td>
       <td>0.001667</td>
@@ -15929,7 +15828,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <td>0.333333</td>
       <td>0.333333</td>
       <td>0.142857</td>
-      <td>0.000004</td>
+      <td>6.557037e-10</td>
       <td>0.000556</td>
       <td>inf</td>
       <td>0.000556</td>
@@ -15943,7 +15842,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <td>2.333333</td>
       <td>2.333333</td>
       <td>7.0</td>
-      <td>0.000025</td>
+      <td>4.589926e-09</td>
       <td>0.003889</td>
       <td>inf</td>
       <td>0.003889</td>
@@ -15953,26 +15852,26 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <td>inf</td>
       <td>0.003557</td>
       <td>inf</td>
-      <td>284000.0</td>
-      <td>94666.666667</td>
-      <td>94666.666667</td>
-      <td>284000.0</td>
-      <td>40571.428571</td>
-      <td>157.777778</td>
+      <td>1.525079e+09</td>
+      <td>5.083597e+08</td>
+      <td>5.083597e+08</td>
+      <td>1.525079e+09</td>
+      <td>2.178684e+08</td>
+      <td>8.472661e+05</td>
       <td>inf</td>
-      <td>157.777778</td>
-      <td>201.418440</td>
-      <td>12.292776</td>
-      <td>15.636183</td>
+      <td>847266.142222</td>
+      <td>1.081616e+06</td>
+      <td>66012.165346</td>
+      <td>83966.253152</td>
       <td>inf</td>
-      <td>144.308943</td>
+      <td>774938.544715</td>
       <td>inf</td>
       <td>1800.0</td>
       <td>600.0</td>
       <td>600.0</td>
       <td>1800.0</td>
       <td>257.142857</td>
-      <td>0.006338</td>
+      <td>1.180267e-06</td>
       <td>inf</td>
       <td>1.00000</td>
       <td>1.276596</td>
@@ -15986,7 +15885,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <td>0.0</td>
       <td>0.0</td>
       <td>0.00</td>
-      <td>0.000000</td>
+      <td>0.000000e+00</td>
       <td>0.000000</td>
       <td>0.00000</td>
       <td>0.000000</td>
@@ -16000,7 +15899,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <td>600.0</td>
       <td>1800.0</td>
       <td>257.142857</td>
-      <td>0.006338</td>
+      <td>0.000001</td>
       <td>1.000000</td>
       <td>inf</td>
       <td>1.276596</td>
@@ -16014,7 +15913,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <td>470.0</td>
       <td>1410.0</td>
       <td>201.428571</td>
-      <td>0.004965</td>
+      <td>9.245422e-07</td>
       <td>0.783333</td>
       <td>inf</td>
       <td>0.783333</td>
@@ -16028,7 +15927,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <td>7701.0</td>
       <td>23103.0</td>
       <td>3300.428571</td>
-      <td>0.081349</td>
+      <td>0.000015</td>
       <td>12.835000</td>
       <td>inf</td>
       <td>12.835000</td>
@@ -16042,7 +15941,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <td>6054.333333</td>
       <td>18163.0</td>
       <td>2594.714286</td>
-      <td>0.063954</td>
+      <td>0.000012</td>
       <td>10.090556</td>
       <td>inf</td>
       <td>10.090556</td>
@@ -16056,7 +15955,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <td>0.0</td>
       <td>0.0</td>
       <td>0.00</td>
-      <td>0.000000</td>
+      <td>0.000000e+00</td>
       <td>0.000000</td>
       <td>NaN</td>
       <td>0.000000</td>
@@ -16070,7 +15969,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <td>656.00</td>
       <td>1968.0</td>
       <td>281.142857</td>
-      <td>0.006930</td>
+      <td>0.000001</td>
       <td>1.093333</td>
       <td>inf</td>
       <td>1.093333</td>
@@ -16100,7 +15999,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <td>0.500000</td>
       <td>2.0</td>
       <td>0.250000</td>
-      <td>0.000003</td>
+      <td>1.099626e-09</td>
       <td>0.001389</td>
       <td>0.002105</td>
       <td>0.000837</td>
@@ -16114,7 +16013,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <td>0.75</td>
       <td>3.0</td>
       <td>0.375000</td>
-      <td>0.000004</td>
+      <td>1.649439e-09</td>
       <td>0.002083</td>
       <td>0.003158</td>
       <td>0.001255</td>
@@ -16128,7 +16027,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <td>1.333333</td>
       <td>4.0</td>
       <td>0.500000</td>
-      <td>0.000005</td>
+      <td>2.199252e-09</td>
       <td>0.002778</td>
       <td>0.004211</td>
       <td>0.001674</td>
@@ -16142,7 +16041,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <td>0.333333</td>
       <td>0.250000</td>
       <td>0.125000</td>
-      <td>0.000001</td>
+      <td>5.498130e-10</td>
       <td>0.000694</td>
       <td>0.001053</td>
       <td>0.000418</td>
@@ -16156,7 +16055,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <td>2.666667</td>
       <td>2.000000</td>
       <td>8.0</td>
-      <td>0.000011</td>
+      <td>4.398504e-09</td>
       <td>0.005556</td>
       <td>0.008421</td>
       <td>0.003347</td>
@@ -16166,26 +16065,26 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <td>4.0</td>
       <td>0.004092</td>
       <td>inf</td>
-      <td>375000.0</td>
-      <td>250000.000000</td>
-      <td>187500.000000</td>
-      <td>750000.0</td>
-      <td>93750.000000</td>
-      <td>520.833333</td>
-      <td>789.473684</td>
-      <td>313.807531</td>
-      <td>373.134328</td>
-      <td>114.503817</td>
-      <td>114.503817</td>
-      <td>375000.0</td>
-      <td>383.631714</td>
+      <td>9.094001e+08</td>
+      <td>6.062667e+08</td>
+      <td>4.547000e+08</td>
+      <td>1.818800e+09</td>
+      <td>2.273500e+08</td>
+      <td>1.263056e+06</td>
+      <td>1.914526e+06</td>
+      <td>761004.244351</td>
+      <td>9.048757e+05</td>
+      <td>277679.411298</td>
+      <td>277679.411298</td>
+      <td>909400072.0</td>
+      <td>930332.554476</td>
       <td>inf</td>
       <td>720.0</td>
       <td>480.0</td>
       <td>360.0</td>
       <td>1440.0</td>
       <td>180.000000</td>
-      <td>0.001920</td>
+      <td>7.917307e-07</td>
       <td>1.515789</td>
       <td>0.60251</td>
       <td>0.716418</td>
@@ -16199,7 +16098,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <td>237.5</td>
       <td>950.0</td>
       <td>118.75</td>
-      <td>0.001267</td>
+      <td>5.223224e-07</td>
       <td>0.659722</td>
       <td>0.39749</td>
       <td>0.472637</td>
@@ -16213,7 +16112,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <td>597.5</td>
       <td>2390.0</td>
       <td>298.750000</td>
-      <td>0.003187</td>
+      <td>0.000001</td>
       <td>1.659722</td>
       <td>2.515789</td>
       <td>1.189055</td>
@@ -16227,7 +16126,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <td>502.5</td>
       <td>2010.0</td>
       <td>251.250000</td>
-      <td>0.002680</td>
+      <td>1.105124e-06</td>
       <td>1.395833</td>
       <td>2.115789</td>
       <td>0.841004</td>
@@ -16241,7 +16140,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <td>1637.5</td>
       <td>6550.0</td>
       <td>818.750000</td>
-      <td>0.008733</td>
+      <td>0.000004</td>
       <td>4.548611</td>
       <td>6.894737</td>
       <td>2.740586</td>
@@ -16255,7 +16154,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <td>1637.500000</td>
       <td>6550.0</td>
       <td>818.750000</td>
-      <td>0.008733</td>
+      <td>0.000004</td>
       <td>4.548611</td>
       <td>6.894737</td>
       <td>2.740586</td>
@@ -16269,7 +16168,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <td>0.5</td>
       <td>2.0</td>
       <td>0.25</td>
-      <td>0.000003</td>
+      <td>1.099626e-09</td>
       <td>0.001389</td>
       <td>0.002105</td>
       <td>0.000837</td>
@@ -16283,7 +16182,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
       <td>488.75</td>
       <td>1955.0</td>
       <td>244.375000</td>
-      <td>0.002607</td>
+      <td>0.000001</td>
       <td>1.357639</td>
       <td>2.057895</td>
       <td>0.817992</td>
@@ -16321,7 +16220,7 @@ Elapsed: 01:02 | Progress: 100%|██████████
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[21]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_test_extra</span> <span class="o">=</span> <span class="n">get_extra_features_from_ft</span><span class="p">(</span><span class="n">df_test</span><span class="p">)</span>
@@ -16355,7 +16254,7 @@ Elapsed: 00:56 | Progress: 100%|██████████
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[21]:</div>
 
 
 
@@ -16382,7 +16281,7 @@ Elapsed: 00:56 | Progress: 100%|██████████
       <th>bathrooms / condition</th>
       <th>bathrooms / floors</th>
       <th>bathrooms / grade</th>
-      <th>bathrooms / price</th>
+      <th>bathrooms / id</th>
       <th>bathrooms / sqft_above</th>
       <th>bathrooms / sqft_basement</th>
       <th>bathrooms / sqft_living</th>
@@ -16396,7 +16295,7 @@ Elapsed: 00:56 | Progress: 100%|██████████
       <th>bedrooms / condition</th>
       <th>bedrooms / floors</th>
       <th>bedrooms / grade</th>
-      <th>bedrooms / price</th>
+      <th>bedrooms / id</th>
       <th>bedrooms / sqft_above</th>
       <th>bedrooms / sqft_basement</th>
       <th>bedrooms / sqft_living</th>
@@ -16410,7 +16309,7 @@ Elapsed: 00:56 | Progress: 100%|██████████
       <th>condition / bedrooms</th>
       <th>condition / floors</th>
       <th>condition / grade</th>
-      <th>condition / price</th>
+      <th>condition / id</th>
       <th>condition / sqft_above</th>
       <th>condition / sqft_basement</th>
       <th>condition / sqft_living</th>
@@ -16424,7 +16323,7 @@ Elapsed: 00:56 | Progress: 100%|██████████
       <th>floors / bedrooms</th>
       <th>floors / condition</th>
       <th>floors / grade</th>
-      <th>floors / price</th>
+      <th>floors / id</th>
       <th>floors / sqft_above</th>
       <th>floors / sqft_basement</th>
       <th>floors / sqft_living</th>
@@ -16438,7 +16337,7 @@ Elapsed: 00:56 | Progress: 100%|██████████
       <th>grade / bedrooms</th>
       <th>grade / condition</th>
       <th>grade / floors</th>
-      <th>grade / price</th>
+      <th>grade / id</th>
       <th>grade / sqft_above</th>
       <th>grade / sqft_basement</th>
       <th>grade / sqft_living</th>
@@ -16448,26 +16347,26 @@ Elapsed: 00:56 | Progress: 100%|██████████
       <th>grade / view</th>
       <th>grade / yr_built</th>
       <th>grade / yr_renovated</th>
-      <th>price / bathrooms</th>
-      <th>price / bedrooms</th>
-      <th>price / condition</th>
-      <th>price / floors</th>
-      <th>price / grade</th>
-      <th>price / sqft_above</th>
-      <th>price / sqft_basement</th>
-      <th>price / sqft_living</th>
-      <th>price / sqft_living15</th>
-      <th>price / sqft_lot</th>
-      <th>price / sqft_lot15</th>
-      <th>price / view</th>
-      <th>price / yr_built</th>
-      <th>price / yr_renovated</th>
+      <th>id / bathrooms</th>
+      <th>id / bedrooms</th>
+      <th>id / condition</th>
+      <th>id / floors</th>
+      <th>id / grade</th>
+      <th>id / sqft_above</th>
+      <th>id / sqft_basement</th>
+      <th>id / sqft_living</th>
+      <th>id / sqft_living15</th>
+      <th>id / sqft_lot</th>
+      <th>id / sqft_lot15</th>
+      <th>id / view</th>
+      <th>id / yr_built</th>
+      <th>id / yr_renovated</th>
       <th>sqft_above / bathrooms</th>
       <th>sqft_above / bedrooms</th>
       <th>sqft_above / condition</th>
       <th>sqft_above / floors</th>
       <th>sqft_above / grade</th>
-      <th>sqft_above / price</th>
+      <th>sqft_above / id</th>
       <th>sqft_above / sqft_basement</th>
       <th>sqft_above / sqft_living</th>
       <th>sqft_above / sqft_living15</th>
@@ -16481,7 +16380,7 @@ Elapsed: 00:56 | Progress: 100%|██████████
       <th>sqft_basement / condition</th>
       <th>sqft_basement / floors</th>
       <th>sqft_basement / grade</th>
-      <th>sqft_basement / price</th>
+      <th>sqft_basement / id</th>
       <th>sqft_basement / sqft_above</th>
       <th>sqft_basement / sqft_living</th>
       <th>sqft_basement / sqft_living15</th>
@@ -16495,7 +16394,7 @@ Elapsed: 00:56 | Progress: 100%|██████████
       <th>sqft_living / condition</th>
       <th>sqft_living / floors</th>
       <th>sqft_living / grade</th>
-      <th>sqft_living / price</th>
+      <th>sqft_living / id</th>
       <th>sqft_living / sqft_above</th>
       <th>sqft_living / sqft_basement</th>
       <th>sqft_living / sqft_living15</th>
@@ -16509,7 +16408,7 @@ Elapsed: 00:56 | Progress: 100%|██████████
       <th>sqft_living15 / condition</th>
       <th>sqft_living15 / floors</th>
       <th>sqft_living15 / grade</th>
-      <th>sqft_living15 / price</th>
+      <th>sqft_living15 / id</th>
       <th>sqft_living15 / sqft_above</th>
       <th>sqft_living15 / sqft_basement</th>
       <th>sqft_living15 / sqft_living</th>
@@ -16523,7 +16422,7 @@ Elapsed: 00:56 | Progress: 100%|██████████
       <th>sqft_lot / condition</th>
       <th>sqft_lot / floors</th>
       <th>sqft_lot / grade</th>
-      <th>sqft_lot / price</th>
+      <th>sqft_lot / id</th>
       <th>sqft_lot / sqft_above</th>
       <th>sqft_lot / sqft_basement</th>
       <th>sqft_lot / sqft_living</th>
@@ -16537,7 +16436,7 @@ Elapsed: 00:56 | Progress: 100%|██████████
       <th>sqft_lot15 / condition</th>
       <th>sqft_lot15 / floors</th>
       <th>sqft_lot15 / grade</th>
-      <th>sqft_lot15 / price</th>
+      <th>sqft_lot15 / id</th>
       <th>sqft_lot15 / sqft_above</th>
       <th>sqft_lot15 / sqft_basement</th>
       <th>sqft_lot15 / sqft_living</th>
@@ -16551,7 +16450,7 @@ Elapsed: 00:56 | Progress: 100%|██████████
       <th>view / condition</th>
       <th>view / floors</th>
       <th>view / grade</th>
-      <th>view / price</th>
+      <th>view / id</th>
       <th>view / sqft_above</th>
       <th>view / sqft_basement</th>
       <th>view / sqft_living</th>
@@ -16565,7 +16464,7 @@ Elapsed: 00:56 | Progress: 100%|██████████
       <th>yr_built / condition</th>
       <th>yr_built / floors</th>
       <th>yr_built / grade</th>
-      <th>yr_built / price</th>
+      <th>yr_built / id</th>
       <th>yr_built / sqft_above</th>
       <th>yr_built / sqft_basement</th>
       <th>yr_built / sqft_living</th>
@@ -16579,7 +16478,7 @@ Elapsed: 00:56 | Progress: 100%|██████████
       <th>yr_renovated / condition</th>
       <th>yr_renovated / floors</th>
       <th>yr_renovated / grade</th>
-      <th>yr_renovated / price</th>
+      <th>yr_renovated / id</th>
       <th>yr_renovated / sqft_above</th>
       <th>yr_renovated / sqft_basement</th>
       <th>yr_renovated / sqft_living</th>
@@ -16810,7 +16709,7 @@ Elapsed: 00:56 | Progress: 100%|██████████
       <td>0.666667</td>
       <td>2.0</td>
       <td>0.285714</td>
-      <td>0.000003</td>
+      <td>3.263921e-10</td>
       <td>0.001316</td>
       <td>inf</td>
       <td>0.001316</td>
@@ -16824,7 +16723,7 @@ Elapsed: 00:56 | Progress: 100%|██████████
       <td>1.333333</td>
       <td>4.0</td>
       <td>0.571429</td>
-      <td>0.000006</td>
+      <td>6.527841e-10</td>
       <td>0.002632</td>
       <td>inf</td>
       <td>0.002632</td>
@@ -16838,7 +16737,7 @@ Elapsed: 00:56 | Progress: 100%|██████████
       <td>0.750000</td>
       <td>3.0</td>
       <td>0.428571</td>
-      <td>0.000005</td>
+      <td>4.895881e-10</td>
       <td>0.001974</td>
       <td>inf</td>
       <td>0.001974</td>
@@ -16852,7 +16751,7 @@ Elapsed: 00:56 | Progress: 100%|██████████
       <td>0.250000</td>
       <td>0.333333</td>
       <td>0.142857</td>
-      <td>0.000002</td>
+      <td>1.631960e-10</td>
       <td>0.000658</td>
       <td>inf</td>
       <td>0.000658</td>
@@ -16866,7 +16765,7 @@ Elapsed: 00:56 | Progress: 100%|██████████
       <td>1.750000</td>
       <td>2.333333</td>
       <td>7.0</td>
-      <td>0.000011</td>
+      <td>1.142372e-09</td>
       <td>0.004605</td>
       <td>inf</td>
       <td>0.004605</td>
@@ -16876,26 +16775,26 @@ Elapsed: 00:56 | Progress: 100%|██████████
       <td>inf</td>
       <td>0.003599</td>
       <td>inf</td>
-      <td>320000.0</td>
-      <td>160000.000000</td>
-      <td>213333.333333</td>
-      <td>640000.0</td>
-      <td>91428.571429</td>
-      <td>421.052632</td>
+      <td>3.063800e+09</td>
+      <td>1.531900e+09</td>
+      <td>2.042533e+09</td>
+      <td>6.127600e+09</td>
+      <td>8.753714e+08</td>
+      <td>4.031316e+06</td>
       <td>inf</td>
-      <td>421.052632</td>
-      <td>335.078534</td>
-      <td>103.225806</td>
-      <td>103.225806</td>
+      <td>4.031316e+06</td>
+      <td>3.208168e+06</td>
+      <td>988322.598387</td>
+      <td>988322.598387</td>
       <td>inf</td>
-      <td>329.048843</td>
+      <td>3.150437e+06</td>
       <td>inf</td>
       <td>760.0</td>
       <td>380.0</td>
       <td>506.666667</td>
       <td>1520.0</td>
       <td>217.142857</td>
-      <td>0.002375</td>
+      <td>2.480580e-07</td>
       <td>inf</td>
       <td>1.0</td>
       <td>0.795812</td>
@@ -16923,7 +16822,7 @@ Elapsed: 00:56 | Progress: 100%|██████████
       <td>506.666667</td>
       <td>1520.0</td>
       <td>217.142857</td>
-      <td>0.002375</td>
+      <td>2.480580e-07</td>
       <td>1.0</td>
       <td>inf</td>
       <td>0.795812</td>
@@ -16937,7 +16836,7 @@ Elapsed: 00:56 | Progress: 100%|██████████
       <td>636.666667</td>
       <td>1910.0</td>
       <td>272.857143</td>
-      <td>0.002984</td>
+      <td>3.117044e-07</td>
       <td>1.256579</td>
       <td>inf</td>
       <td>1.256579</td>
@@ -16951,7 +16850,7 @@ Elapsed: 00:56 | Progress: 100%|██████████
       <td>2066.666667</td>
       <td>6200.0</td>
       <td>885.714286</td>
-      <td>0.009687</td>
+      <td>0.000001</td>
       <td>4.078947</td>
       <td>inf</td>
       <td>4.078947</td>
@@ -16965,7 +16864,7 @@ Elapsed: 00:56 | Progress: 100%|██████████
       <td>2066.666667</td>
       <td>6200.0</td>
       <td>885.714286</td>
-      <td>0.009687</td>
+      <td>0.000001</td>
       <td>4.078947</td>
       <td>inf</td>
       <td>4.078947</td>
@@ -16993,7 +16892,7 @@ Elapsed: 00:56 | Progress: 100%|██████████
       <td>648.333333</td>
       <td>1945.0</td>
       <td>277.857143</td>
-      <td>0.003039</td>
+      <td>3.174163e-07</td>
       <td>1.279605</td>
       <td>inf</td>
       <td>1.279605</td>
@@ -17023,7 +16922,7 @@ Elapsed: 00:56 | Progress: 100%|██████████
       <td>0.250000</td>
       <td>1.0</td>
       <td>0.142857</td>
-      <td>0.000004</td>
+      <td>3.819272e-10</td>
       <td>0.000833</td>
       <td>inf</td>
       <td>0.000833</td>
@@ -17037,7 +16936,7 @@ Elapsed: 00:56 | Progress: 100%|██████████
       <td>0.750000</td>
       <td>3.0</td>
       <td>0.428571</td>
-      <td>0.000012</td>
+      <td>1.145782e-09</td>
       <td>0.002500</td>
       <td>inf</td>
       <td>0.002500</td>
@@ -17051,7 +16950,7 @@ Elapsed: 00:56 | Progress: 100%|██████████
       <td>1.333333</td>
       <td>4.0</td>
       <td>0.571429</td>
-      <td>0.000016</td>
+      <td>1.527709e-09</td>
       <td>0.003333</td>
       <td>inf</td>
       <td>0.003333</td>
@@ -17065,7 +16964,7 @@ Elapsed: 00:56 | Progress: 100%|██████████
       <td>0.333333</td>
       <td>0.250000</td>
       <td>0.142857</td>
-      <td>0.000004</td>
+      <td>3.819272e-10</td>
       <td>0.000833</td>
       <td>inf</td>
       <td>0.000833</td>
@@ -17079,7 +16978,7 @@ Elapsed: 00:56 | Progress: 100%|██████████
       <td>2.333333</td>
       <td>1.750000</td>
       <td>7.0</td>
-      <td>0.000029</td>
+      <td>2.673490e-09</td>
       <td>0.005833</td>
       <td>inf</td>
       <td>0.005833</td>
@@ -17089,26 +16988,26 @@ Elapsed: 00:56 | Progress: 100%|██████████
       <td>inf</td>
       <td>0.003562</td>
       <td>inf</td>
-      <td>242500.0</td>
-      <td>80833.333333</td>
-      <td>60625.000000</td>
-      <td>242500.0</td>
-      <td>34642.857143</td>
-      <td>202.083333</td>
+      <td>2.618300e+09</td>
+      <td>8.727667e+08</td>
+      <td>6.545750e+08</td>
+      <td>2.618300e+09</td>
+      <td>3.740429e+08</td>
+      <td>2.181917e+06</td>
       <td>inf</td>
-      <td>202.083333</td>
-      <td>175.724638</td>
-      <td>24.948560</td>
-      <td>23.580319</td>
+      <td>2.181917e+06</td>
+      <td>1.897319e+06</td>
+      <td>269372.436214</td>
+      <td>254599.385453</td>
       <td>inf</td>
-      <td>123.409669</td>
+      <td>1.332468e+06</td>
       <td>inf</td>
       <td>1200.0</td>
       <td>400.0</td>
       <td>300.000000</td>
       <td>1200.0</td>
       <td>171.428571</td>
-      <td>0.004948</td>
+      <td>4.583126e-07</td>
       <td>inf</td>
       <td>1.0</td>
       <td>0.869565</td>
@@ -17136,7 +17035,7 @@ Elapsed: 00:56 | Progress: 100%|██████████
       <td>300.000000</td>
       <td>1200.0</td>
       <td>171.428571</td>
-      <td>0.004948</td>
+      <td>4.583126e-07</td>
       <td>1.0</td>
       <td>inf</td>
       <td>0.869565</td>
@@ -17150,7 +17049,7 @@ Elapsed: 00:56 | Progress: 100%|██████████
       <td>345.000000</td>
       <td>1380.0</td>
       <td>197.142857</td>
-      <td>0.005691</td>
+      <td>5.270595e-07</td>
       <td>1.150000</td>
       <td>inf</td>
       <td>1.150000</td>
@@ -17164,7 +17063,7 @@ Elapsed: 00:56 | Progress: 100%|██████████
       <td>2430.000000</td>
       <td>9720.0</td>
       <td>1388.571429</td>
-      <td>0.040082</td>
+      <td>0.000004</td>
       <td>8.100000</td>
       <td>inf</td>
       <td>8.100000</td>
@@ -17178,7 +17077,7 @@ Elapsed: 00:56 | Progress: 100%|██████████
       <td>2571.000000</td>
       <td>10284.0</td>
       <td>1469.142857</td>
-      <td>0.042408</td>
+      <td>0.000004</td>
       <td>8.570000</td>
       <td>inf</td>
       <td>8.570000</td>
@@ -17206,7 +17105,7 @@ Elapsed: 00:56 | Progress: 100%|██████████
       <td>491.250000</td>
       <td>1965.0</td>
       <td>280.714286</td>
-      <td>0.008103</td>
+      <td>7.504869e-07</td>
       <td>1.637500</td>
       <td>inf</td>
       <td>1.637500</td>
@@ -17249,7 +17148,7 @@ Elapsed: 00:56 | Progress: 100%|██████████
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[22]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">post_process_fm</span><span class="p">(</span><span class="n">fm</span><span class="p">,</span><span class="n">thr_miss</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span><span class="n">thr_corr</span><span class="o">=</span><span class="mf">0.95</span><span class="p">):</span>
@@ -17338,7 +17237,7 @@ Elapsed: 00:56 | Progress: 100%|██████████
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[23]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_train_extra</span> <span class="o">=</span> <span class="n">post_process_fm</span><span class="p">(</span><span class="n">df_train_extra</span><span class="p">)</span>
@@ -17363,13 +17262,13 @@ Elapsed: 00:56 | Progress: 100%|██████████
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>There were 0 duplicated features.
-Dropping ids and label:  [&#39;bathrooms / price&#39;, &#39;bedrooms / price&#39;, &#39;condition / price&#39;, &#39;floors / price&#39;, &#39;grade / price&#39;, &#39;price / bathrooms&#39;, &#39;price / bedrooms&#39;, &#39;price / condition&#39;, &#39;price / floors&#39;, &#39;price / grade&#39;, &#39;price / sqft_above&#39;, &#39;price / sqft_basement&#39;, &#39;price / sqft_living&#39;, &#39;price / sqft_living15&#39;, &#39;price / sqft_lot&#39;, &#39;price / sqft_lot15&#39;, &#39;price / view&#39;, &#39;price / yr_built&#39;, &#39;price / yr_renovated&#39;, &#39;sqft_above / price&#39;, &#39;sqft_basement / price&#39;, &#39;sqft_living / price&#39;, &#39;sqft_living15 / price&#39;, &#39;sqft_lot / price&#39;, &#39;sqft_lot15 / price&#39;, &#39;view / price&#39;, &#39;yr_built / price&#39;, &#39;yr_renovated / price&#39;]
-Original shape:  (17290, 182)
-13 missing columns with threshold: 0.95.
+Dropping ids and label:  []
+Original shape:  (17290, 210)
+14 missing columns with threshold: 0.95.
 0 zero variance columns.
-32 collinear columns removed with correlation above 0.95.
-Total columns removed:  45
-Shape after feature selection: (17290, 137).
+41 collinear columns removed with correlation above 0.95.
+Total columns removed:  55
+Shape after feature selection: (17290, 155).
 </pre>
 </div>
 </div>
@@ -17377,7 +17276,7 @@ Shape after feature selection: (17290, 137).
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[23]:</div>
 
 
 
@@ -17404,6 +17303,7 @@ Shape after feature selection: (17290, 137).
       <th>bathrooms / condition</th>
       <th>bathrooms / floors</th>
       <th>bathrooms / grade</th>
+      <th>bathrooms / id</th>
       <th>bathrooms / sqft_above</th>
       <th>bathrooms / sqft_basement</th>
       <th>bathrooms / sqft_living</th>
@@ -17428,6 +17328,7 @@ Shape after feature selection: (17290, 137).
       <th>condition / bedrooms</th>
       <th>condition / floors</th>
       <th>condition / grade</th>
+      <th>condition / id</th>
       <th>condition / sqft_above</th>
       <th>condition / sqft_basement</th>
       <th>condition / sqft_living</th>
@@ -17457,6 +17358,18 @@ Shape after feature selection: (17290, 137).
       <th>grade / sqft_living15</th>
       <th>grade / view</th>
       <th>grade / yr_built</th>
+      <th>id / bathrooms</th>
+      <th>id / bedrooms</th>
+      <th>id / condition</th>
+      <th>id / floors</th>
+      <th>id / grade</th>
+      <th>id / sqft_above</th>
+      <th>id / sqft_basement</th>
+      <th>id / sqft_living</th>
+      <th>id / sqft_living15</th>
+      <th>id / sqft_lot</th>
+      <th>id / sqft_lot15</th>
+      <th>id / view</th>
       <th>sqft_above / bathrooms</th>
       <th>sqft_above / bedrooms</th>
       <th>sqft_above / condition</th>
@@ -17473,6 +17386,7 @@ Shape after feature selection: (17290, 137).
       <th>sqft_basement / bedrooms</th>
       <th>sqft_basement / condition</th>
       <th>sqft_basement / floors</th>
+      <th>sqft_basement / id</th>
       <th>sqft_basement / sqft_lot</th>
       <th>sqft_basement / sqft_lot15</th>
       <th>sqft_basement / view</th>
@@ -17500,6 +17414,7 @@ Shape after feature selection: (17290, 137).
       <th>sqft_lot / bedrooms</th>
       <th>sqft_lot / condition</th>
       <th>sqft_lot / floors</th>
+      <th>sqft_lot / id</th>
       <th>sqft_lot / sqft_above</th>
       <th>sqft_lot / sqft_basement</th>
       <th>sqft_lot / sqft_lot15</th>
@@ -17516,6 +17431,7 @@ Shape after feature selection: (17290, 137).
       <th>view / bedrooms</th>
       <th>view / condition</th>
       <th>view / floors</th>
+      <th>view / id</th>
       <th>view / sqft_above</th>
       <th>view / sqft_basement</th>
       <th>view / sqft_lot</th>
@@ -17532,6 +17448,7 @@ Shape after feature selection: (17290, 137).
       <th>yr_renovated / bedrooms</th>
       <th>yr_renovated / condition</th>
       <th>yr_renovated / floors</th>
+      <th>yr_renovated / id</th>
       <th>yr_renovated / sqft_above</th>
       <th>yr_renovated / sqft_basement</th>
       <th>yr_renovated / sqft_lot</th>
@@ -17540,6 +17457,24 @@ Shape after feature selection: (17290, 137).
     </tr>
     <tr>
       <th>index</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -17686,6 +17621,7 @@ Shape after feature selection: (17290, 137).
       <td>0.333333</td>
       <td>1.0</td>
       <td>0.142857</td>
+      <td>6.557037e-10</td>
       <td>0.000556</td>
       <td>NaN</td>
       <td>0.000556</td>
@@ -17710,6 +17646,7 @@ Shape after feature selection: (17290, 137).
       <td>1.000000</td>
       <td>3.0</td>
       <td>0.428571</td>
+      <td>1.967111e-09</td>
       <td>0.001667</td>
       <td>NaN</td>
       <td>0.001667</td>
@@ -17739,6 +17676,18 @@ Shape after feature selection: (17290, 137).
       <td>0.004965</td>
       <td>NaN</td>
       <td>0.003557</td>
+      <td>1.525079e+09</td>
+      <td>5.083597e+08</td>
+      <td>5.083597e+08</td>
+      <td>1.525079e+09</td>
+      <td>2.178684e+08</td>
+      <td>8.472661e+05</td>
+      <td>NaN</td>
+      <td>847266.142222</td>
+      <td>1.081616e+06</td>
+      <td>66012.165346</td>
+      <td>83966.253152</td>
+      <td>NaN</td>
       <td>1800.0</td>
       <td>600.0</td>
       <td>600.0</td>
@@ -17755,6 +17704,7 @@ Shape after feature selection: (17290, 137).
       <td>0.000000</td>
       <td>0.0</td>
       <td>0.0</td>
+      <td>0.000000e+00</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>NaN</td>
@@ -17782,6 +17732,7 @@ Shape after feature selection: (17290, 137).
       <td>7701.000000</td>
       <td>7701.0</td>
       <td>23103.0</td>
+      <td>0.000015</td>
       <td>12.835000</td>
       <td>NaN</td>
       <td>1.271982</td>
@@ -17798,6 +17749,7 @@ Shape after feature selection: (17290, 137).
       <td>0.000000</td>
       <td>0.0</td>
       <td>0.0</td>
+      <td>0.000000e+00</td>
       <td>0.000000</td>
       <td>NaN</td>
       <td>0.000000</td>
@@ -17815,6 +17767,7 @@ Shape after feature selection: (17290, 137).
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
+      <td>0.0</td>
       <td>NaN</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -17826,6 +17779,7 @@ Shape after feature selection: (17290, 137).
       <td>0.500000</td>
       <td>2.0</td>
       <td>0.250000</td>
+      <td>1.099626e-09</td>
       <td>0.001389</td>
       <td>0.002105</td>
       <td>0.000837</td>
@@ -17850,6 +17804,7 @@ Shape after feature selection: (17290, 137).
       <td>1.333333</td>
       <td>4.0</td>
       <td>0.500000</td>
+      <td>2.199252e-09</td>
       <td>0.002778</td>
       <td>0.004211</td>
       <td>0.001674</td>
@@ -17879,6 +17834,18 @@ Shape after feature selection: (17290, 137).
       <td>0.003980</td>
       <td>4.0</td>
       <td>0.004092</td>
+      <td>9.094001e+08</td>
+      <td>6.062667e+08</td>
+      <td>4.547000e+08</td>
+      <td>1.818800e+09</td>
+      <td>2.273500e+08</td>
+      <td>1.263056e+06</td>
+      <td>1.914526e+06</td>
+      <td>761004.244351</td>
+      <td>9.048757e+05</td>
+      <td>277679.411298</td>
+      <td>277679.411298</td>
+      <td>909400072.0</td>
       <td>720.0</td>
       <td>480.0</td>
       <td>360.0</td>
@@ -17895,6 +17862,7 @@ Shape after feature selection: (17290, 137).
       <td>316.666667</td>
       <td>237.5</td>
       <td>950.0</td>
+      <td>5.223224e-07</td>
       <td>0.145038</td>
       <td>0.145038</td>
       <td>475.0</td>
@@ -17922,6 +17890,7 @@ Shape after feature selection: (17290, 137).
       <td>2183.333333</td>
       <td>1637.5</td>
       <td>6550.0</td>
+      <td>0.000004</td>
       <td>4.548611</td>
       <td>6.894737</td>
       <td>1.000000</td>
@@ -17938,6 +17907,7 @@ Shape after feature selection: (17290, 137).
       <td>0.666667</td>
       <td>0.5</td>
       <td>2.0</td>
+      <td>1.099626e-09</td>
       <td>0.001389</td>
       <td>0.002105</td>
       <td>0.000305</td>
@@ -17950,6 +17920,7 @@ Shape after feature selection: (17290, 137).
       <td>0.817992</td>
       <td>0.972637</td>
       <td>977.5</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -17974,7 +17945,7 @@ Shape after feature selection: (17290, 137).
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[24]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_test_extra</span> <span class="o">=</span> <span class="n">post_process_fm</span><span class="p">(</span><span class="n">df_test_extra</span><span class="p">)</span>
@@ -17999,13 +17970,13 @@ Shape after feature selection: (17290, 137).
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>There were 0 duplicated features.
-Dropping ids and label:  [&#39;bathrooms / price&#39;, &#39;bedrooms / price&#39;, &#39;condition / price&#39;, &#39;floors / price&#39;, &#39;grade / price&#39;, &#39;price / bathrooms&#39;, &#39;price / bedrooms&#39;, &#39;price / condition&#39;, &#39;price / floors&#39;, &#39;price / grade&#39;, &#39;price / sqft_above&#39;, &#39;price / sqft_basement&#39;, &#39;price / sqft_living&#39;, &#39;price / sqft_living15&#39;, &#39;price / sqft_lot&#39;, &#39;price / sqft_lot15&#39;, &#39;price / view&#39;, &#39;price / yr_built&#39;, &#39;price / yr_renovated&#39;, &#39;sqft_above / price&#39;, &#39;sqft_basement / price&#39;, &#39;sqft_living / price&#39;, &#39;sqft_living15 / price&#39;, &#39;sqft_lot / price&#39;, &#39;sqft_lot15 / price&#39;, &#39;view / price&#39;, &#39;yr_built / price&#39;, &#39;yr_renovated / price&#39;]
-Original shape:  (4323, 182)
-13 missing columns with threshold: 0.95.
+Dropping ids and label:  []
+Original shape:  (4323, 210)
+14 missing columns with threshold: 0.95.
 0 zero variance columns.
-38 collinear columns removed with correlation above 0.95.
-Total columns removed:  51
-Shape after feature selection: (4323, 131).
+48 collinear columns removed with correlation above 0.95.
+Total columns removed:  62
+Shape after feature selection: (4323, 148).
 </pre>
 </div>
 </div>
@@ -18013,7 +17984,7 @@ Shape after feature selection: (4323, 131).
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[24]:</div>
 
 
 
@@ -18040,6 +18011,7 @@ Shape after feature selection: (4323, 131).
       <th>bathrooms / condition</th>
       <th>bathrooms / floors</th>
       <th>bathrooms / grade</th>
+      <th>bathrooms / id</th>
       <th>bathrooms / sqft_above</th>
       <th>bathrooms / sqft_basement</th>
       <th>bathrooms / sqft_living</th>
@@ -18091,6 +18063,18 @@ Shape after feature selection: (4323, 131).
       <th>grade / sqft_living15</th>
       <th>grade / view</th>
       <th>grade / yr_built</th>
+      <th>id / bathrooms</th>
+      <th>id / bedrooms</th>
+      <th>id / condition</th>
+      <th>id / floors</th>
+      <th>id / grade</th>
+      <th>id / sqft_above</th>
+      <th>id / sqft_basement</th>
+      <th>id / sqft_living</th>
+      <th>id / sqft_living15</th>
+      <th>id / sqft_lot</th>
+      <th>id / sqft_lot15</th>
+      <th>id / view</th>
       <th>sqft_above / bathrooms</th>
       <th>sqft_above / bedrooms</th>
       <th>sqft_above / condition</th>
@@ -18107,6 +18091,7 @@ Shape after feature selection: (4323, 131).
       <th>sqft_basement / bedrooms</th>
       <th>sqft_basement / condition</th>
       <th>sqft_basement / floors</th>
+      <th>sqft_basement / id</th>
       <th>sqft_basement / sqft_lot</th>
       <th>sqft_basement / sqft_lot15</th>
       <th>sqft_basement / view</th>
@@ -18133,6 +18118,7 @@ Shape after feature selection: (4323, 131).
       <th>sqft_lot / bedrooms</th>
       <th>sqft_lot / condition</th>
       <th>sqft_lot / floors</th>
+      <th>sqft_lot / id</th>
       <th>sqft_lot / sqft_above</th>
       <th>sqft_lot / sqft_basement</th>
       <th>sqft_lot / sqft_living15</th>
@@ -18149,6 +18135,7 @@ Shape after feature selection: (4323, 131).
       <th>view / bedrooms</th>
       <th>view / condition</th>
       <th>view / floors</th>
+      <th>view / id</th>
       <th>view / sqft_above</th>
       <th>view / sqft_basement</th>
       <th>view / sqft_lot</th>
@@ -18162,6 +18149,7 @@ Shape after feature selection: (4323, 131).
       <th>yr_renovated / bedrooms</th>
       <th>yr_renovated / condition</th>
       <th>yr_renovated / floors</th>
+      <th>yr_renovated / id</th>
       <th>yr_renovated / sqft_above</th>
       <th>yr_renovated / sqft_basement</th>
       <th>yr_renovated / sqft_lot</th>
@@ -18170,6 +18158,23 @@ Shape after feature selection: (4323, 131).
     </tr>
     <tr>
       <th>index</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -18310,6 +18315,7 @@ Shape after feature selection: (4323, 131).
       <td>0.666667</td>
       <td>2.0</td>
       <td>0.285714</td>
+      <td>3.263921e-10</td>
       <td>0.001316</td>
       <td>NaN</td>
       <td>0.001316</td>
@@ -18361,6 +18367,18 @@ Shape after feature selection: (4323, 131).
       <td>0.003665</td>
       <td>NaN</td>
       <td>0.003599</td>
+      <td>3.063800e+09</td>
+      <td>1.531900e+09</td>
+      <td>2.042533e+09</td>
+      <td>6.127600e+09</td>
+      <td>8.753714e+08</td>
+      <td>4.031316e+06</td>
+      <td>NaN</td>
+      <td>4.031316e+06</td>
+      <td>3.208168e+06</td>
+      <td>988322.598387</td>
+      <td>988322.598387</td>
+      <td>NaN</td>
       <td>760.0</td>
       <td>380.0</td>
       <td>506.666667</td>
@@ -18373,6 +18391,7 @@ Shape after feature selection: (4323, 131).
       <td>0.245161</td>
       <td>NaN</td>
       <td>0.781491</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -18403,6 +18422,7 @@ Shape after feature selection: (4323, 131).
       <td>1550.0</td>
       <td>2066.666667</td>
       <td>6200.0</td>
+      <td>0.000001</td>
       <td>4.078947</td>
       <td>NaN</td>
       <td>3.246073</td>
@@ -18415,6 +18435,7 @@ Shape after feature selection: (4323, 131).
       <td>NaN</td>
       <td>1.000000</td>
       <td>NaN</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -18433,6 +18454,7 @@ Shape after feature selection: (4323, 131).
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
+      <td>0.0</td>
       <td>NaN</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -18444,6 +18466,7 @@ Shape after feature selection: (4323, 131).
       <td>0.250000</td>
       <td>1.0</td>
       <td>0.142857</td>
+      <td>3.819272e-10</td>
       <td>0.000833</td>
       <td>NaN</td>
       <td>0.000833</td>
@@ -18495,6 +18518,18 @@ Shape after feature selection: (4323, 131).
       <td>0.005072</td>
       <td>NaN</td>
       <td>0.003562</td>
+      <td>2.618300e+09</td>
+      <td>8.727667e+08</td>
+      <td>6.545750e+08</td>
+      <td>2.618300e+09</td>
+      <td>3.740429e+08</td>
+      <td>2.181917e+06</td>
+      <td>NaN</td>
+      <td>2.181917e+06</td>
+      <td>1.897319e+06</td>
+      <td>269372.436214</td>
+      <td>254599.385453</td>
+      <td>NaN</td>
       <td>1200.0</td>
       <td>400.0</td>
       <td>300.000000</td>
@@ -18507,6 +18542,7 @@ Shape after feature selection: (4323, 131).
       <td>0.116686</td>
       <td>NaN</td>
       <td>0.610687</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -18537,6 +18573,7 @@ Shape after feature selection: (4323, 131).
       <td>3240.0</td>
       <td>2430.000000</td>
       <td>9720.0</td>
+      <td>0.000004</td>
       <td>8.100000</td>
       <td>NaN</td>
       <td>7.043478</td>
@@ -18554,6 +18591,7 @@ Shape after feature selection: (4323, 131).
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
+      <td>0.0</td>
       <td>NaN</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -18562,6 +18600,7 @@ Shape after feature selection: (4323, 131).
       <td>491.250000</td>
       <td>1.423913</td>
       <td>NaN</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -18586,7 +18625,7 @@ Shape after feature selection: (4323, 131).
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[25]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">features_extra</span> <span class="o">=</span> <span class="p">[</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">df_train_extra</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">df_test_extra</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
@@ -18610,7 +18649,7 @@ Shape after feature selection: (4323, 131).
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>[&#39;bathrooms / bedrooms&#39;, &#39;bathrooms / condition&#39;, &#39;bathrooms / floors&#39;, &#39;bathrooms / grade&#39;, &#39;bathrooms / sqft_above&#39;, &#39;bathrooms / sqft_basement&#39;, &#39;bathrooms / sqft_living&#39;, &#39;bathrooms / sqft_living15&#39;, &#39;bathrooms / sqft_lot&#39;, &#39;bathrooms / sqft_lot15&#39;, &#39;bathrooms / view&#39;, &#39;bathrooms / yr_built&#39;, &#39;bedrooms / bathrooms&#39;, &#39;bedrooms / condition&#39;, &#39;bedrooms / floors&#39;, &#39;bedrooms / grade&#39;, &#39;bedrooms / sqft_above&#39;, &#39;bedrooms / sqft_basement&#39;, &#39;bedrooms / sqft_living&#39;, &#39;bedrooms / sqft_living15&#39;, &#39;bedrooms / sqft_lot&#39;, &#39;bedrooms / sqft_lot15&#39;, &#39;bedrooms / view&#39;, &#39;bedrooms / yr_built&#39;, &#39;condition / bathrooms&#39;, &#39;condition / bedrooms&#39;, &#39;condition / floors&#39;, &#39;condition / grade&#39;, &#39;condition / sqft_above&#39;, &#39;condition / sqft_basement&#39;, &#39;condition / sqft_living&#39;, &#39;condition / sqft_living15&#39;, &#39;condition / sqft_lot&#39;, &#39;condition / sqft_lot15&#39;, &#39;condition / view&#39;, &#39;condition / yr_built&#39;, &#39;floors / bathrooms&#39;, &#39;floors / bedrooms&#39;, &#39;floors / condition&#39;, &#39;floors / grade&#39;, &#39;floors / sqft_above&#39;, &#39;floors / sqft_living&#39;, &#39;floors / sqft_living15&#39;, &#39;floors / sqft_lot&#39;, &#39;floors / sqft_lot15&#39;, &#39;floors / view&#39;, &#39;floors / yr_built&#39;, &#39;grade / bathrooms&#39;, &#39;grade / bedrooms&#39;, &#39;grade / condition&#39;, &#39;grade / sqft_above&#39;, &#39;grade / sqft_living&#39;, &#39;grade / sqft_living15&#39;, &#39;grade / view&#39;, &#39;grade / yr_built&#39;, &#39;sqft_above / bathrooms&#39;, &#39;sqft_above / bedrooms&#39;, &#39;sqft_above / condition&#39;, &#39;sqft_above / floors&#39;, &#39;sqft_above / grade&#39;, &#39;sqft_above / sqft_basement&#39;, &#39;sqft_above / sqft_living&#39;, &#39;sqft_above / sqft_living15&#39;, &#39;sqft_above / sqft_lot&#39;, &#39;sqft_above / sqft_lot15&#39;, &#39;sqft_above / view&#39;, &#39;sqft_above / yr_built&#39;, &#39;sqft_basement / bathrooms&#39;, &#39;sqft_basement / bedrooms&#39;, &#39;sqft_basement / condition&#39;, &#39;sqft_basement / floors&#39;, &#39;sqft_basement / sqft_lot&#39;, &#39;sqft_basement / sqft_lot15&#39;, &#39;sqft_basement / view&#39;, &#39;sqft_living / bathrooms&#39;, &#39;sqft_living / bedrooms&#39;, &#39;sqft_living / condition&#39;, &#39;sqft_living / floors&#39;, &#39;sqft_living / grade&#39;, &#39;sqft_living / sqft_living15&#39;, &#39;sqft_living / view&#39;, &#39;sqft_living / yr_built&#39;, &#39;sqft_living15 / bathrooms&#39;, &#39;sqft_living15 / bedrooms&#39;, &#39;sqft_living15 / condition&#39;, &#39;sqft_living15 / floors&#39;, &#39;sqft_living15 / grade&#39;, &#39;sqft_living15 / sqft_above&#39;, &#39;sqft_living15 / sqft_living&#39;, &#39;sqft_living15 / sqft_lot&#39;, &#39;sqft_living15 / sqft_lot15&#39;, &#39;sqft_living15 / view&#39;, &#39;sqft_living15 / yr_built&#39;, &#39;sqft_lot / bathrooms&#39;, &#39;sqft_lot / bedrooms&#39;, &#39;sqft_lot / condition&#39;, &#39;sqft_lot / floors&#39;, &#39;sqft_lot / sqft_above&#39;, &#39;sqft_lot / sqft_basement&#39;, &#39;sqft_lot / sqft_lot15&#39;, &#39;sqft_lot15 / bathrooms&#39;, &#39;sqft_lot15 / bedrooms&#39;, &#39;sqft_lot15 / condition&#39;, &#39;sqft_lot15 / floors&#39;, &#39;sqft_lot15 / sqft_above&#39;, &#39;sqft_lot15 / sqft_basement&#39;, &#39;sqft_lot15 / sqft_lot&#39;, &#39;sqft_lot15 / view&#39;, &#39;view / bathrooms&#39;, &#39;view / bedrooms&#39;, &#39;view / condition&#39;, &#39;view / floors&#39;, &#39;view / sqft_above&#39;, &#39;view / sqft_basement&#39;, &#39;view / sqft_lot&#39;, &#39;view / sqft_lot15&#39;, &#39;yr_built / bathrooms&#39;, &#39;yr_built / bedrooms&#39;, &#39;yr_built / condition&#39;, &#39;yr_built / sqft_living15&#39;, &#39;yr_built / view&#39;, &#39;yr_renovated / bathrooms&#39;, &#39;yr_renovated / bedrooms&#39;, &#39;yr_renovated / condition&#39;, &#39;yr_renovated / floors&#39;, &#39;yr_renovated / sqft_above&#39;, &#39;yr_renovated / sqft_basement&#39;, &#39;yr_renovated / sqft_lot&#39;, &#39;yr_renovated / sqft_lot15&#39;, &#39;yr_renovated / view&#39;]
+<pre>[&#39;bathrooms / bedrooms&#39;, &#39;bathrooms / condition&#39;, &#39;bathrooms / floors&#39;, &#39;bathrooms / grade&#39;, &#39;bathrooms / id&#39;, &#39;bathrooms / sqft_above&#39;, &#39;bathrooms / sqft_basement&#39;, &#39;bathrooms / sqft_living&#39;, &#39;bathrooms / sqft_living15&#39;, &#39;bathrooms / sqft_lot&#39;, &#39;bathrooms / sqft_lot15&#39;, &#39;bathrooms / view&#39;, &#39;bathrooms / yr_built&#39;, &#39;bedrooms / bathrooms&#39;, &#39;bedrooms / condition&#39;, &#39;bedrooms / floors&#39;, &#39;bedrooms / grade&#39;, &#39;bedrooms / sqft_above&#39;, &#39;bedrooms / sqft_basement&#39;, &#39;bedrooms / sqft_living&#39;, &#39;bedrooms / sqft_living15&#39;, &#39;bedrooms / sqft_lot&#39;, &#39;bedrooms / sqft_lot15&#39;, &#39;bedrooms / view&#39;, &#39;bedrooms / yr_built&#39;, &#39;condition / bathrooms&#39;, &#39;condition / bedrooms&#39;, &#39;condition / floors&#39;, &#39;condition / grade&#39;, &#39;condition / sqft_above&#39;, &#39;condition / sqft_basement&#39;, &#39;condition / sqft_living&#39;, &#39;condition / sqft_living15&#39;, &#39;condition / sqft_lot&#39;, &#39;condition / sqft_lot15&#39;, &#39;condition / view&#39;, &#39;condition / yr_built&#39;, &#39;floors / bathrooms&#39;, &#39;floors / bedrooms&#39;, &#39;floors / condition&#39;, &#39;floors / grade&#39;, &#39;floors / sqft_above&#39;, &#39;floors / sqft_living&#39;, &#39;floors / sqft_living15&#39;, &#39;floors / sqft_lot&#39;, &#39;floors / sqft_lot15&#39;, &#39;floors / view&#39;, &#39;floors / yr_built&#39;, &#39;grade / bathrooms&#39;, &#39;grade / bedrooms&#39;, &#39;grade / condition&#39;, &#39;grade / sqft_above&#39;, &#39;grade / sqft_living&#39;, &#39;grade / sqft_living15&#39;, &#39;grade / view&#39;, &#39;grade / yr_built&#39;, &#39;id / bathrooms&#39;, &#39;id / bedrooms&#39;, &#39;id / condition&#39;, &#39;id / floors&#39;, &#39;id / grade&#39;, &#39;id / sqft_above&#39;, &#39;id / sqft_basement&#39;, &#39;id / sqft_living&#39;, &#39;id / sqft_living15&#39;, &#39;id / sqft_lot&#39;, &#39;id / sqft_lot15&#39;, &#39;id / view&#39;, &#39;sqft_above / bathrooms&#39;, &#39;sqft_above / bedrooms&#39;, &#39;sqft_above / condition&#39;, &#39;sqft_above / floors&#39;, &#39;sqft_above / grade&#39;, &#39;sqft_above / sqft_basement&#39;, &#39;sqft_above / sqft_living&#39;, &#39;sqft_above / sqft_living15&#39;, &#39;sqft_above / sqft_lot&#39;, &#39;sqft_above / sqft_lot15&#39;, &#39;sqft_above / view&#39;, &#39;sqft_above / yr_built&#39;, &#39;sqft_basement / bathrooms&#39;, &#39;sqft_basement / bedrooms&#39;, &#39;sqft_basement / condition&#39;, &#39;sqft_basement / floors&#39;, &#39;sqft_basement / id&#39;, &#39;sqft_basement / sqft_lot&#39;, &#39;sqft_basement / sqft_lot15&#39;, &#39;sqft_basement / view&#39;, &#39;sqft_living / bathrooms&#39;, &#39;sqft_living / bedrooms&#39;, &#39;sqft_living / condition&#39;, &#39;sqft_living / floors&#39;, &#39;sqft_living / grade&#39;, &#39;sqft_living / sqft_living15&#39;, &#39;sqft_living / view&#39;, &#39;sqft_living / yr_built&#39;, &#39;sqft_living15 / bathrooms&#39;, &#39;sqft_living15 / bedrooms&#39;, &#39;sqft_living15 / condition&#39;, &#39;sqft_living15 / floors&#39;, &#39;sqft_living15 / grade&#39;, &#39;sqft_living15 / sqft_above&#39;, &#39;sqft_living15 / sqft_living&#39;, &#39;sqft_living15 / sqft_lot&#39;, &#39;sqft_living15 / sqft_lot15&#39;, &#39;sqft_living15 / view&#39;, &#39;sqft_living15 / yr_built&#39;, &#39;sqft_lot / bathrooms&#39;, &#39;sqft_lot / bedrooms&#39;, &#39;sqft_lot / condition&#39;, &#39;sqft_lot / floors&#39;, &#39;sqft_lot / id&#39;, &#39;sqft_lot / sqft_above&#39;, &#39;sqft_lot / sqft_basement&#39;, &#39;sqft_lot / sqft_lot15&#39;, &#39;sqft_lot15 / bathrooms&#39;, &#39;sqft_lot15 / bedrooms&#39;, &#39;sqft_lot15 / condition&#39;, &#39;sqft_lot15 / floors&#39;, &#39;sqft_lot15 / sqft_above&#39;, &#39;sqft_lot15 / sqft_basement&#39;, &#39;sqft_lot15 / sqft_lot&#39;, &#39;sqft_lot15 / view&#39;, &#39;view / bathrooms&#39;, &#39;view / bedrooms&#39;, &#39;view / condition&#39;, &#39;view / floors&#39;, &#39;view / id&#39;, &#39;view / sqft_above&#39;, &#39;view / sqft_basement&#39;, &#39;view / sqft_lot&#39;, &#39;view / sqft_lot15&#39;, &#39;yr_built / bathrooms&#39;, &#39;yr_built / bedrooms&#39;, &#39;yr_built / condition&#39;, &#39;yr_built / sqft_living15&#39;, &#39;yr_built / view&#39;, &#39;yr_renovated / bathrooms&#39;, &#39;yr_renovated / bedrooms&#39;, &#39;yr_renovated / condition&#39;, &#39;yr_renovated / floors&#39;, &#39;yr_renovated / id&#39;, &#39;yr_renovated / sqft_above&#39;, &#39;yr_renovated / sqft_basement&#39;, &#39;yr_renovated / sqft_lot&#39;, &#39;yr_renovated / sqft_lot15&#39;, &#39;yr_renovated / view&#39;]
 </pre>
 </div>
 </div>
@@ -18627,7 +18666,7 @@ Shape after feature selection: (4323, 131).
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[26]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_train_extra</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -18646,13 +18685,13 @@ Shape after feature selection: (4323, 131).
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[26]:</div>
 
 
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>293473</pre>
+<pre>319676</pre>
 </div>
 
 </div>
@@ -18664,7 +18703,7 @@ Shape after feature selection: (4323, 131).
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[27]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_train_extra</span> <span class="o">=</span> <span class="n">df_train_extra</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
@@ -18684,7 +18723,7 @@ Shape after feature selection: (4323, 131).
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[28]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_train</span><span class="p">,</span><span class="n">df_train_extra</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -18706,7 +18745,7 @@ Shape after feature selection: (4323, 131).
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[28]:</div>
 
 
 
@@ -18729,8 +18768,8 @@ Shape after feature selection: (4323, 131).
   <thead>
     <tr style="text-align: right;">
       <th></th>
+      <th>id</th>
       <th>date</th>
-      <th>price</th>
       <th>bedrooms</th>
       <th>bathrooms</th>
       <th>sqft_living</th>
@@ -18753,6 +18792,7 @@ Shape after feature selection: (4323, 131).
       <th>bathrooms / condition</th>
       <th>bathrooms / floors</th>
       <th>bathrooms / grade</th>
+      <th>bathrooms / id</th>
       <th>bathrooms / sqft_above</th>
       <th>bathrooms / sqft_basement</th>
       <th>bathrooms / sqft_living</th>
@@ -18777,6 +18817,7 @@ Shape after feature selection: (4323, 131).
       <th>condition / bedrooms</th>
       <th>condition / floors</th>
       <th>condition / grade</th>
+      <th>condition / id</th>
       <th>condition / sqft_above</th>
       <th>condition / sqft_basement</th>
       <th>condition / sqft_living</th>
@@ -18806,6 +18847,18 @@ Shape after feature selection: (4323, 131).
       <th>grade / sqft_living15</th>
       <th>grade / view</th>
       <th>grade / yr_built</th>
+      <th>id / bathrooms</th>
+      <th>id / bedrooms</th>
+      <th>id / condition</th>
+      <th>id / floors</th>
+      <th>id / grade</th>
+      <th>id / sqft_above</th>
+      <th>id / sqft_basement</th>
+      <th>id / sqft_living</th>
+      <th>id / sqft_living15</th>
+      <th>id / sqft_lot</th>
+      <th>id / sqft_lot15</th>
+      <th>id / view</th>
       <th>sqft_above / bathrooms</th>
       <th>sqft_above / bedrooms</th>
       <th>sqft_above / condition</th>
@@ -18822,6 +18875,7 @@ Shape after feature selection: (4323, 131).
       <th>sqft_basement / bedrooms</th>
       <th>sqft_basement / condition</th>
       <th>sqft_basement / floors</th>
+      <th>sqft_basement / id</th>
       <th>sqft_basement / sqft_lot</th>
       <th>sqft_basement / sqft_lot15</th>
       <th>sqft_basement / view</th>
@@ -18849,6 +18903,7 @@ Shape after feature selection: (4323, 131).
       <th>sqft_lot / bedrooms</th>
       <th>sqft_lot / condition</th>
       <th>sqft_lot / floors</th>
+      <th>sqft_lot / id</th>
       <th>sqft_lot / sqft_above</th>
       <th>sqft_lot / sqft_basement</th>
       <th>sqft_lot / sqft_lot15</th>
@@ -18865,6 +18920,7 @@ Shape after feature selection: (4323, 131).
       <th>view / bedrooms</th>
       <th>view / condition</th>
       <th>view / floors</th>
+      <th>view / id</th>
       <th>view / sqft_above</th>
       <th>view / sqft_basement</th>
       <th>view / sqft_lot</th>
@@ -18881,6 +18937,7 @@ Shape after feature selection: (4323, 131).
       <th>yr_renovated / bedrooms</th>
       <th>yr_renovated / condition</th>
       <th>yr_renovated / floors</th>
+      <th>yr_renovated / id</th>
       <th>yr_renovated / sqft_above</th>
       <th>yr_renovated / sqft_basement</th>
       <th>yr_renovated / sqft_lot</th>
@@ -18891,8 +18948,8 @@ Shape after feature selection: (4323, 131).
   <tbody>
     <tr>
       <th>0</th>
+      <td>2561340020</td>
       <td>2014-08-04</td>
-      <td>325000.0</td>
       <td>3</td>
       <td>1</td>
       <td>1780</td>
@@ -18915,6 +18972,7 @@ Shape after feature selection: (4323, 131).
       <td>0.333333</td>
       <td>1.0</td>
       <td>0.142857</td>
+      <td>3.904206e-10</td>
       <td>0.000826</td>
       <td>0.001754</td>
       <td>0.000562</td>
@@ -18939,6 +18997,7 @@ Shape after feature selection: (4323, 131).
       <td>1.0</td>
       <td>3.0</td>
       <td>0.428571</td>
+      <td>1.171262e-09</td>
       <td>0.002479</td>
       <td>0.005263</td>
       <td>0.001685</td>
@@ -18968,6 +19027,18 @@ Shape after feature selection: (4323, 131).
       <td>0.003933</td>
       <td>0.0</td>
       <td>0.003537</td>
+      <td>2.561340e+09</td>
+      <td>8.537800e+08</td>
+      <td>8.537800e+08</td>
+      <td>2.561340e+09</td>
+      <td>3.659057e+08</td>
+      <td>2.116810e+06</td>
+      <td>4.493579e+06</td>
+      <td>1.438955e+06</td>
+      <td>1.438955e+06</td>
+      <td>2.308345e+05</td>
+      <td>2.407274e+05</td>
+      <td>0.0</td>
       <td>1210.0</td>
       <td>403.333333</td>
       <td>403.333333</td>
@@ -18984,6 +19055,7 @@ Shape after feature selection: (4323, 131).
       <td>190.0</td>
       <td>190.0</td>
       <td>570.0</td>
+      <td>2.225398e-07</td>
       <td>0.05137</td>
       <td>0.053571</td>
       <td>0.0</td>
@@ -19011,6 +19083,7 @@ Shape after feature selection: (4323, 131).
       <td>3698.666667</td>
       <td>3698.666667</td>
       <td>11096.0</td>
+      <td>4.332107e-06</td>
       <td>9.170248</td>
       <td>19.466667</td>
       <td>1.042857</td>
@@ -19022,6 +19095,7 @@ Shape after feature selection: (4323, 131).
       <td>18.666667</td>
       <td>5.977528</td>
       <td>0.958904</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -19048,11 +19122,12 @@ Shape after feature selection: (4323, 131).
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>1</th>
+      <td>8598200070</td>
       <td>2014-12-08</td>
-      <td>278000.0</td>
       <td>2</td>
       <td>2</td>
       <td>1420</td>
@@ -19075,6 +19150,7 @@ Shape after feature selection: (4323, 131).
       <td>0.666667</td>
       <td>1.0</td>
       <td>0.285714</td>
+      <td>2.326068e-10</td>
       <td>0.001408</td>
       <td>0.000000</td>
       <td>0.001408</td>
@@ -19099,6 +19175,7 @@ Shape after feature selection: (4323, 131).
       <td>1.5</td>
       <td>1.5</td>
       <td>0.428571</td>
+      <td>3.489102e-10</td>
       <td>0.002113</td>
       <td>0.000000</td>
       <td>0.002113</td>
@@ -19128,6 +19205,18 @@ Shape after feature selection: (4323, 131).
       <td>0.004667</td>
       <td>0.0</td>
       <td>0.003493</td>
+      <td>4.299100e+09</td>
+      <td>4.299100e+09</td>
+      <td>2.866067e+09</td>
+      <td>4.299100e+09</td>
+      <td>1.228314e+09</td>
+      <td>6.055070e+06</td>
+      <td>0.000000e+00</td>
+      <td>6.055070e+06</td>
+      <td>5.732133e+06</td>
+      <td>3.857425e+06</td>
+      <td>3.855695e+06</td>
+      <td>0.0</td>
       <td>710.0</td>
       <td>710.000000</td>
       <td>473.333333</td>
@@ -19144,6 +19233,7 @@ Shape after feature selection: (4323, 131).
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
+      <td>0.000000e+00</td>
       <td>0.00000</td>
       <td>0.000000</td>
       <td>0.0</td>
@@ -19171,6 +19261,7 @@ Shape after feature selection: (4323, 131).
       <td>1114.500000</td>
       <td>743.000000</td>
       <td>1114.5</td>
+      <td>2.592403e-07</td>
       <td>1.569718</td>
       <td>0.000000</td>
       <td>0.999552</td>
@@ -19182,6 +19273,7 @@ Shape after feature selection: (4323, 131).
       <td>0.000000</td>
       <td>1.486667</td>
       <td>1.000449</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -19208,6 +19300,7 @@ Shape after feature selection: (4323, 131).
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
+      <td>0.0</td>
     </tr>
   </tbody>
 </table>
@@ -19223,7 +19316,7 @@ Shape after feature selection: (4323, 131).
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[29]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_test</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -19242,7 +19335,7 @@ Shape after feature selection: (4323, 131).
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[29]:</div>
 
 
 
@@ -19265,8 +19358,8 @@ Shape after feature selection: (4323, 131).
   <thead>
     <tr style="text-align: right;">
       <th></th>
+      <th>id</th>
       <th>date</th>
-      <th>price</th>
       <th>bedrooms</th>
       <th>bathrooms</th>
       <th>sqft_living</th>
@@ -19289,6 +19382,7 @@ Shape after feature selection: (4323, 131).
       <th>bathrooms / condition</th>
       <th>bathrooms / floors</th>
       <th>bathrooms / grade</th>
+      <th>bathrooms / id</th>
       <th>bathrooms / sqft_above</th>
       <th>bathrooms / sqft_basement</th>
       <th>bathrooms / sqft_living</th>
@@ -19340,6 +19434,18 @@ Shape after feature selection: (4323, 131).
       <th>grade / sqft_living15</th>
       <th>grade / view</th>
       <th>grade / yr_built</th>
+      <th>id / bathrooms</th>
+      <th>id / bedrooms</th>
+      <th>id / condition</th>
+      <th>id / floors</th>
+      <th>id / grade</th>
+      <th>id / sqft_above</th>
+      <th>id / sqft_basement</th>
+      <th>id / sqft_living</th>
+      <th>id / sqft_living15</th>
+      <th>id / sqft_lot</th>
+      <th>id / sqft_lot15</th>
+      <th>id / view</th>
       <th>sqft_above / bathrooms</th>
       <th>sqft_above / bedrooms</th>
       <th>sqft_above / condition</th>
@@ -19356,6 +19462,7 @@ Shape after feature selection: (4323, 131).
       <th>sqft_basement / bedrooms</th>
       <th>sqft_basement / condition</th>
       <th>sqft_basement / floors</th>
+      <th>sqft_basement / id</th>
       <th>sqft_basement / sqft_lot</th>
       <th>sqft_basement / sqft_lot15</th>
       <th>sqft_basement / view</th>
@@ -19382,6 +19489,7 @@ Shape after feature selection: (4323, 131).
       <th>sqft_lot / bedrooms</th>
       <th>sqft_lot / condition</th>
       <th>sqft_lot / floors</th>
+      <th>sqft_lot / id</th>
       <th>sqft_lot / sqft_above</th>
       <th>sqft_lot / sqft_basement</th>
       <th>sqft_lot / sqft_living15</th>
@@ -19398,6 +19506,7 @@ Shape after feature selection: (4323, 131).
       <th>view / bedrooms</th>
       <th>view / condition</th>
       <th>view / floors</th>
+      <th>view / id</th>
       <th>view / sqft_above</th>
       <th>view / sqft_basement</th>
       <th>view / sqft_lot</th>
@@ -19411,6 +19520,7 @@ Shape after feature selection: (4323, 131).
       <th>yr_renovated / bedrooms</th>
       <th>yr_renovated / condition</th>
       <th>yr_renovated / floors</th>
+      <th>yr_renovated / id</th>
       <th>yr_renovated / sqft_above</th>
       <th>yr_renovated / sqft_basement</th>
       <th>yr_renovated / sqft_lot</th>
@@ -19421,8 +19531,8 @@ Shape after feature selection: (4323, 131).
   <tbody>
     <tr>
       <th>0</th>
+      <td>8669180390</td>
       <td>2014-06-04</td>
-      <td>285000.0</td>
       <td>3</td>
       <td>2</td>
       <td>2437</td>
@@ -19445,6 +19555,7 @@ Shape after feature selection: (4323, 131).
       <td>0.666667</td>
       <td>1.0</td>
       <td>0.285714</td>
+      <td>2.307023e-10</td>
       <td>0.000821</td>
       <td>0.0</td>
       <td>0.000821</td>
@@ -19496,6 +19607,18 @@ Shape after feature selection: (4323, 131).
       <td>0.002872</td>
       <td>0.0</td>
       <td>0.003481</td>
+      <td>4.334590e+09</td>
+      <td>2.889727e+09</td>
+      <td>2.889727e+09</td>
+      <td>4.334590e+09</td>
+      <td>1.238454e+09</td>
+      <td>3.557317e+06</td>
+      <td>0.0</td>
+      <td>3.557317e+06</td>
+      <td>3.557317e+06</td>
+      <td>1.687925e+06</td>
+      <td>1.878886e+06</td>
+      <td>0.0</td>
       <td>1218.5</td>
       <td>812.333333</td>
       <td>812.333333</td>
@@ -19515,6 +19638,7 @@ Shape after feature selection: (4323, 131).
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
+      <td>0.0</td>
       <td>1218.5</td>
       <td>812.333333</td>
       <td>812.333333</td>
@@ -19538,6 +19662,7 @@ Shape after feature selection: (4323, 131).
       <td>1712.0</td>
       <td>1712.0</td>
       <td>2568.0</td>
+      <td>5.924435e-07</td>
       <td>2.107509</td>
       <td>0.0</td>
       <td>2.107509</td>
@@ -19549,6 +19674,7 @@ Shape after feature selection: (4323, 131).
       <td>1.893311</td>
       <td>0.0</td>
       <td>0.898364</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -19572,11 +19698,12 @@ Shape after feature selection: (4323, 131).
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>1</th>
+      <td>3750603471</td>
       <td>2015-03-27</td>
-      <td>239950.0</td>
       <td>3</td>
       <td>2</td>
       <td>1560</td>
@@ -19599,6 +19726,7 @@ Shape after feature selection: (4323, 131).
       <td>0.500000</td>
       <td>1.0</td>
       <td>0.285714</td>
+      <td>5.332475e-10</td>
       <td>0.001282</td>
       <td>0.0</td>
       <td>0.001282</td>
@@ -19650,6 +19778,18 @@ Shape after feature selection: (4323, 131).
       <td>0.004636</td>
       <td>0.0</td>
       <td>0.003546</td>
+      <td>1.875302e+09</td>
+      <td>1.250201e+09</td>
+      <td>9.376509e+08</td>
+      <td>1.875302e+09</td>
+      <td>5.358005e+08</td>
+      <td>2.404233e+06</td>
+      <td>0.0</td>
+      <td>2.404233e+06</td>
+      <td>2.483843e+06</td>
+      <td>7.813757e+05</td>
+      <td>3.064219e+05</td>
+      <td>0.0</td>
       <td>780.0</td>
       <td>520.000000</td>
       <td>390.000000</td>
@@ -19662,6 +19802,7 @@ Shape after feature selection: (4323, 131).
       <td>0.127451</td>
       <td>0.0</td>
       <td>0.790274</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -19692,6 +19833,7 @@ Shape after feature selection: (4323, 131).
       <td>1600.0</td>
       <td>1200.0</td>
       <td>2400.0</td>
+      <td>1.279794e-06</td>
       <td>3.076923</td>
       <td>0.0</td>
       <td>3.178808</td>
@@ -19712,10 +19854,12 @@ Shape after feature selection: (4323, 131).
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
+      <td>0.0</td>
       <td>987.0</td>
       <td>658.000000</td>
       <td>493.500000</td>
       <td>1.307285</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -19746,7 +19890,7 @@ Shape after feature selection: (4323, 131).
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[30]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">clean_data</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">log</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">sq</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">logsq</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">dummy</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">dummy_cat</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -19839,7 +19983,7 @@ Shape after feature selection: (4323, 131).
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[31]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">params_data</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">log</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">sq</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">logsq</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -19862,10 +20006,10 @@ Shape after feature selection: (4323, 131).
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[32]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">features</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">df_train</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">target</span><span class="p">)))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">features</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">df_train</span><span class="o">.</span><span class="n">columns</span><span class="p">))</span>
 <span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">features</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">df_test</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
 
 <span class="c1"># print(np.array(features))</span>
@@ -19879,17 +20023,14 @@ Shape after feature selection: (4323, 131).
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[33]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_Xtrain</span>  <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="n">features</span><span class="p">]</span>
-<span class="n">ser_ytrain</span> <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="n">target</span><span class="p">]</span>
-
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># select features for train and test</span>
+<span class="n">df_Xtrain</span>  <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="n">features</span><span class="p">]</span>
 <span class="n">df_Xtest</span>  <span class="o">=</span> <span class="n">df_test</span><span class="p">[</span><span class="n">features</span><span class="p">]</span>
-<span class="n">ser_ytest</span> <span class="o">=</span> <span class="n">df_test</span><span class="p">[</span><span class="n">target</span><span class="p">]</span>
 
-<span class="n">ytrain</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ser_ytrain</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
-<span class="n">ytest</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ser_ytest</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="c1"># ytrain and ytest are already created</span>
 </pre></div>
 
      </div>
@@ -19905,7 +20046,7 @@ Shape after feature selection: (4323, 131).
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[34]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">scaling</span> <span class="o">=</span> <span class="s1">&#39;standard&#39;</span>
@@ -19914,11 +20055,6 @@ Shape after feature selection: (4323, 131).
     <span class="n">scaler</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df_Xtrain</span><span class="p">)</span>
     <span class="n">df_Xtrain</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df_Xtrain</span><span class="p">),</span><span class="n">columns</span><span class="o">=</span><span class="n">features</span><span class="p">)</span>
     <span class="n">df_Xtest</span> <span class="o">=</span>  <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df_Xtest</span><span class="p">),</span><span class="n">columns</span><span class="o">=</span><span class="n">features</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">scaling</span> <span class="o">==</span> <span class="s1">&#39;minmax&#39;</span><span class="p">:</span>
-    <span class="n">scaler</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">MinMaxScaler</span><span class="p">()</span>
-    <span class="n">scaler</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df_Xtrain</span><span class="p">)</span>
-    <span class="n">df_Xtrain</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df_Xtrain</span><span class="p">),</span><span class="n">columns</span><span class="o">=</span><span class="n">features</span><span class="p">)</span>
-    <span class="n">df_Xtest</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df_Xtest</span><span class="p">),</span><span class="n">columns</span><span class="o">=</span><span class="n">features</span><span class="p">)</span>
 
 <span class="n">df_Xtrain</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
@@ -19936,7 +20072,7 @@ Shape after feature selection: (4323, 131).
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[34]:</div>
 
 
 
@@ -19971,6 +20107,7 @@ Shape after feature selection: (4323, 131).
       <th>bathrooms / condition</th>
       <th>bathrooms / floors</th>
       <th>bathrooms / grade</th>
+      <th>bathrooms / id</th>
       <th>bathrooms / sqft_above</th>
       <th>bathrooms / sqft_basement</th>
       <th>bathrooms / sqft_living</th>
@@ -20029,6 +20166,19 @@ Shape after feature selection: (4323, 131).
       <th>grade / sqft_living15</th>
       <th>grade / view</th>
       <th>grade / yr_built</th>
+      <th>id</th>
+      <th>id / bathrooms</th>
+      <th>id / bedrooms</th>
+      <th>id / condition</th>
+      <th>id / floors</th>
+      <th>id / grade</th>
+      <th>id / sqft_above</th>
+      <th>id / sqft_basement</th>
+      <th>id / sqft_living</th>
+      <th>id / sqft_living15</th>
+      <th>id / sqft_lot</th>
+      <th>id / sqft_lot15</th>
+      <th>id / view</th>
       <th>lat</th>
       <th>log1p_sqft_above</th>
       <th>log1p_sqft_above_sq</th>
@@ -20062,6 +20212,7 @@ Shape after feature selection: (4323, 131).
       <th>sqft_basement / bedrooms</th>
       <th>sqft_basement / condition</th>
       <th>sqft_basement / floors</th>
+      <th>sqft_basement / id</th>
       <th>sqft_basement / sqft_lot</th>
       <th>sqft_basement / sqft_lot15</th>
       <th>sqft_basement / view</th>
@@ -20091,6 +20242,7 @@ Shape after feature selection: (4323, 131).
       <th>sqft_lot / bedrooms</th>
       <th>sqft_lot / condition</th>
       <th>sqft_lot / floors</th>
+      <th>sqft_lot / id</th>
       <th>sqft_lot / sqft_above</th>
       <th>sqft_lot / sqft_basement</th>
       <th>sqft_lot / sqft_lot15</th>
@@ -20108,6 +20260,7 @@ Shape after feature selection: (4323, 131).
       <th>view / bedrooms</th>
       <th>view / condition</th>
       <th>view / floors</th>
+      <th>view / id</th>
       <th>view / sqft_above</th>
       <th>view / sqft_basement</th>
       <th>view / sqft_lot</th>
@@ -20126,6 +20279,7 @@ Shape after feature selection: (4323, 131).
       <th>yr_renovated / bedrooms</th>
       <th>yr_renovated / condition</th>
       <th>yr_renovated / floors</th>
+      <th>yr_renovated / id</th>
       <th>yr_renovated / sqft_above</th>
       <th>yr_renovated / sqft_basement</th>
       <th>yr_renovated / sqft_lot</th>
@@ -20151,6 +20305,7 @@ Shape after feature selection: (4323, 131).
       <td>-0.795055</td>
       <td>-0.515282</td>
       <td>-1.036172</td>
+      <td>-0.047142</td>
       <td>-0.549962</td>
       <td>0.122535</td>
       <td>-1.052856</td>
@@ -20209,6 +20364,19 @@ Shape after feature selection: (4323, 131).
       <td>-0.204672</td>
       <td>-0.295723</td>
       <td>-0.598321</td>
+      <td>-0.703484</td>
+      <td>-0.209438</td>
+      <td>-0.570833</td>
+      <td>-0.578746</td>
+      <td>-0.393265</td>
+      <td>-0.620426</td>
+      <td>-0.395239</td>
+      <td>0.081008</td>
+      <td>-0.562928</td>
+      <td>-0.598333</td>
+      <td>-0.529761</td>
+      <td>-0.556437</td>
+      <td>-0.250563</td>
       <td>0.410048</td>
       <td>-0.688967</td>
       <td>-0.698830</td>
@@ -20242,6 +20410,7 @@ Shape after feature selection: (4323, 131).
       <td>0.881187</td>
       <td>0.821995</td>
       <td>0.787345</td>
+      <td>-0.006871</td>
       <td>0.106317</td>
       <td>0.137237</td>
       <td>-0.21882</td>
@@ -20271,6 +20440,7 @@ Shape after feature selection: (4323, 131).
       <td>-0.072737</td>
       <td>-0.068863</td>
       <td>-0.025666</td>
+      <td>-0.054941</td>
       <td>0.020711</td>
       <td>0.278160</td>
       <td>-0.070267</td>
@@ -20288,6 +20458,7 @@ Shape after feature selection: (4323, 131).
       <td>-0.287562</td>
       <td>-0.299222</td>
       <td>-0.290962</td>
+      <td>-0.096935</td>
       <td>-0.286254</td>
       <td>-0.179678</td>
       <td>-0.226533</td>
@@ -20306,6 +20477,7 @@ Shape after feature selection: (4323, 131).
       <td>-0.193615</td>
       <td>-0.206256</td>
       <td>-0.197852</td>
+      <td>-0.037477</td>
       <td>-0.191291</td>
       <td>-0.116972</td>
       <td>-0.167636</td>
@@ -20329,6 +20501,7 @@ Shape after feature selection: (4323, 131).
       <td>0.532571</td>
       <td>-0.515282</td>
       <td>0.772336</td>
+      <td>-0.053339</td>
       <td>0.864671</td>
       <td>-0.443053</td>
       <td>1.641342</td>
@@ -20387,6 +20560,19 @@ Shape after feature selection: (4323, 131).
       <td>0.478280</td>
       <td>-0.295723</td>
       <td>-0.675111</td>
+      <td>1.397196</td>
+      <td>0.520103</td>
+      <td>2.602291</td>
+      <td>1.582860</td>
+      <td>0.273961</td>
+      <td>1.559159</td>
+      <td>1.226992</td>
+      <td>-0.396782</td>
+      <td>1.602825</td>
+      <td>1.675097</td>
+      <td>2.569011</td>
+      <td>2.895279</td>
+      <td>-0.250563</td>
       <td>-0.527440</td>
       <td>-0.314663</td>
       <td>-0.338123</td>
@@ -20420,6 +20606,7 @@ Shape after feature selection: (4323, 131).
       <td>-0.670877</td>
       <td>-0.648914</td>
       <td>-0.633365</td>
+      <td>-0.041318</td>
       <td>-0.582151</td>
       <td>-0.583993</td>
       <td>-0.21882</td>
@@ -20449,6 +20636,7 @@ Shape after feature selection: (4323, 131).
       <td>-0.250741</td>
       <td>-0.283355</td>
       <td>-0.315586</td>
+      <td>-0.075109</td>
       <td>-0.279917</td>
       <td>-0.207854</td>
       <td>-0.103913</td>
@@ -20466,6 +20654,7 @@ Shape after feature selection: (4323, 131).
       <td>-0.287562</td>
       <td>-0.299222</td>
       <td>-0.290962</td>
+      <td>-0.096935</td>
       <td>-0.286254</td>
       <td>-0.179678</td>
       <td>-0.226533</td>
@@ -20484,6 +20673,7 @@ Shape after feature selection: (4323, 131).
       <td>-0.193615</td>
       <td>-0.206256</td>
       <td>-0.197852</td>
+      <td>-0.037477</td>
       <td>-0.191291</td>
       <td>-0.116972</td>
       <td>-0.167636</td>
@@ -20513,7 +20703,66 @@ Shape after feature selection: (4323, 131).
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[35]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="n">params_xgb</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">SEED</span><span class="p">,</span><span class="n">objective</span><span class="o">=</span><span class="s1">&#39;reg:squarederror&#39;</span><span class="p">,)</span>
+
+<span class="c1"># log transform target</span>
+<span class="n">ytrain_log1p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log1p</span><span class="p">(</span><span class="n">ytrain</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">xgboost</span><span class="o">.</span><span class="n">XGBRegressor</span><span class="p">(</span><span class="o">**</span><span class="n">params_xgb</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df_Xtrain</span><span class="p">,</span> <span class="n">ytrain_log1p</span><span class="p">)</span>
+
+<span class="n">ypreds_log1p</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df_Xtest</span><span class="p">)</span>
+<span class="n">ypreds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expm1</span><span class="p">(</span><span class="n">ypreds_log1p</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ytest:&#39;</span><span class="p">,</span> <span class="n">ytest</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ypreds: &#39;</span><span class="p">,</span> <span class="n">ypreds</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">print_regr_eval</span><span class="p">(</span><span class="n">ytest</span><span class="p">,</span><span class="n">ypreds</span><span class="p">,</span><span class="n">df_Xtest</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>ytest: [285000. 239950. 460000.]
+ypreds:  [335015.25 233419.9  525149.5 ]
+
+             RMSE : 138,108.85
+Explained Variance: 0.860947
+         R-Squared: 0.858469
+Adjusted R-squared: 0.851889
+
+
+CPU times: user 18 s, sys: 63.8 ms, total: 18 s
+Wall time: 9.17 s
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[36]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
@@ -20564,16 +20813,16 @@ Shape after feature selection: (4323, 131).
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>ytest: [285000. 239950. 460000.]
-ypreds:  [330083.75 201715.34 531152.3 ]
+ypreds:  [323667.22 207549.45 526775.1 ]
 
-             RMSE : 109,087.18
-Explained Variance: 0.912569
-         R-Squared: 0.911701
-Adjusted R-squared: 0.907997
+             RMSE : 108,184.48
+Explained Variance: 0.913972
+         R-Squared: 0.913156
+Adjusted R-squared: 0.909119
 
 
-CPU times: user 3min 8s, sys: 358 ms, total: 3min 8s
-Wall time: 1min 35s
+CPU times: user 3min 39s, sys: 426 ms, total: 3min 40s
+Wall time: 1min 51s
 </pre>
 </div>
 </div>
@@ -20590,7 +20839,7 @@ Wall time: 1min 35s
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[37]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># feature importance</span>
@@ -20614,89 +20863,92 @@ Wall time: 1min 35s
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[37]:</div>
 
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
 <style  type="text/css" >
-#T_1063feb4_245e_11eb_9a98_0242ac1c0002row0_col1{
+#T_6768f92c_25c5_11eb_b1a9_0242ac1c0002row0_col1{
             background-color:  #023858;
             color:  #f1f1f1;
-        }#T_1063feb4_245e_11eb_9a98_0242ac1c0002row1_col1{
-            background-color:  #03466e;
-            color:  #f1f1f1;
-        }#T_1063feb4_245e_11eb_9a98_0242ac1c0002row2_col1{
-            background-color:  #88b1d4;
+        }#T_6768f92c_25c5_11eb_b1a9_0242ac1c0002row1_col1{
+            background-color:  #94b6d7;
             color:  #000000;
-        }#T_1063feb4_245e_11eb_9a98_0242ac1c0002row3_col1{
-            background-color:  #cccfe5;
+        }#T_6768f92c_25c5_11eb_b1a9_0242ac1c0002row2_col1{
+            background-color:  #9fbad9;
             color:  #000000;
-        }#T_1063feb4_245e_11eb_9a98_0242ac1c0002row4_col1,#T_1063feb4_245e_11eb_9a98_0242ac1c0002row5_col1{
-            background-color:  #f2ecf5;
+        }#T_6768f92c_25c5_11eb_b1a9_0242ac1c0002row3_col1{
+            background-color:  #c1cae2;
             color:  #000000;
-        }#T_1063feb4_245e_11eb_9a98_0242ac1c0002row6_col1{
+        }#T_6768f92c_25c5_11eb_b1a9_0242ac1c0002row4_col1{
+            background-color:  #efe9f3;
+            color:  #000000;
+        }#T_6768f92c_25c5_11eb_b1a9_0242ac1c0002row5_col1{
+            background-color:  #f0eaf4;
+            color:  #000000;
+        }#T_6768f92c_25c5_11eb_b1a9_0242ac1c0002row6_col1{
+            background-color:  #f1ebf5;
+            color:  #000000;
+        }#T_6768f92c_25c5_11eb_b1a9_0242ac1c0002row7_col1{
+            background-color:  #f4edf6;
+            color:  #000000;
+        }#T_6768f92c_25c5_11eb_b1a9_0242ac1c0002row8_col1{
             background-color:  #f7f0f7;
             color:  #000000;
-        }#T_1063feb4_245e_11eb_9a98_0242ac1c0002row7_col1{
-            background-color:  #f8f1f8;
-            color:  #000000;
-        }#T_1063feb4_245e_11eb_9a98_0242ac1c0002row8_col1{
-            background-color:  #fef6fa;
-            color:  #000000;
-        }#T_1063feb4_245e_11eb_9a98_0242ac1c0002row9_col1{
+        }#T_6768f92c_25c5_11eb_b1a9_0242ac1c0002row9_col1{
             background-color:  #fff7fb;
             color:  #000000;
-        }</style><table id="T_1063feb4_245e_11eb_9a98_0242ac1c0002" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >Feature</th>        <th class="col_heading level0 col1" >Importance_gain</th>    </tr></thead><tbody>
+        }</style><table id="T_6768f92c_25c5_11eb_b1a9_0242ac1c0002" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >Feature</th>        <th class="col_heading level0 col1" >Importance_gain</th>    </tr></thead><tbody>
                 <tr>
-                        <th id="T_1063feb4_245e_11eb_9a98_0242ac1c0002level0_row0" class="row_heading level0 row0" >146</th>
-                        <td id="T_1063feb4_245e_11eb_9a98_0242ac1c0002row0_col0" class="data row0 col0" >view / bedrooms</td>
-                        <td id="T_1063feb4_245e_11eb_9a98_0242ac1c0002row0_col1" class="data row0 col1" >0.225921</td>
+                        <th id="T_6768f92c_25c5_11eb_b1a9_0242ac1c0002level0_row0" class="row_heading level0 row0" >129</th>
+                        <td id="T_6768f92c_25c5_11eb_b1a9_0242ac1c0002row0_col0" class="data row0 col0" >sqft_living / yr_built</td>
+                        <td id="T_6768f92c_25c5_11eb_b1a9_0242ac1c0002row0_col1" class="data row0 col1" >0.262902</td>
             </tr>
             <tr>
-                        <th id="T_1063feb4_245e_11eb_9a98_0242ac1c0002level0_row1" class="row_heading level0 row1" >114</th>
-                        <td id="T_1063feb4_245e_11eb_9a98_0242ac1c0002row1_col0" class="data row1 col0" >sqft_living / yr_built</td>
-                        <td id="T_1063feb4_245e_11eb_9a98_0242ac1c0002row1_col1" class="data row1 col1" >0.214563</td>
+                        <th id="T_6768f92c_25c5_11eb_b1a9_0242ac1c0002level0_row1" class="row_heading level0 row1" >162</th>
+                        <td id="T_6768f92c_25c5_11eb_b1a9_0242ac1c0002row1_col0" class="data row1 col0" >view / bedrooms</td>
+                        <td id="T_6768f92c_25c5_11eb_b1a9_0242ac1c0002row1_col1" class="data row1 col1" >0.116859</td>
             </tr>
             <tr>
-                        <th id="T_1063feb4_245e_11eb_9a98_0242ac1c0002level0_row2" class="row_heading level0 row2" >69</th>
-                        <td id="T_1063feb4_245e_11eb_9a98_0242ac1c0002row2_col0" class="data row2 col0" >grade / yr_built</td>
-                        <td id="T_1063feb4_245e_11eb_9a98_0242ac1c0002row2_col1" class="data row2 col1" >0.110000</td>
+                        <th id="T_6768f92c_25c5_11eb_b1a9_0242ac1c0002level0_row2" class="row_heading level0 row2" >70</th>
+                        <td id="T_6768f92c_25c5_11eb_b1a9_0242ac1c0002row2_col0" class="data row2 col0" >grade / yr_built</td>
+                        <td id="T_6768f92c_25c5_11eb_b1a9_0242ac1c0002row2_col1" class="data row2 col1" >0.110304</td>
             </tr>
             <tr>
-                        <th id="T_1063feb4_245e_11eb_9a98_0242ac1c0002level0_row3" class="row_heading level0 row3" >144</th>
-                        <td id="T_1063feb4_245e_11eb_9a98_0242ac1c0002row3_col0" class="data row3 col0" >view</td>
-                        <td id="T_1063feb4_245e_11eb_9a98_0242ac1c0002row3_col1" class="data row3 col1" >0.070944</td>
+                        <th id="T_6768f92c_25c5_11eb_b1a9_0242ac1c0002level0_row3" class="row_heading level0 row3" >160</th>
+                        <td id="T_6768f92c_25c5_11eb_b1a9_0242ac1c0002row3_col0" class="data row3 col0" >view</td>
+                        <td id="T_6768f92c_25c5_11eb_b1a9_0242ac1c0002row3_col1" class="data row3 col1" >0.085152</td>
             </tr>
             <tr>
-                        <th id="T_1063feb4_245e_11eb_9a98_0242ac1c0002level0_row4" class="row_heading level0 row4" >154</th>
-                        <td id="T_1063feb4_245e_11eb_9a98_0242ac1c0002row4_col0" class="data row4 col0" >waterfront</td>
-                        <td id="T_1063feb4_245e_11eb_9a98_0242ac1c0002row4_col1" class="data row4 col1" >0.032984</td>
+                        <th id="T_6768f92c_25c5_11eb_b1a9_0242ac1c0002level0_row4" class="row_heading level0 row4" >141</th>
+                        <td id="T_6768f92c_25c5_11eb_b1a9_0242ac1c0002row4_col0" class="data row4 col0" >sqft_living15 / yr_built</td>
+                        <td id="T_6768f92c_25c5_11eb_b1a9_0242ac1c0002row4_col1" class="data row4 col1" >0.038241</td>
             </tr>
             <tr>
-                        <th id="T_1063feb4_245e_11eb_9a98_0242ac1c0002level0_row5" class="row_heading level0 row5" >70</th>
-                        <td id="T_1063feb4_245e_11eb_9a98_0242ac1c0002row5_col0" class="data row5 col0" >lat</td>
-                        <td id="T_1063feb4_245e_11eb_9a98_0242ac1c0002row5_col1" class="data row5 col1" >0.032533</td>
+                        <th id="T_6768f92c_25c5_11eb_b1a9_0242ac1c0002level0_row5" class="row_heading level0 row5" >165</th>
+                        <td id="T_6768f92c_25c5_11eb_b1a9_0242ac1c0002row5_col0" class="data row5 col0" >view / id</td>
+                        <td id="T_6768f92c_25c5_11eb_b1a9_0242ac1c0002row5_col1" class="data row5 col1" >0.036585</td>
             </tr>
             <tr>
-                        <th id="T_1063feb4_245e_11eb_9a98_0242ac1c0002level0_row6" class="row_heading level0 row6" >126</th>
-                        <td id="T_1063feb4_245e_11eb_9a98_0242ac1c0002row6_col0" class="data row6 col0" >sqft_living15 / yr_built</td>
-                        <td id="T_1063feb4_245e_11eb_9a98_0242ac1c0002row6_col1" class="data row6 col1" >0.026485</td>
+                        <th id="T_6768f92c_25c5_11eb_b1a9_0242ac1c0002level0_row6" class="row_heading level0 row6" >84</th>
+                        <td id="T_6768f92c_25c5_11eb_b1a9_0242ac1c0002row6_col0" class="data row6 col0" >lat</td>
+                        <td id="T_6768f92c_25c5_11eb_b1a9_0242ac1c0002row6_col1" class="data row6 col1" >0.034837</td>
             </tr>
             <tr>
-                        <th id="T_1063feb4_245e_11eb_9a98_0242ac1c0002level0_row7" class="row_heading level0 row7" >19</th>
-                        <td id="T_1063feb4_245e_11eb_9a98_0242ac1c0002row7_col0" class="data row7 col0" >bathrooms / yr_built</td>
-                        <td id="T_1063feb4_245e_11eb_9a98_0242ac1c0002row7_col1" class="data row7 col1" >0.025182</td>
+                        <th id="T_6768f92c_25c5_11eb_b1a9_0242ac1c0002level0_row7" class="row_heading level0 row7" >20</th>
+                        <td id="T_6768f92c_25c5_11eb_b1a9_0242ac1c0002row7_col0" class="data row7 col0" >bathrooms / yr_built</td>
+                        <td id="T_6768f92c_25c5_11eb_b1a9_0242ac1c0002row7_col1" class="data row7 col1" >0.030439</td>
             </tr>
             <tr>
-                        <th id="T_1063feb4_245e_11eb_9a98_0242ac1c0002level0_row8" class="row_heading level0 row8" >125</th>
-                        <td id="T_1063feb4_245e_11eb_9a98_0242ac1c0002row8_col0" class="data row8 col0" >sqft_living15 / view</td>
-                        <td id="T_1063feb4_245e_11eb_9a98_0242ac1c0002row8_col1" class="data row8 col1" >0.017322</td>
+                        <th id="T_6768f92c_25c5_11eb_b1a9_0242ac1c0002level0_row8" class="row_heading level0 row8" >171</th>
+                        <td id="T_6768f92c_25c5_11eb_b1a9_0242ac1c0002row8_col0" class="data row8 col0" >waterfront</td>
+                        <td id="T_6768f92c_25c5_11eb_b1a9_0242ac1c0002row8_col1" class="data row8 col1" >0.024456</td>
             </tr>
             <tr>
-                        <th id="T_1063feb4_245e_11eb_9a98_0242ac1c0002level0_row9" class="row_heading level0 row9" >35</th>
-                        <td id="T_1063feb4_245e_11eb_9a98_0242ac1c0002row9_col0" class="data row9 col0" >condition</td>
-                        <td id="T_1063feb4_245e_11eb_9a98_0242ac1c0002row9_col1" class="data row9 col1" >0.014938</td>
+                        <th id="T_6768f92c_25c5_11eb_b1a9_0242ac1c0002level0_row9" class="row_heading level0 row9" >111</th>
+                        <td id="T_6768f92c_25c5_11eb_b1a9_0242ac1c0002row9_col0" class="data row9 col0" >sqft_above / yr_built</td>
+                        <td id="T_6768f92c_25c5_11eb_b1a9_0242ac1c0002row9_col1" class="data row9 col1" >0.011342</td>
             </tr>
     </tbody></table>
 </div>
@@ -20710,7 +20962,7 @@ Wall time: 1min 35s
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[38]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="p">(</span><span class="n">df_imp</span>
@@ -20741,11 +20993,169 @@ Wall time: 1min 35s
 
 
 <div class="jp-RenderedImage jp-OutputArea-output ">
-<img src="data:image/png;base64,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EJ988hFr1vyVBQuWkJiYSH7+Btau/VujfaOiIhvEWR3w85+gAkhEREREmrXyimreei7wD+iN7fdsWrduLXfdNYZvvili925L9+49gTCeemo6hYV76dSpM+vX59G1qyE2tnWj+2jdujXHjv2wqG9paSnt2rUnOjqagwcPUFCwmcGDbzttLGlp6bz22it0796zbgpcQkIC6enXsnr1q1x77UDi4uKorKyksHAvXbumNrqfbt16sGvXdIqLvyUpKZn16/Pq2kpLS2ndug3x8fFUVlaybt1a//5gQaICSERERESatdKj3/u0XPW5pqamhszM4ZSXlzN+/EQSE88DYPLk6UybNomamhoSEhKZMmXGSfdx3XU38Pjj09i06R0yMoYzZMhQHntsAiNG3E6HDj+jT5++PsVyxx13kZOTTWbmcCIiIklOTmbmzKe5/vobOXLkMA89dA/gmWJ3yy1DTloAnXdeO7KyHiUr64/ExMSQlnYNERERxMTE0L9/Gvn56xk27Fbi4xPo3fsKdu5s+hXswtxud5M/qThWZ2BPqIPwxckufCZNTxcoFH8pZ8RfypnmZf/+Qi64oFNIYwjGhVDT039RtzJaS3P8eFndEat169aSl/cmCxYsPmvP1zAn6l0ItQuwt2F/HQGSJldScozaWhXeIiIiIi3R6tWvsmnTO9TUVBMXF8+ECZNDHdKPqAASEREREWliBQXbQh1CQJYuXcTmzZt+sn327GxGjhzNyJGjQxCVb1QAiYiIiIiIXzIz7yYz8+5Qh3FGXKEOQERERETEd2G43YGdfyMtx5msZ6ACSERERESajaioGA4f/i/V1VVn9OFXWg63201Z2VEiIqL8epymwImIiIhIs5GY2IFjx45w6NB/qK0N7KKiZ8rlclFbq6NQ54KIiCgSEzv495izFIuIiIiISNCFhYXRtm0CbdsmhCwGLZ3evGkKnIiIiIiIOIYKIBERERERcQxNgZOmFA6eq/OK+EM5I/5Szoi/lDPiL+XMuaveexPeWHuYVs+QJpQO/DPUQYiIiIiII1wDFDTcqAJImlI00Bf4DgjNsi0iIiIi0tKFAz8H/gVUNGxUASQiIiIiIo6hRRBERERERMQxVACJiIiIiIhjqAASERERERHHUAEkIiIiIiKOoQJIREREREQcQwWQiIiIiIg4hgogERERERFxDBVAIiIiIiLiGBGhDkCaP2NMKrAcaAeUAHdaa3c36BMOvABcD7iBp6y1L56uTVqmIOTMVOABYJ+3+/vW2gebJnoJFR/z5jfAE0BPYK61Nqtem8YahwlCzkxFY42j+JgzjwFDgRqgCphord3obYsFlgJ9gGogy1qb13SvQHyhI0ASDAuBedbaVGAekNNInz8AlwBdgauAqcaYzj60ScsUaM4AvGSt7e390QcSZ/Alb74GxgDPNNKmscZ5As0Z0FjjNL7kzIdAX2vt5cAoYJUxppW3LQs4aq29BPgd8KIxpk0TxC1+UAEkATHGnA9cCbzi3fQKcKUxpkODrhnAImttrbX2ILAGGOJDm7QwQcoZcRhf88Za+5W19mM837w2pJxykCDljDiIHzmz0Vp73Hv3UyAMzxEj8IwzOd5+u4FtwG/PcujiJxVAEqgUoNhaWwPg/b3Pu72+jkBhvftF9fqcqk1anmDkDMBQY8ynxph8Y8xVZzNgOSf4mjenorHGWYKRM6CxxknOJGfuBP5trf3We1/jTDOgAkhEmqOFQBfv9INngDeNMe1O8xgREX9prJGTMsYMAGYAw0Idi/hHBZAE6hsgyXty8YmTjC/0bq+vCOhU737Hen1O1SYtT8A5Y63db62t8t7+u3d7j7Mct4SWr3lzKhprnCXgnNFY4zg+54z3aODLwGBrra3XpHGmGVABJAGx1h4APuaHbz+GAR9559fXtxq42xjj8s6lHQy87kObtDDByBljTNKJTsaY3kBnwCItlh95cyoaaxwkGDmjscZZfM0ZY0xfYBXwe2vt9ga7WQ3c6+3XFegLbDibcYv/tAy2BMN9wHJjzBTgf3jmw2KMeRuYYq3dBqwAfgmcWEpyurV2j/f2qdqkZQo0Z54wxvTBswRpJTDCWru/KV+AhMRp88YYkw68CsQBYcaYocBo7xK1GmucJ9Cc0VjjPL78f5oPtAJyjDEnHjfCWrsDz1TJZcaYr/DkzT3W2tImfg1yGmFutzvUMYiIiIiIiDQJTYETERERERHHUAEkIiIiIiKOoQJIREREREQcQwWQiIiIiIg4hgogERERERFxDBVAIiIiIiLiGCqARERERETEMf4PDUebBhmdr2MAAAAASUVORK5CYII=
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA0AAAAHUCAYAAAATC0g+AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAADh0RVh0U29mdHdhcmUAbWF0cGxvdGxpYiB2ZXJzaW9uMy4yLjIsIGh0dHA6Ly9tYXRwbG90bGliLm9yZy+WH4yJAAAgAElEQVR4nOzde5xdVX3//9cMURASLg7jDaqJ2H4ERRFBQEUBKVZRwq8iBYVyCSgFK+INqlRR02otES/AVynRAKJ4o0IotdFguKhYEYEg8FEQpHJpQkxJAkkkmfn9sXf0ZJjJXDLnnMlZr+fjwSP77LUvn3PWtI/zdq29Tld/fz+SJEmSVILudhcgSZIkSa1iAJIkSZJUDAOQJEmSpGIYgCRJkiQVY1K7C1BRNgf2BB4C1ra5FkmSJHWmzYBnAz8DVg9sNACplfYErm93EZIkSSrCvsANA3cagNRKDwEsXfoYfX0uv96penoms2TJinaXoSayj8tgP3c++7jzldrH3d1dbLfdVlB/9xzIAKRWWgvQ19dvAOpw9m/ns4/LYD93Pvu48xXex4M+cuEiCJIkSZKKYQCSJEmSVAwDkCRJkqRiGIAkSZIkFcMAJEmSJKkYBiBJkiRJxTAASZIkSSqGAUiSJElSMbr6+4v+cSS11lTg3nYXIUmSpOZatXoNy5etbMu9u7u76OmZDDANuG9g+6RWFyTNmDmPRUvb838QkiRJar65s6azvN1FDMEpcJIkSZKKYQCSJEmSVAwDkCRJkqRiGIAkSZIkFcMAJEmSJKkYBiBJkiRJxTAASZIkSSpGxwWgiJgZEXdFxPURsV9EHDSCc+ZExLvq7ZMi4rQRnHN1ROw0HjUPuO6FEfGmJlz32Ij49hjO++Pn0XiNiJgaEe8Y7zolSZKkZurEH0J9H/DczFwcEWcBk4F5Iz05M784wuPeOLbyhhYR3cD+wLs24vz+zOwfr5o28HlMBd4BXDBe95IkSZKabcIGoIjYErgIeBHwBJCZeXjdNhM4AlgKLAD2z8w9IuJ6YAtgfkTcA+wDdEfEgcBlmfmpEdz3LGByZr4/In4NHJaZt9Zt7wJenpnHRcR9wJsy8/aIWAD8rL7fc4BvZuYZ9Tm7AF8BtgJuAV4AzMzMqwa5/T7ALZm5akBNHwCmZuYp9etnArcB04AP1p/RNsBz62ssHeLtbRMRV9Y1PAwcnZkPNL7nQT6D9doanAdMi4hbgLsz87Ah7ilJkqQC9fZOaXcJg5qwAQh4PbB1Zu4CEBHb1f++GTgE2A1YCXx33QmZuW9E9AOvzMwVG/jyPlIXAccA761fHwcMNT3uucBrgCnAPRExOzN/DVwCnJOZX42IPYCfbuB+hwJXDLJ/NnBHRJyemSuoRl6+lpmPRwTAXsDumfnIMO/n1cBumZkR8VHgc8BYg8spwNmZuccYz5ckSVIHW7x4eVvu293dRU/P5KHbW1jLaN0K7BwR50XEW4HV9f79gW9k5orMXEsVDprlYuDIiJgUEbsC2wLXD3HstzKzLzMfBe4EdoqIrYEXA18DyMybqEZuhnIw8B8Dd2bm74ErgaMjYhJwInB+wyFXjyD8ANyQmVlvXwgcMIJzJEmSpI4xYQNQZv6GamrX94EDgVsjYosW13A/8EvgDcCxwJwNPF/TOG1tLeuPrg37TE49VW5RZi4Z4pAvAH8HTAfurEeX1lkx3PWHsYb1/xZa+jlLkiRJrTJhA1BE7AiszczvUk076wWeDlwDHB4RW0XEZlTT0oayjOrZmI0xBzgBOJJqStyIZeYyqgB1JEBE7A7sOsTh0xl8+tu6ay0ElgCfpXr+ZixeFRF/Xm8fR/VZAtwNvDwiuiNiCjCSVejG47OVJEmSWmrCBiCqoPCTiLgV+G/gk5n5YL14wFVUU+RuBH61gWv8O7BnRNwSEWeMsY7Lgf2AO+oRodH6W+A9EbEQeD+wEHh0kOM2GIBqFwJ9VO9/LH4EnB0Rd1BNfzu13n858HuqqXuXAz8fwbVuAzIibh/L8tqSJElSO3T194/bisltERH7MYEfxo+IycBjmdlfT3NbAERmLm045tnAf2XmS4a51oVUq+H9azNrbqKpwL0zZs5j0dKV7a5FkiRJTTJ31vSJsAjCNOC+ge0TeRW4TvFK4F8joqt+fWJj+AHIzIeAIcNPRDwH+CHV0tXvblahkiRJUqfb5ANQZi4Ahh39iYjdqJ7nGejczLxwnMv6o8ycxyh+iHWIazwIxEiOjYibeHK/3piZJ21MDZIkSVIn2OQD0Ehl5i1Uvx3U0SbqVEBJkiRpIpjIiyBIkiRJ0rja5BdB0CZlKnBvu4uQJElSc61avYbly9qz6JWLIGjCWbJkBX19Bu9O1ds7pW2rvqg17OMy2M+dzz7ufPbx4JwCJ0mSJKkYBiBJkiRJxTAASZIkSSqGAUiSJElSMQxAkiRJkophAJIkSZJUDAOQJEmSpGIYgCRJkiQVwwAkSZIkqRgGIEmSJEnFMABJkiRJKoYBSJIkSVIxDECSJEmSimEAkiRJklQMA5AkSZKkYhiAJEmSJBXDACRJkiSpGAYgSZIkScUwAEmSJEkqhgFIkiRJUjEmtbsAlaenZ3K7S1CT9fZOaXcJarKJ3serVq9h+bKV7S5DkjQBGYDUcjNmzmPRUr+YSGqeubOms7zdRUiSJiSnwEmSJEkqhgFIkiRJUjEMQJIkSZKKYQCSJEmSVAwDkCRJkqRiFBuAIuKkiDitidc/KiLOHmT/goh40zhc/76IePHGXkeSJEkqSbHLYGfmF5t8i0OBzzb5Hk8SEZMyc02r7ytJkiRtCjo6AEXEmUBPZp5Wv+4BEnge8AFgcma+v247HXgL1WfyAHBiZj4cEQ8AL8vMRRFxNdCfmQdHxDOAmzNzx0HuuzmwO/DjIUo7MCI+Ajwd+GZmfqg+79nAF4DnAk8Dvp6Z/1y37QucX59/LdDVcL/7gMuAA4CFEXFqfZ0960MuzsxP18e+APgS0AusAT6Umd+r2/qBM6nCWw9wInAg8FfAU4C3ZuadERHAHGBLYDNgTmY+abRLkiRJmmg6fQrcxcAREbEu6L0NuDIzH2s8KCKOAnYC9s7M3YGrgVl18w+BAyLiKcA0YFq9/bq6bTAHAgsys2+I9l2AVwK7AW9umBJ3MfD5zHwF8HLgDRHxl3Wgugz4+8zcFbiOKiQ12jozX5GZM4B/pOrbXev7HBMRb6iPuxT4Wma+BDgK+GpE9DZc5/8yc0/gdOAK4EeZ+bK6tg/Xx5xcf44vzcwXA7OHeJ+SJEnShNLRI0CZeX9E/BJ4I3AlcCww2HM/hwB7ADdXgxtMAh6t2+ZTBZoHgBupRl72qvddM8Stp1OFh6FcVE9TWxERl1EFrB8C+wG9dQ0AU4Cdgf8FHs/MBfX7+mZEXDDgmhc3bB8InJqZ/cCyiPg61ajTDVSh6yv1de6IiFuAvYG59bnfqP+9mWq066r69c+Bv663rwM+HRFbUoXAoYKgJLVNb++UdpewyfMz7Hz2ceezj5+sowNQbQ7VCMi9wDbA9YMc0wXMzMwvD9J2DfAR4HdUYaiLavTndcDHBh4cEd1UAeQ9o6yzG+gH9szMJwZc8yWDHN8/4PWKUd5vKKvqf9cCqxv2r6X+e8nM70TET4CDgDOA46lGkyRpwli8eHm7S9ik9fZO8TPscPZx5yu1j7u7u+jpmTx0ewtraZfLgdcA76N6VmVgcIBqdOjkiNgOqmd4IuKlAJn5W6ov/8dQBaD5VCNJT2Tm/YNcay9gYWY+voGajoqISRGxFXA4cE1mLqcKZ2esOygi/iwinkX13NLT6ueAiIjDgG03cP0fADMioisipgBHAN+v73FL/V6IiJ2Bl1KNbI1Y/RzRw5k5hyoEvmI050uSJEnt0vEBqA4iVwBHs/40scZjLqF6NubaiLiNarrXqxoOmU81Be2hzHwQWMnQ098OZcPT3wDuolog4VbgPxqmmb0d2CUiFkbEQqrpaNtm5mrgSOD8ur79gMHC1zqfoBqpWgj8BLhk3UIH9T2Oqq9zKXB0Zi4ept6BDqdabOEXVIstnDrK8yVJkqS26OrvH2xARGMVEXcA+2XmonbXMgFNBe6dMXMei5aubHctkjrY3FnTi5z2MZ5KnTpTEvu485Xaxw1T4KYB9w1sL+EZoJbKzF3aXYMkSZKkwXX8FDhJkiRJWscAJEmSJKkYBiBJkiRJxTAASZIkSSqGAUiSJElSMVwFTi03+8yD2l2CpA63avWadpcgSZqgDEBquSVLVtDX5+9PdapSf3OgJPaxJGlT5hQ4SZIkScUwAEmSJEkqhgFIkiRJUjEMQJIkSZKKYQCSJEmSVAwDkCRJkqRiGIAkSZIkFcMAJEmSJKkYBiBJkiRJxTAASZIkSSqGAUiSJElSMQxAkiRJkophAJIkSZJUDAOQJEmSpGIYgCRJkiQVwwAkSZIkqRgGIEmSJEnFMABJkiRJKoYBSJIkSVIxJrW7AJWnp2dyu0tQk/X2Tml3CWqyZvfxqtVrWL5sZVPvIUkqkwFILTdj5jwWLfWLjaShzZ01neXtLkKS1JGcAidJkiSpGAYgSZIkScUwAEmSJEkqhgFIkiRJUjEMQJIkSZKKYQCSJEmSVAwDkCRJkqRiGICaICLmRMS7xnjuhRHxpibUdGxEfHsM550UEacNvEZETI2Id4x3nZIkSVIzGYBGICJa8oOxEdEN7A/8YKznR0TXeNaUmV/MzHMGaZoKGIAkSZK0SWnJF/uJKiLeAvwTsBL4Vr09JTNXREQ/8DHgYOB7EfFN4HxgK2AL4ILM/Gx9nR2Ai4FnA/cBfQ332Br4DPCS+rwfAu/NzLWDlLQPcEtmrhpQ5weAqZl5Sv36mcBtwDTgg8CLgG2A59bXWDrEW94mIq4EXgA8DBydmQ9ExFnA5Mx8f339P74e2NbgPGBaRNwC3J2Zhw1xT0kak97eKe0uoXj2QeezjzufffxkxQagOkRcAOydmb9eN81rgJWZuWd9/BTgwMxcHRGTgf+OiP/KzDuBzwPXZebHIuL5wK3A9+prfAa4NjNPqEd4LgWOB/5tkPsdClwxyP7ZwB0RcXpmrqAaeflaZj4eEQB7Abtn5iPDvO1XA7tlZkbER4HPAWMNLqcAZ2fmHmM8X5I2aPHi5e0uoWi9vVPsgw5nH3e+Uvu4u7uLnp7JQ7e3sJaJZi/g5sz8df36y4Mcc1HD9pbA7IhYCPwIeA7w0rptf+BCgMz8DTC/4bxDgA/UIyU3Ay8H/mKImg4G/mPgzsz8PXAlcHQ9He9EqtGoda4eQfgBuCEzs96+EDhgBOdIkiRJHaPYEaARWtGw/c9U08aOzcw1ETGPakrbcLqAQ+tgNKSI2AVYlJlLhjjkC1SjR4uAOxuC28A6x2IN64fhkbwvSZIkaZNT8gjQT4HdI2Kn+vUxwxy/LfA/dfh5MbBvQ9s1wHEAETENeF1D25XAGRGxWd2+fX3MQNMZfPobAJm5EFgCfJbq+ZuxeFVE/Hm9fVxdN8DdwMvrRRSmACNZhW4Z1XNHkiRJ0iaj2ACUmf8LnARcHRG/AHqBJ4DHhzhlJnBiRNwGnAVc19B2KrB/RNwBnAssaGh7D7AWuLWePvc9YIdBrr/BAFS7kGqBhauGOW4oPwLOrus8oK4b4HLg98Cd9fbPR3Ct24CMiNvHsry2JEmS1A5d/f397a6hbSJiSmYur7ePA2Zk5qvbUMezgf/KzJcMc9yFQGbmv7amsnE3Fbh3xsx5LFq6st21SJrA5s6aXuSDuxNJqQ9Pl8Q+7nyl9nHDIgjTqFZoXk/pzwC9OyLeSvU5/J5qcYGWy8yHqJbJHlREPIdq+eyHgXe3qi5JkiSp0xQdgDLzn6h++2dCy8wHgRjJsRFxE0/u1xsz86RxL0ySJEnaxBQdgDqRv8sjSZIkDa3YRRAkSZIklccRILXc7DMPancJkia4VavXtLsESVKHMgCp5ZYsWUFfX7mrD3a6UlecKYl9LEnalDkFTpIkSVIxDECSJEmSimEAkiRJklQMA5AkSZKkYhiAJEmSJBXDACRJkiSpGAYgSZIkScUwAEmSJEkqhgFIkiRJUjEMQJIkSZKKYQCSJEmSVAwDkCRJkqRiGIAkSZIkFcMAJEmSJKkYBiBJkiRJxTAASZIkSSqGAUiSJElSMQxAkiRJkophAJIkSZJUDAOQJEmSpGJMancBKk9Pz+R2l6Am6+2d0u4SOsqq1WtYvmxlu8uQJKkjGIDUcjNmzmPRUr/MSSM1d9Z0lre7CEmSOoRT4CRJkiQVwwAkSZIkqRgGIEmSJEnFMABJkiRJKoYBSJIkSVIxDEAFi4iTIuK0dtchSZIktYrLYBcsM7/Y7hokSZKkVjIAFSAizgR6MvO0+nUPkMBXgK7MfH+9/3TgLVR/Fw8AJ2bmwxHxAPCyzFwUEVcD/Zl5cEQ8A7g5M3dsw9uSJEmSRs0pcGW4GDgiItYF3rcBVwKPrTsgIo4CdgL2zszdgauBWXXzD4EDIuIpwDRgWr39urpNkiRJ2iQ4AlSAzLw/In4JvJEq+BwLnAYc0HDYIcAewM0RAdXfxqN123zgQKpRoRuBLmCvet81zX8Hknp7p7S7hPVMtHrUHPZz57OPO599/GQGoHLMAY6JiHuBbYDrWT8AdQEzM/PLg5x7DfAR4HdUYaiLavTndcDHmlizpNrixcvbXcIf9fZOmVD1qDns585nH3e+Uvu4u7uLnp7JQ7e3sBa11+XAa4D3AXMys39A+5XAyRGxHUBEbB4RLwXIzN8Ca4FjqALQfKpRpCcy8/7WlC9JkiRtPANQITLzceAK4GiqZ4IGtl8CXApcGxG3AT8HXtVwyHzg8cx8KDMfBFbi9DdJkiRtYpwCV5DMPAE4oeH1WQPazwHOGeLcdw54vUsTSpQkSZKayhEgSZIkScUwAEmSJEkqhgFIkiRJUjEMQJIkSZKKYQCSJEmSVAxXgVPLzT7zoHaXIG1SVq1e0+4SJEnqGAYgtdySJSvo6xv4O6zqFKX+6rQkSdo0OAVOkiRJUjEMQJIkSZKKYQCSJEmSVAwDkCRJkqRiGIAkSZIkFcMAJEmSJKkYBiBJkiRJxTAASZIkSSqGAUiSJElSMQxAkiRJkophAJIkSZJUDAOQJEmSpGIYgCRJkiQVwwAkSZIkqRgGIEmSJEnFMABJkiRJKoYBSJIkSVIxDECSJEmSimEAkiRJklQMA5AkSZKkYkxqdwEqT0/P5HaXUIxVq9ewfNnKdpchSZI0YRiA1HIzZs5j0VK/lLfC3FnTWd7uIiRJkiYQp8BJkiRJKoYBSJIkSVIxDECSJEmSimEAkiRJklQMA5AkSZKkYhiAJEmSJBXDACRJkiSpGBP2d4AiYiZwGLAY+EfgqZk5b5hz5gA3Zea5EXES8LTMPGeYc64G/j4z79mIWo8CPgjsArwnM88dUNOBwCP1rm9l5j9t4Fo/qK9x+1jrGeK6ZwGTM/P9ozzv48AvM/MbjdeIiN2Av8jMb45nnZIkSVIzTdgABLwPeG5mLl73xRvYYABqlJlfHOFxbxxbeeu5BTgCOGOI9k81hqKhRMS2wA5jDT8RMSkz14zl3KFk5keGaNoNeBNgAJIkSdImo+kBKCK2BC4CXgQ8AWRmHl63zaQKDkuBBcD+mblHRFwPbAHMj4h7gH2A7og4ELgsMz81gvuexZ9GK34NHJaZt9Zt7wJenpnHRcR9wJsy8/aIWAD8rL7fc4BvZuYZ9Tm7AF8BtqIKPC8AZmbmVesCS0T0bdSHBQcDVw/yXs4D7svMf61fvwy4DHhhXdMaIIApVMFkKM+NiGvq9/ZL4PjMfLRx5Ky+/h9fD2yr23uAjwNbR8QtwHWZ+e6NeeNqnt7eKUXcU61lH5fBfu589nHns4+frBUjQK8Hts7MXQAiYrv63zcDh1B9YV8JfHfdCZm5b0T0A6/MzBVjnb7V4CLgGOC99evjgNOGOPa5wGuowsQ9ETE7M38NXAKck5lfjYg9gJ+O4v7vjYh3AvcA/5CZdw5x3KHAFwbZfy4wNyLOzsx+4F3A+ZnZHxFQfYavzczHhqljX2C3zPzfiPgy1dTCUX+mmbkkIj5CFRwPG+35aq3Fi5e39H69vVNafk+1ln1cBvu589nHna/UPu7u7qKnZ/LQ7S2o4VZg54g4LyLeCqyu9+8PfCMzV2TmWmB2E2u4GDgyIiZFxK7AtsD1Qxz7rczsy8xHgTuBnSJia+DFwNcAMvMm4LYR3vvDwAsyc1fgcuB7EbHZwIMiYnNgD+BHA9vqwPQb4K/qAHkIMKfhkG+PIPwAXJWZ/1tvzwYOGOF7kCRJkjrCiANQRHRFxIkRcU1E3Fbve01EHL6h8zLzN1TT375PtRjArRGxxcYUPVqZeT/VlK83AMcCc+qRlMGsathey/qjZEOds6F7P5CZffX2xVTPMu04yKGvA66tw+BgPg+cDBwPXF4HtHVWjLauAdaw/t9CS/tHkiRJapXRjAB9HJgBXEA1TQzgd8DpGzopInYE1mbmd6mmnfUCTweuAQ6PiK3qEZHjNnCZZcA2o6h1MHOAE4AjqabEjVhmLqMKUEcCRMTuwK4jOTcidmjYfj1VqHpgkEOnA1ds4FJXUz3n817gvBEV/mQHR0RvvX0cVR8A3A3sWdf4bKrRueGMR59IkiRJLTWaAHQs1TMfl/GnkZB7gecPc96uwE8i4lbgv4FPZuaDmXkVcBXVFLkbgV9t4Br/DuwZEbdExFArrQ3ncmA/4I56RGi0/hZ4T0QspHpuZiHwKEBEHBkRvwPeCnwiIn5XL5oAcFFELKzf/5nAIQNXaouILuAv2cAqd/Uo0kXAvZk50ul3A10PXBYRd1GF0E/U+/8N2DEi7gD+HyN7vmk+sFVE3BoRnx9jPZIkSVJLdfX3j2xWV0Q8CDw/M1dFxO8z8+kRMYUqUPzZxhYSEfsBZ2fmHht7rWaIiMnAY/XCA7tQrVoXmbl0HK69N/DhzHzzMMd9H7ggM7+1sfdsk6nAvTNmzmPR0pXtrqUIc2dNdxEEjTv7uAz2c+ezjztfqX3csAjCNOC+ge2jWQXuP4HPRMRp8MdRi08Acze+zE3CK4F/rd83wInjEX4AMvNGYMjwU6869w3gF8B3xuOekiRJUolGE4BOo3qO5lHgKVQP3s+jmhq20TJzAdUqaBsUEbux/gpo65ybmReORy2Dycx5jOKHWMf53jcBOw13XEQ8g8FrvDwzPz7uhUmSJEmbmBEFoHqRgsOAtwFbA88D/iczH25ibYPKzFvY8I99FiszF+FnI0mSJA1pRAEoM9dGxGcy88tUy0Qvam5ZkiRJkjT+RjMFbm5EvDkzS3nmR00y+8yD2l1CMVatXjP8QZIkSQUZTQDaAvh2RPwE+B8afhQ0M8flOSCVYcmSFfT1jfo3ZSVJkqSNNpoAdHv9nyRJkiRtkkYcgDLzY80sRJIkSZKabcQBKCIOGKotM68Zn3IkSZIkqXlGMwVu9oDXvcBTgd8Bzx+3iiRJkiSpSUYzBW5a4+v6t4HOBJaPd1GSJEmS1AzdYz0xM9cC/wR8cPzKkSRJkqTmGXMAqv0l0DcehUiSJElSs41mEYT1fvsH2JLqt4FOGe+iJEmSJKkZRrMIwlEDXj8G/Cozl41jPZIkSZLUNKMJQHtm5tkDd0bEezPzM+NYkyRJkiQ1xWieAfrIEPvPHI9CJEmSJKnZhh0BavgB1M0iYn+gq6H5+bgMtiRJkqRNxEimwK37AdQtgC837O8HHgb+fryLkiRJkqRmGDYArfsB1Ii4ODP/tvklSZIkSVJzjPgZIMOPJEmSpE3daH4HaGvgLOC1wPY0PAuUmc8d98okSZIkaZyNZhW484HdgY8DT6d69ud+4Jwm1CVJkiRJ4240Aegg4C2ZeQWwtv73b4Cjm1KZJEmSJI2z0QSgbuDRentFRGwDPAS8YNyrkiRJkqQmGPEzQMCtVM//zAeup5oStwL4VRPqkiRJkqRxN5oAdCJ/WvjgVOCfgW0BV4fTqPT0TG53CR1r1eo1LF+2st1lSJIkTVgjDkCZ+ZuG7UXACU2pSB1vxsx5LFrql/RmmDtrOsvbXYQkSdIENpplsLuoQs+RwPaZ+ZKIeA3wrMz8ZrMKlCRJkqTxMppFED4OzAAuANb97s/vgNPHuyhJkiRJaobRBKBjgTdl5mVAf73vXuD5412UJEmSJDXDaALQZlSrvsGfAtDkhn2SJEmSNKGNJgBdDXwmIjaHPz4T9AlgbjMKkyRJkqTxNmwAiohn1ZvvBZ4N/B+wDdXIz/PwGaCWiYiTIuK0Jl7/qIg4e5D9F0bEvkOcMyci3tWsmiRJkqTxNJJV4H4FbJ2Zy4D/LyKuBj4K/E9mPtzU6rSezPxik29xKPDZQe7rkueSJEnqCCMJQF0DXu+dmT9rRjGCiDgT6MnM0+rXPUBSjbZ9AJicme+v204H3kLVjw8AJ2bmwxHxAPCyzFxUB9b+zDw4Ip4B3JyZOw5y382B3YEfD9K2ADg7M6+KiB2Ai6lGA+8D+sb1A5AkSZKaaCTPAPUPf4jG0cXAERGxLpy+DbgyMx9rPCgijgJ2ogqku1M9ozWrbv4hcEBEPAWYBkyrt19Xtw3mQGBBZg4XaD4PXJeZuwDvAl47qncnSZIktdFIRoAmRcT+/GkkaOBrMvOaZhRXosy8PyJ+CbwRuJJq+fHBnvs5BNgDuDkioOrLR+u2+VSB5gHgRqq+2qveN1RfTQeuGEGJ+wPvrmv9TUTMH8E5aqHe3intLmFC1KDmso/LYD93Pvu489nHTzaSALQI+HLD6yUDXvfjbwGNtznAMRFxL9WCE9cPckwXMDMzvzxI2zXAR6h+qHZ+fezr6v8+NvDgiOimCkfvGY/i1V6LFy9v6/17e6e0vQY1l31cBvu589nHna/UPu7u7qKnZ/KQ7cMGoMycOp4FaUQuB84B3gfMyczBpiFeCZwaEf+emUvrZ3hemJm3ZuZvI2ItcAzwSqoA9HHgicy8f5Br7QUszMzHR1DbNcBxwMyImEYVqn4w2jcoSZIktcNofgdILVIHkSuAo6meCRrsmEuAS4FrI+I24OfAqxoOmQ88npkPZeaDwEqGnv52KJFREGYAAB8nSURBVCOb/gZwKrB/RNwBnAssGOF5kiRJUtt19fe7xkHp6jCzX2YuavKtpgL3zpg5j0VLVzb5VmWaO2t624e6Sx1uL4l9XAb7ufPZx52v1D5umAI3jWrV4vWM5Bkgdbh6RTdJkiSp4zkFTpIkSVIxDECSJEmSimEAkiRJklQMA5AkSZKkYrgIglpu9pkHtbuEjrVq9Zp2lyBJkjShGYDUckuWrKCvz+XXJUmS1HpOgZMkSZJUDAOQJEmSpGIYgCRJkiQVwwAkSZIkqRgGIEmSJEnFMABJkiRJKoYBSJIkSVIxDECSJEmSimEAkiRJklQMA5AkSZKkYhiAJEmSJBXDACRJkiSpGAYgSZIkScUwAEmSJEkqhgFIkiRJUjEMQJIkSZKKYQCSJEmSVAwDkCRJkqRiGIAkSZIkFcMAJEmSJKkYk9pdgMrT0zO53SV0jFWr17B82cp2lyFJkrTJMACp5WbMnMeipX5pHw9zZ01nebuLkCRJ2oQ4BU6SJElSMQxAkiRJkophAJIkSZJUDAOQJEmSpGIYgCRJkiQVwwAkSZIkqRgGID1JRPRHxAZ/rCcito2ID7aqJkmSJGk8GIA0VtsCBiBJkiRtUvwhVG1QRJwNvBZ4KvAIcHxm/hY4D9g2Im4BHs/MV7axTEmSJGlEDEAazqcy8/0AEXEC8C/AEcApwE2ZuVs7ixP09k5pdwlPMhFr0viyj8tgP3c++7jz2cdPZgDScN4QEacAk/HvZUJavHh5u0tYT2/vlAlXk8aXfVwG+7nz2cedr9Q+7u7uoqdn6MfZfQZIQ4qI5wHnAEdm5ouB44Et2luVJEmSNHYGIG3I1sAfgIcjohs4qaFtGbBlRDgqJEmSpE2GAUhDysyFwLeAO4CfAvc2tP0euBRYGBE/bk+FkiRJ0uj4v97rSTKzq2H7VODUhuaPNrSd2Mq6JEmSpI3lCJAkSZKkYhiAJEmSJBXDACRJkiSpGAYgSZIkScUwAEmSJEkqhqvAqeVmn3lQu0voGKtWr2l3CZIkSZsUA5BabsmSFfT19be7DEmSJBXIKXCSJEmSimEAkiRJklQMA5AkSZKkYhiAJEmSJBXDACRJkiSpGAYgSZIkScUwAEmSJEkqhgFIkiRJUjEMQJIkSZKKYQCSJEmSVAwDkCRJkqRiGIAkSZIkFcMAJEmSJKkYBiBJkiRJxTAASZIkSSqGAUiSJElSMQxAkiRJkophAJIkSZJUDAOQJEmSpGIYgCRJkiQVY1K7C1B5enomt7uECW/V6jUsX7ay3WVIkiR1HAOQWm7GzHksWuqX+w2ZO2s6y9tdhCRJUgdyCpwkSZKkYhiAJEmSJBXDACRJkiSpGAYgSZIkScUwAEmSJEkqhgFIkiRJUjEmXACKiP6IGNUPxUTE1Ih4x4B990XEi8e3uuaLiKMi4uwmXHdqRDwyhvP2iIhLB7tGRJwVEU8dzzolSZKkZppwAWiMpgLvGO6gwUTERPstpEOB74715IjYbBxrITNvysy3D9H8UcAAJEmSpE3GRPvyv84HImI68DTgQ5n5HYB6JCKAzYG7geMzcylwHjAtIm4B7s7Mw+rrHB4R/wY8Gzg7M8+tr3MfcBlwALAwIk4FvgDsWZ93cWZ+uj72BcCXgF5gTV3P9+q2fuBMqtDSA5wIHAj8FfAU4K2ZeWdEBDAH2BLYDJiTmU8a5YmIzYHdgR8P2L8n8JXMfHHDvluBv6MKIJ8Hfg68rK7nqqE+2IiYBfwl0AWcnJnXR8R+9eezR33MH18PbGu4znn15o8jog/YLzP/b6j7SpIkSRPBRA1AazNztzo4/Dgirs/MRcCpmfkIQETMBE4HzgBOYZAv6cCWmblPREwFbo+IOZm5om7bOjNfUV/rX6hGw3YFpgA/iYiFmfmfwKXABZk5OyJ2Aa6LiJ0zc3F9nf/LzD0j4q3AFcARmfkPEfFB4MPAUcDJwJWZ+cn6ftsN8b4PBBZkZl/jzsz8WUSsiIjXZua1EbEv0JeZP64DyouAd2bmT4b5XHuAWzPzffV5X4+InYY5Z1CZeUpEnAy8suEz1Tjq7Z3S7hLGbFOuXSNjH5fBfu589nHns4+fbKIGoNkAmZkRcTOwN3Al8LcR8XaqUY+tgF8Nc53L6uvcFxFLgR2Bu+q2ixuOO5AqXPUDyyLi68CBEXEDsBvwlfo6d9SjTHsDc+tzv1H/ezPQn5nrRl9+Dvx1vX0d8OmI2BL4Yf3fYKZThajBfJ4qSF1LFfjOa2j79QjCD8AfgK/W72VBRKykGlHTBLR48fJ2lzAmvb1TNtnaNTL2cRns585nH3e+Uvu4u7uLnp6hlxTYZJ4Bqkc9/g74q8zclWqq1xbDnLaqYXst6we+8Rq1WHePtcDqwe5XT+HbF7iHasTqkoEXiYhuqiD2/SHu8y1g74h4GbA/8LWGto19L2tY/29huM9VkiRJ2iRN1AB0HEBE/DnVcy03AtsCjwJL6mdljm84fhmwzUbc7wfAjIjoiogpwBHA9zNzOXALcExdz87AS+t6Rqx+jujhzJwDfAx4xSCH7QUszMzHB7tGZj4BfJlqJOzSoY4bxlOBt9U17Uv1jNVdwG+A50fEdhHRBRw5wustZ+M+d0mSJKmlJmoAmhQRv6B6mP+d9fM/36MaQfkV1TSwmxuOvw3IiLg9Ir49hvt9gmpRgIXAT4BL1i10ALwdOCoibqN6Hujohud/RupwqsUWfkG12MKpgxxzKENPf1vnQmAH4P+N8v7rLAF2q9/L+cCRmfmHzHwQmEU1be/HwEMjvN4s4JqIuCUith1jTZIkSVLLdPX397e7BgERcQfVSmqLNnDMUVSh5eDWVTaupgL3zpg5j0VLV7a7lglt7qzpm+yc3VLnG5fEPi6D/dz57OPOV2ofNzwDNA24b2D7RF0EoTiZucuG2iPiv4CdgENaU5EkSZLUeQxAm4jMfP1IjouIL1KtUtdozSBLhEuSJEnFMQB1mMw8qd01SJIkSRPVRF0EQZIkSZLGnSNAarnZZx7U7hImvFWr17S7BEmSpI5kAFLLLVmygr4+Vx+UJElS6zkFTpIkSVIxDECSJEmSimEAkiRJklQMA5AkSZKkYhiAJEmSJBXDACRJkiSpGAYgSZIkScUwAEmSJEkqhgFIkiRJUjEMQJIkSZKKYQCSJEmSVAwDkCRJkqRiGIAkSZIkFcMAJEmSJKkYBiBJkiRJxTAASZIkSSqGAUiSJElSMQxAkiRJkophAJIkSZJUDAOQJEmSpGJMancBKk9Pz+R2l9ASq1avYfmyle0uQ5IkSQ0MQGq5GTPnsWhp5weDubOms7zdRUiSJGk9ToGTJEmSVAwDkCRJkqRiGIAkSZIkFcMAJEmSJKkYBiBJkiRJxTAASZIkSSqGAWiCi4ipEfGOjbzGVyLilxHxjYlUlyRJktRqBqCJbyowpqAREZMi4pnAW4BdM/NvBjlms1bXJUmSJLWLP4TaAhHxTuAlmXlKRLwC+Cnwisz8WUScD9wCvBYIYHPgbuD4zFwKnAdMi4hbgLsz87CICOCzwPbAU4HPZuZX6nv1Ax8DDgZuAF4PbAncHBEXAUuBo4DlwJ8DR0XEs4BPApsBi4F3ZubdEbFffZ+fAvsA/cARmXnnYHU16/OTJEmSxosBqDXmA6fV268DflL/+7P631nA5Zn5CEBEzAROB84ATgHOzsw96rZJwNeAt2fmXRExBbgpIn6SmXfV91iZmXvWx08FbsrM3erXxwJ7Ay/NzHsi4hnA94HXZuYdETEDuBTYq77Wi4DjMvOdEfFh4Ezg7QPr0uB6e6e0u4S2KPV9l8Q+LoP93Pns485nHz+ZAagF6tGUp0XEjlSB50PAhyPiUmDzOoi8NyLeTjWisxXwqyEu9xfAzsBl1UAQUI0a7QysC0AXDVPSDZl5T729F3BrZt5Rv/4KcH4drOry8xf19o3Am0fwllVbvHh5u0toud7eKUW+75LYx2Wwnzuffdz5Su3j7u4uenomD9luAGqda4A3Ac/MzAURcS7VNLVrImJf4O+AV2bm4oh4G0M/X9MFPLJuRGcIK4apZbj2Rqsattfi34wkSZI2YS6C0Drzqaa0/ah+/aP69XxgW+BRYElEbA4c33DeMmCbhtcJPB4RR6/bEREvjIitx1jXjcBLI+KF9etjgF9k5nD/c8HAuiRJkqQJzwDUOtcAz6MKPNT/Pq/e/z3gHqppb9cCNzecdxuQEXF7RHw7M9dQTUM7IiJui4hfAudTTZ0btcxcDBwNfC0ibqNaIOGoEZy6Xl1jubckSZLUal39/f3trkHlmArcO2PmPBYtXdnuWppu7qzpRc67LXW+cUns4zLYz53PPu58pfZxwzNA04D7ntTe6oIkSZIkqV0MQJIkSZKKYQCSJEmSVAwDkCRJkqRiGIAkSZIkFcMftVTLzT7zoHaX0BKrVq9pdwmSJEkawACklluyZAV9fS6/LkmSpNZzCpwkSZKkYhiAJEmSJBXDACRJkiSpGAYgSZIkScUwAEmSJEkqhgFIkiRJUjEMQJIkSZKKYQCSJEmSVAwDkCRJkqRiGIAkSZIkFcMAJEmSJKkYBiBJkiRJxTAASZIkSSqGAUiSJElSMQxAkiRJkophAJIkSZJUDAOQJEmSpGIYgCRJkiQVwwAkSZIkqRgGIEmSJEnFmNTuAlSenp7JLbnPqtVrWL5sZUvuJUmSpE2DAUgtN2PmPBYtbX4wmTtrOsubfhdJkiRtSpwCJ0mSJKkYBiBJkiRJxTAASZIkSSqGAUiSJElSMQxAkiRJkorhKnCSJEnaZPT397NixaOsXLmCvr617S5nQlu0qJu+vr52l9FUkyY9le2262WzzUYeazb5ABQRM4HDgMXAPwJPzcx5G3G9+4A3Zebt41Lg6O9/IfDdzLxqnK97LNX7OmyU550EPC0zz2m8RkRMBQ7KzAvGs05JkqQNWbp0MV1dXTz96c9ks80m0dXV1e6SJqxJk7pZs6ZzA1B/fz+PPbaMpUsXs/32zx7xeZ0wBe59wL6ZuS+wH3BQe8sZu4joBvYHfjDW8yNiXP+/QGZ+MTPPGaRpKvCO8byXJEnScP7wh1Vsu20PkyY9xfBTuK6uLrbaamvWrPnDqM6bMCNAEbElcBHwIuAJIDPz8LptJnAEsBRYAOyfmXtExPXAFsD8iLgH2AfojogDgcsy81ND3OttwKnAU+td78/M+Q2HHBURfwlsA3w2M8+tz9sT+DywFfAY8O7M/Fk9arMwMz9XH/di4EpgJ2AK8BngJXWtPwTem5mDjdnuA9ySmasG1PsBYGpmnlK/fiZwGzAN+GD9mW0DPLe+xtLBP2W2iYgrgRcADwNHZ+YDEXEWMDkz319f/4+vB7Y1OA+YFhG3AHePdmRJkiRpbPrp6uqE/w1f42EsIXjCBCDg9cDWmbkLQERsV//7ZuAQYDdgJfDddSdk5r4R0Q+8MjNXbODL+kD/BXw9M/sjIoD5wI4N7c/IzJfXQeMXEXEdcBfwHeC4zJxfh6zvRMQLgDlUwehz9fnHAXPq638GuDYzT6hHeC4Fjgf+bZC6DgWuGGT/bOCOiDg9M1dQjbx8LTMfr8pnL2D3zHxkmPf9amC3zMyI+Ghd71iDyynA2Zm5xxjPb4ne3intLqFIfu6dzz4ug/3c+TbFPl60qJtJkwxAI1XCZ9Xd3T2qv+WJFIBuBXaOiPOoRnn+o96/P/CN+os/ETEbOHMj77UT8PWI2IFqtOlZEfGszHy4bp8NkJn/GxH/QTW1rh/4w7qRosz8QUT8AYjMvCEipkTErsCdwJFUIzFQhbdXRMT76tdbAr8boq6DgSeNWmXm7+uRm6Mj4t+AE4HXNRxy9QjCD8ANmZn19oXAwhGcs0lbvHh5u0soTm/vFD/3Dmcfl8F+7nybah/39fU96bmWKVs/jS02H/+vtatWr2H5spXjft1W6fRngNbp6+tb72+5u7uLnp7JQx4/YQJQZv4mIl5E9cX+DcA/14GiGb4OvC8zv1uPyjxONT1tY1wEHEsV3u7MzN/W+7uAQzPzNxs6OSJ2ARZl5pIhDvkC1ejRovr6v25oW7ERdQOsYf3nwTb2s5AkSWqZLTafxJvfN9gkmo0zd9Z0RhIRDzvszXz60+fw/Oe/YNxrGM511y1g++23Z5ddXtzye4+nu+66g29842t89KMzm36vCTMmFhE7Amsz87vAaUAv8HTgGuDwiNgqIjajml42lGVUz8IMZ1vg3nr7eGDzAe3H1jX1Am+kem4ngadGxP512wHAU+r9ABdTjfycAHyl4VpXAmfUtRMR20fEtEFqms7g098AyMyFwBLgs1TP34zFqyLiz+vt46g+W4C7gZfXiyhMAd40gmuN9LOWJElSE6xdu5brr1/AnXf+st2lbLQXvnCXloQfmEAjQMCuwKfqZ1o2Az6ZmQ8CD0bEPlRT5NYtgrDDENf4d+Bv6wfzh1wEAXgP8N2IWAp8jypYNHokIn5O9QX/k3X4ICLeAnw+ItYtgnBYZv4BIDPvj4g7qKbLHTngXp8Gbq2fV1pd77uX9U0H3jZEvetcCPwzMNYlsn8EnF2HoIeBo+v9lwN/QzV9737g5yO41m1ARsTtwF0ugiBJkkr3rne9g4idufPOX/Lwww9x2GFH0Nvby3e+800eeWQxJ598KgcccCAAr371Hhx33Ilcf/21rF69ine+8xT22696wuHGG3/Ml750Ln19fWy77XZ84AMfYscd/4ybb76Jz33ubCJ25le/SmbMeAc33HAdN93038ydewV/8zdv4xWv2Juzzvowjz32GE888Qf22edVnHzyqQDMnv0l7r//tzz22AoefPABdthhRz7xiX9hiy224IknnuBLXzqPn/70x3R3b8ZznrMDn/zk2QB89atzuPbaa1i7di3bb/8MTj/9w/T0bD/k57BgwXwuuOB8Nt98c/bf/0AuuOB85s27ji233JKPfexM7r//tzzxxB/YYYc/4x/+4SNsvfXW3HzzTZx33ueYPfsSHnroQU444WgOOeSvufHGH7Fq1SrOOOMjvPSlu41LP02YAJSZ/wn85xBtHwY+DBAR+1E9F7Surath+16qxRKGu9clwCUNuz7U0Da13vyHQc77GX96tmew6x44yL7lwN9tqJ6IeDaw5XDT5Kje97mZ+cfJnJl51jDnrDtuDv9/e/ceHFV5xnH8m5AEcoEkIsXKXSWvclGUYpFGHaedatUi1CKXihjwglWx44Q6FWQAwfEyjlYiELBctFQxVpGCQDoO2qaO0zL1gqKPWAU0SMFQIIAkJNn+sUsIIQkb9pKTnN9nhsnued89+yxP3sw+57znPcHFGhpqqwRGNtI2s87j2n2YWRXhnSkSERER8Y09e3ZTULCIvXvLGD16BDfdNI6FC5ewZctHTJv229oCCIIX7y9b9id27NjG5MmTuOiiiwGYM2cG8+Ytok+fc1izZhWzZk1n8eLlAHz55RdMnfogAwZcCEBu7lucf/4F3HjjaAAqKip47LGnSEtLA6qZMuVu3n33HYYOHQaA2ScsXvw8GRkZ3H//PRQXr2P48JG88MJSdu4sZcmSFSQnJ7Nv3z4ANmx4g9LSUgoLl5GYmMhrr71CQcHTjZ6t2bu3jMcff4TCwqX06NGTlStXnNB+3335ZGVlAbBo0XxWrFjOXXfde9J+9u/fz4ABF3LnnXdTXLyOhQufYcGCJaeblhN4pgDyMzP7huAy2Q1yzp1NcBreLmBKvOISERERkea56qofk5iYyJlndiEzM4srrwwet3fuAvbs2U1FRQXt2wevvrj++hsA6NmzNzk5jo8/3gwkcO65OfTpcw4A1147nCeffIzDhw8B0L17j9ripyE1NTXMn/97Nm/+EAhQVlbG1q2f1RZAl146lI4dgyum9es3gNLS4Npc77xTwj33/Ibk5GSA2iKlpORvfPrpJ0yceDMA1dVVZGQ0vsDAli0fkZPj6NGjJwDXXXcD8+Ydv6Xk+vVrKC5eT1XVUb777khtv/pSU9P40Y8uB6B//4EUFDzd6Hs2V6srgMzsLeCUSy875wbR8BmPAjN7LsphxVRoKqALp69zbhMn5/VdM5sc9cBERERE5AQpKccvLU9MTCQlJXjbyXbt2gHB63YikZqa1mT7ypUrKC8/wKJFy0hPT2Xu3IeprKxoNL5TxRMIBJgwYWJtsRaJDz54j1Wr/syCBUvIzs6muHg9q1e/2mDflJTkenFWRfz+x7S6AihcZvY+YUyHa2u8fl8eERERkWg7UlHFX56M/At6Q/uNpbVrV3Prrbfx1Vc72LrV6N9/IJDAo4/OZvv2bfTq1Zt169bQt68jLS29wX2kp6dz8ODxBYHLy8vp3PlM2rdvz+7duykpeZsRI248ZSzDhuXy8ssv0r//wNopcFlZWeTmXkFR0UtcccVVdOrUicrKSrZv30bfvjkN7qdfvwF89tlsSku/plu37qxbd/zS9fLyctLTM8jMzKSyspK1a1c37z8sStpsASQiIiIi/lB+4Luwlqv2murqavLyxnHkyBGmTn2Q7OwzAJg+fTazZk2jurqarKxsZsx4uNF9XH31tcydO4uNG99k9OhxjBo1hoceeoDx42+ia9euDB48JKxYbr75VgoLC8jLG0dSUjLdu3dnzpzHueaa69i/fx/33nsHEJxiN3LkqEYLoDPO6Ex+/u/Iz59Chw4dGDbscpKSkujQoQNDhw6juHgdY8f+gszMLAYNupgtW+K/gl1CIBCI+5uKb/Xm5NXvYqa137ystWqtN9aT8CnH/qA8t32tNce7dm3nrLN6tXQYEcvN/UHtymix0lI3Qj18+FDtGau1a1ezZs3rLFjwh5i9X/3fiTo3Qu0DbKvfX2eAJO7Kyg5SU6PCW0RERKQtKip6iY0b36S6uopOnTJ54IHpLR3SCVQAiYiIiIjEWUnJppYOISJLly7m7bc3nrT9qacKmDBhEhMmTGqBqMKjAkhERERERJolL+928vJub+kwTktiSwcgIiIiIhK+BAKB+F/XIt50OusZqAASERERkVYjJaUD+/Z9S1XV0dP68ittRyAQ4NChAyQlpTTrdZoCJyIiIiKtRnZ2Fw4e3M/evf+lpiaym4q2dYmJidTUtO2zZUlJKWRnd2nea2IUi4iIiIhI1CUkJNCxYxYdO2a1dCie11qXOo81TYETERERERHfUAEkIiIiIiK+oSlwEk/tIHh3XmnblOO2Tzn2B+W57VOO2z4/5rjOZ27XUHuCVs+QOMoF/t7SQYiIiIiIL1wOlNTfqAJI4qk9MAT4BtCyLSIiIiISC+2A7wP/AirqN6oAEhERERER39AiCCIiIiIi4hsqgERERERExDdUAImIiIiIiG+oABIREREREd9QASQiIiIiIr6hAkhERERERHxDBZCIiIiIiPiGCiAREREREfGNpJYOQFo/51wOsBzoDJQBt5jZ1np92gHPANcAAeBRM3vuVG3iHVHI80zg18DOUPd/mNnd8YlewhFmjn8KPAIMBOaZWX6dNo1lj4tCjmeicexpYeb4IWAMUA0cBR40sw2htjRgKTAYqALyzWxN/D6BhCMKeV4G/AT4NtS9yMzmxif6lqczQBINC4FnzSwHeBYobKDPr4DzgL7AZcBM51zvMNrEOyLNM8DzZjYo9E9fmrwnnBx/AdwGPNFAm8ay90WaY9A49rpwcvxPYIiZXQhMBFY651JDbfnAATM7D/g58JxzLiMOcUvzRJpnCB6kOjaWfVP8gAogiZBz7nvAJcCLoU0vApc457rU6zoaWGxmNWa2B1gFjAqjTTwgSnkWDws3x2b2uZm9T/DIcH3Kv4dFKcfiYc3I8QYzOxx6+iGQQPBMAgTHcWGo31ZgE/CzGIcuzRClPPuaCiCJVA+g1MyqAUI/d4a219UT2F7n+Y46fZpqE2+IRp4BxjjnPnTOFTvnLotlwNJs4ea4KRrL3haNHIPGsZedTo5vAf5jZl+Hnmsce1808gxwv3Nus3NulXPugtiF6z0qgEQkXhYCfUKn4p8AXnfO6UiUSOuicdyGOOeuBB4GxrZ0LBI7jeR5GnCemQ0EXgXWh67j9AUVQBKpr4BuxwZN6OfZoe117QB61Xnes06fptrEGyLOs5ntMrOjocd/DW0fEOO4JXzh5rgpGsveFnGONY49L+wch87e/REYYWZWp0nj2PsizrOZlZpZTejx80AG0D0OsXuCCiCJiJntBt7n+FGFscB7ofn/dRUBtzvnEkNzVEcAr4TRJh4QjTw757od6+ScGwT0BgzxhGbkuCkayx4WjRxrHHtbuDl2zg0BVgK/NLN/19tNEXBnqF9fYAiwPpZxS/NEI8/1xvLVBFeKK41l3F6iZbAlGiYDy51zM4D/EZxninPuDWCGmW0CXgB+CBxbonG2mX0ZetxUm3hHpHl+xDk3mOAf2UpgvJntiucHkFM6ZY6dc7nAS0AnIME5NwaYFFpaVWPZ+yLNscax94Xzt3o+kAoUOueOvW68mW0mOLVxmXPuc4J5vsPMyuP8GeTUIs3zcudcV6AGOAAMNzPfLHySEAgEWjoGERERERGRuNAUOBERERER8Q0VQCIiIiIi4hsqgERERERExDdUAImIiIiIiG+oABIREREREd9QASQiIiIiIr6hAkhERERERHzj/4tIJJwDsujmAAAAAElFTkSuQmCC
 "
 >
 </div>
 
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Feature-selection-using-feature-importances">Feature selection using feature importances<a class="anchor-link" href="#Feature-selection-using-feature-importances">&#182;</a></h1>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[39]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cols_zero_imp</span> <span class="o">=</span> <span class="n">df_imp</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;Importance_gain == 0.0&quot;</span><span class="p">)[</span><span class="s1">&#39;Feature&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">cols_zero_imp</span><span class="p">),</span> <span class="n">cols_zero_imp</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[39]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>(50,
+ [&#39;age_after_renovation_cat&#39;,
+  &#39;age_after_renovation_sq&#39;,
+  &#39;age_cat&#39;,
+  &#39;bathrooms_sq&#39;,
+  &#39;bedrooms_sq&#39;])</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[40]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">features2</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">features</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cols_zero_imp</span><span class="p">]</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">features2</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[40]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>143</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[41]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="n">params_xgb</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> 
+    <span class="n">random_state</span><span class="o">=</span><span class="n">SEED</span><span class="p">,</span>
+    <span class="n">objective</span><span class="o">=</span><span class="s1">&#39;reg:squarederror&#39;</span><span class="p">,</span>
+    <span class="n">n_estimators</span><span class="o">=</span><span class="mi">1200</span><span class="p">,</span>
+    <span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">reg_alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">reg_lambda</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">subsample</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">gamma</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">min_child_weight</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">colsample_bytree</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span>
+    <span class="p">)</span>
+
+<span class="c1"># log transform target</span>
+<span class="n">ytrain_log1p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log1p</span><span class="p">(</span><span class="n">ytrain</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">xgboost</span><span class="o">.</span><span class="n">XGBRegressor</span><span class="p">(</span><span class="o">**</span><span class="n">params_xgb</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df_Xtrain</span><span class="p">[</span><span class="n">features2</span><span class="p">],</span> <span class="n">ytrain_log1p</span><span class="p">)</span>
+
+<span class="n">ypreds_log1p</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df_Xtest</span><span class="p">[</span><span class="n">features2</span><span class="p">])</span>
+<span class="n">ypreds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expm1</span><span class="p">(</span><span class="n">ypreds_log1p</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ytest:&#39;</span><span class="p">,</span> <span class="n">ytest</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ypreds: &#39;</span><span class="p">,</span> <span class="n">ypreds</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">print_regr_eval</span><span class="p">(</span><span class="n">ytest</span><span class="p">,</span><span class="n">ypreds</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">features2</span><span class="p">))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>ytest: [285000. 239950. 460000.]
+ypreds:  [323667.22 207549.45 526775.1 ]
+
+             RMSE : 108,184.48
+Explained Variance: 0.913972
+         R-Squared: 0.913156
+Adjusted R-squared: 0.910206
+
+
+CPU times: user 2min 43s, sys: 347 ms, total: 2min 43s
+Wall time: 1min 22s
+</pre>
+</div>
 </div>
 
 </div>
@@ -20760,7 +21170,7 @@ Wall time: 1min 35s
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[42]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">time_taken</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">time_start_notebook</span>
@@ -20786,7 +21196,7 @@ Wall time: 1min 35s
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Time taken to run whole notebook: 0 hr 4 min 56 secs
+<pre>Time taken to run whole notebook: 0 hr 5 min 48 secs
 </pre>
 </div>
 </div>

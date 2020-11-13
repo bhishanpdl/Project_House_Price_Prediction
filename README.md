@@ -21,13 +21,19 @@ I tried various scikit learn algorithms including stacking and blending. I had c
 ![](images/boost_res.png)
 
 <h1 style="background-color:tomato;"> Modelling with featuretools</h1>
-I tried xgboost with transform primitive "divide_numeric" in the module featuretools and created large number of cross features. Then combined these featues with data cleaning features. Then I used the xgboost modelling and got the following results:
+
+Here I used the module `featuretools` to create the features.
+I used none of aggreation primitives and only one transform primitive "divide_numeric" to create new features using featuretools. Then I also created domain knowledge features such as boolean features and log-transform large numeric features but did not create dummy variables from them.
+Few notes:
+- Using both mutliply and divide primitives gave worse results than only using divide primitive.
+- Removing zero feature importance features not not removing gave almost same RMSE.
+- Using log(target) gave better results (note: we need to inverse log-transform to do model evaluation).
 
 ```
-             RMSE : 109,087.18
-Explained Variance: 0.912569
-         R-Squared: 0.911701
-Adjusted R-squared: 0.907997
+             RMSE : 108,184.48
+Explained Variance: 0.913972
+         R-Squared: 0.913156
+Adjusted R-squared: 0.910206
 ```
 
 
@@ -65,4 +71,6 @@ Adjusted R-squared: 0.871464
 ![](images/bedroom_bathrooms_waterfron_view.png)
 ![](images/bedroom_counts.png)
 
+<h1 style="background-color:tomato;">Boosting Params Comparison</h1>
 
+![](images/boosting_comparison.png)
