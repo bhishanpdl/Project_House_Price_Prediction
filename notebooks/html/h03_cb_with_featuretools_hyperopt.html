@@ -3,17 +3,17 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>h03_cb_with_featuretools</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>h03_cb_with_featuretools_hyperopt</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
 
 <style type="text/css">
     pre { line-height: 125%; margin: 0; }
-td.linenos pre { color: #000000; background-color: #f0f0f0; padding-left: 5px; padding-right: 5px; }
-span.linenos { color: #000000; background-color: #f0f0f0; padding-left: 5px; padding-right: 5px; }
-td.linenos pre.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
-span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+td.linenos pre { color: #000000; background-color: #f0f0f0; padding: 0 5px 0 5px; }
+span.linenos { color: #000000; background-color: #f0f0f0; padding: 0 5px 0 5px; }
+td.linenos pre.special { color: #000000; background-color: #ffffc0; padding: 0 5px 0 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding: 0 5px 0 5px; }
 .highlight .hll { background-color: var(--jp-cell-editor-active-background) }
 .highlight { background: var(--jp-cell-editor-background); color: var(--jp-mirror-editor-variable-color) }
 .highlight .c { color: var(--jp-mirror-editor-comment-color); font-style: italic } /* Comment */
@@ -14270,6 +14270,43 @@ a.anchor-link {
 <a href="https://bhishanpdl.github.io/" , target="_blank">Bhishan Poudel,  Data Scientist, Ph.D Astrophysics</a> .
 </div>
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%html</span>
+<span class="p">&lt;</span><span class="nt">marquee</span> <span class="na">style</span><span class="o">=</span><span class="s">&#39;width: 30%; color: blue;&#39;</span><span class="p">&gt;&lt;</span><span class="nt">b</span><span class="p">&gt;</span>Author: Bhishan Poudel<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;&lt;/</span><span class="nt">marquee</span><span class="p">&gt;</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<marquee style='width: 30%; color: blue;'><b>Author: Bhishan Poudel</b></marquee>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
@@ -14321,6 +14358,9 @@ It includes homes sold between May 2014 and May 2015.</p>
     <span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">watermark</span>
     <span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">featuretools</span>
     <span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">catboost</span>
+    <span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">hyperopt</span>
+    <span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">ipywidgets</span>
+    <span class="err">!!</span><span class="n">jupyter</span> <span class="n">nbextension</span> <span class="n">enable</span> <span class="o">--</span><span class="n">py</span> <span class="n">widgetsnbextension</span>
 
     <span class="c1"># if we update existing module, we need to restart colab</span>
     <span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">scikit</span><span class="o">-</span><span class="n">learn</span>
@@ -14355,6 +14395,7 @@ It includes homes sold between May 2014 and May 2015.</p>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<span class="kn">import</span> <span class="nn">joblib</span>
 
 <span class="c1"># random state</span>
 <span class="n">SEED</span><span class="o">=</span><span class="mi">100</span>
@@ -14377,12 +14418,14 @@ It includes homes sold between May 2014 and May 2015.</p>
 <span class="c1"># boosting</span>
 <span class="kn">from</span> <span class="nn">sklearn.experimental</span> <span class="kn">import</span> <span class="n">enable_hist_gradient_boosting</span>  <span class="c1"># noqa</span>
 <span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">HistGradientBoostingRegressor</span>
-<span class="kn">import</span> <span class="nn">catboost</span>
+<span class="kn">import</span> <span class="nn">catboost</span> <span class="c1"># CatboostRegressor, Pool, cv</span>
+<span class="kn">import</span> <span class="nn">catboost</span> <span class="k">as</span> <span class="nn">cb</span> 
 
 <span class="c1"># special</span>
 <span class="kn">import</span> <span class="nn">featuretools</span>
 <span class="kn">import</span> <span class="nn">featuretools</span> <span class="k">as</span> <span class="nn">ft</span>
 <span class="kn">from</span> <span class="nn">featuretools</span> <span class="kn">import</span> <span class="n">variable_types</span> <span class="k">as</span> <span class="n">vtypes</span>
+<span class="kn">import</span> <span class="nn">hyperopt</span>
 
 <span class="c1"># versions</span>
 <span class="kn">import</span> <span class="nn">watermark</span>
@@ -14422,14 +14465,16 @@ processor  : x86_64
 CPU cores  : 2
 interpreter: 64bit
 
-watermark    2.0.2
+joblib       0.17.0
 catboost     0.24.2
-featuretools 0.21.0
-pandas       1.1.4
-matplotlib   3.2.2
+hyperopt     0.2
+watermark    2.0.2
 numpy        1.18.5
-seaborn      0.11.0
 sklearn      0.23.2
+seaborn      0.11.0
+featuretools 0.21.0
+matplotlib   3.2.2
+pandas       1.1.4
 
 </pre>
 </div>
@@ -15150,21 +15195,22 @@ dtype: int64</pre>
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>array([&#39;not_equal&#39;, &#39;or&#39;, &#39;year&#39;, &#39;equal&#39;, &#39;modulo_by_feature&#39;, &#39;week&#39;,
+<pre>array([&#39;cum_min&#39;, &#39;num_words&#39;, &#39;scalar_subtract_numeric_feature&#39;,
+       &#39;subtract_numeric&#39;, &#39;add_numeric&#39;, &#39;cum_count&#39;, &#39;weekday&#39;,
+       &#39;not_equal&#39;, &#39;or&#39;, &#39;year&#39;, &#39;equal&#39;, &#39;modulo_by_feature&#39;, &#39;week&#39;,
        &#39;haversine&#39;, &#39;less_than_equal_to&#39;, &#39;modulo_numeric&#39;, &#39;second&#39;,
-       &#39;add_numeric&#39;, &#39;day&#39;, &#39;divide_numeric_scalar&#39;, &#39;latitude&#39;,
-       &#39;less_than&#39;, &#39;greater_than_equal_to&#39;, &#39;multiply_boolean&#39;, &#39;not&#39;,
+       &#39;day&#39;, &#39;divide_numeric_scalar&#39;, &#39;latitude&#39;, &#39;less_than&#39;,
+       &#39;greater_than_equal_to&#39;, &#39;multiply_boolean&#39;, &#39;not&#39;,
        &#39;time_since_previous&#39;, &#39;diff&#39;, &#39;greater_than&#39;, &#39;is_null&#39;,
        &#39;multiply_numeric&#39;, &#39;cum_max&#39;, &#39;subtract_numeric_scalar&#39;,
        &#39;time_since&#39;, &#39;add_numeric_scalar&#39;, &#39;cum_mean&#39;, &#39;num_characters&#39;,
        &#39;cum_sum&#39;, &#39;is_weekend&#39;, &#39;not_equal_scalar&#39;, &#39;and&#39;, &#39;equal_scalar&#39;,
        &#39;month&#39;, &#39;age&#39;, &#39;less_than_equal_to_scalar&#39;, &#39;minute&#39;,
        &#39;modulo_numeric_scalar&#39;, &#39;divide_by_feature&#39;, &#39;hour&#39;,
-       &#39;less_than_scalar&#39;, &#39;longitude&#39;, &#39;weekday&#39;, &#39;divide_numeric&#39;,
+       &#39;less_than_scalar&#39;, &#39;longitude&#39;, &#39;divide_numeric&#39;,
        &#39;greater_than_equal_to_scalar&#39;, &#39;percentile&#39;, &#39;absolute&#39;,
-       &#39;greater_than_scalar&#39;, &#39;multiply_numeric_scalar&#39;, &#39;negate&#39;, &#39;isin&#39;,
-       &#39;scalar_subtract_numeric_feature&#39;, &#39;cum_min&#39;, &#39;num_words&#39;,
-       &#39;subtract_numeric&#39;, &#39;cum_count&#39;], dtype=object)</pre>
+       &#39;greater_than_scalar&#39;, &#39;multiply_numeric_scalar&#39;, &#39;negate&#39;, &#39;isin&#39;],
+      dtype=object)</pre>
 </div>
 
 </div>
@@ -15324,7 +15370,7 @@ dtype: int64</pre>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>Built 210 features
 EntitySet scattered to 2 workers in 2 seconds
-Elapsed: 01:01 | Progress: 100%|██████████
+Elapsed: 01:05 | Progress: 100%|██████████
 </pre>
 </div>
 </div>
@@ -16247,7 +16293,7 @@ Elapsed: 01:01 | Progress: 100%|██████████
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>Built 210 features
 EntitySet scattered to 2 workers in 2 seconds
-Elapsed: 00:55 | Progress: 100%|██████████
+Elapsed: 00:59 | Progress: 100%|██████████
 </pre>
 </div>
 </div>
@@ -20703,7 +20749,7 @@ Shape after feature selection: (4323, 148).
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[37]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[36]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
@@ -20743,17 +20789,17 @@ Shape after feature selection: (4323, 148).
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>Learning rate set to 0.011265
-0:	learn: 0.5218653	total: 55.5ms	remaining: 9m 15s
-1000:	learn: 0.1634182	total: 51.2s	remaining: 7m 40s
-2000:	learn: 0.1463989	total: 1m 42s	remaining: 6m 48s
-3000:	learn: 0.1370223	total: 2m 32s	remaining: 5m 56s
-4000:	learn: 0.1302097	total: 3m 23s	remaining: 5m 5s
-5000:	learn: 0.1242546	total: 4m 14s	remaining: 4m 14s
-6000:	learn: 0.1189154	total: 5m 5s	remaining: 3m 23s
-7000:	learn: 0.1141364	total: 5m 56s	remaining: 2m 32s
-8000:	learn: 0.1098385	total: 6m 47s	remaining: 1m 41s
-9000:	learn: 0.1058809	total: 7m 38s	remaining: 50.9s
-9999:	learn: 0.1021986	total: 8m 29s	remaining: 0us
+0:	learn: 0.5218653	total: 120ms	remaining: 20m 1s
+1000:	learn: 0.1634182	total: 53.4s	remaining: 7m 59s
+2000:	learn: 0.1463989	total: 1m 46s	remaining: 7m 6s
+3000:	learn: 0.1370223	total: 2m 40s	remaining: 6m 13s
+4000:	learn: 0.1302097	total: 3m 32s	remaining: 5m 18s
+5000:	learn: 0.1242546	total: 4m 23s	remaining: 4m 23s
+6000:	learn: 0.1189154	total: 5m 18s	remaining: 3m 32s
+7000:	learn: 0.1141364	total: 6m 9s	remaining: 2m 38s
+8000:	learn: 0.1098385	total: 7m	remaining: 1m 45s
+9000:	learn: 0.1058809	total: 7m 52s	remaining: 52.4s
+9999:	learn: 0.1021986	total: 8m 43s	remaining: 0us
 ytest: [285000. 239950. 460000.]
 ypreds:  [324086.56725997 220495.460949   527611.69323908]
 
@@ -20763,8 +20809,8 @@ Explained Variance: 0.913193
 Adjusted R-squared: 0.908193
 
 
-CPU times: user 16min 20s, sys: 20.7 s, total: 16min 41s
-Wall time: 8min 31s
+CPU times: user 16min 38s, sys: 21.6 s, total: 16min 59s
+Wall time: 8min 45s
 </pre>
 </div>
 </div>
@@ -20781,7 +20827,7 @@ Wall time: 8min 31s
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[38]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[37]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># feature importance</span>
@@ -20805,89 +20851,89 @@ Wall time: 8min 31s
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[38]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[37]:</div>
 
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
 <style  type="text/css" >
-#T_ef888f1e_25c7_11eb_9d79_0242ac1c0002row0_col1{
+#T_c12a6fda_25e9_11eb_8a38_0242ac1c0002row0_col1{
             background-color:  #023858;
             color:  #f1f1f1;
-        }#T_ef888f1e_25c7_11eb_9d79_0242ac1c0002row1_col1{
+        }#T_c12a6fda_25e9_11eb_8a38_0242ac1c0002row1_col1{
             background-color:  #b7c5df;
             color:  #000000;
-        }#T_ef888f1e_25c7_11eb_9d79_0242ac1c0002row2_col1{
+        }#T_c12a6fda_25e9_11eb_8a38_0242ac1c0002row2_col1{
             background-color:  #ede7f2;
             color:  #000000;
-        }#T_ef888f1e_25c7_11eb_9d79_0242ac1c0002row3_col1,#T_ef888f1e_25c7_11eb_9d79_0242ac1c0002row4_col1{
+        }#T_c12a6fda_25e9_11eb_8a38_0242ac1c0002row3_col1,#T_c12a6fda_25e9_11eb_8a38_0242ac1c0002row4_col1{
             background-color:  #f7f0f7;
             color:  #000000;
-        }#T_ef888f1e_25c7_11eb_9d79_0242ac1c0002row5_col1{
+        }#T_c12a6fda_25e9_11eb_8a38_0242ac1c0002row5_col1{
             background-color:  #f8f1f8;
             color:  #000000;
-        }#T_ef888f1e_25c7_11eb_9d79_0242ac1c0002row6_col1{
+        }#T_c12a6fda_25e9_11eb_8a38_0242ac1c0002row6_col1{
             background-color:  #faf2f8;
             color:  #000000;
-        }#T_ef888f1e_25c7_11eb_9d79_0242ac1c0002row7_col1{
+        }#T_c12a6fda_25e9_11eb_8a38_0242ac1c0002row7_col1{
             background-color:  #fbf4f9;
             color:  #000000;
-        }#T_ef888f1e_25c7_11eb_9d79_0242ac1c0002row8_col1{
+        }#T_c12a6fda_25e9_11eb_8a38_0242ac1c0002row8_col1{
             background-color:  #fef6fb;
             color:  #000000;
-        }#T_ef888f1e_25c7_11eb_9d79_0242ac1c0002row9_col1{
+        }#T_c12a6fda_25e9_11eb_8a38_0242ac1c0002row9_col1{
             background-color:  #fff7fb;
             color:  #000000;
-        }</style><table id="T_ef888f1e_25c7_11eb_9d79_0242ac1c0002" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >Feature</th>        <th class="col_heading level0 col1" >Importance_gain</th>    </tr></thead><tbody>
+        }</style><table id="T_c12a6fda_25e9_11eb_8a38_0242ac1c0002" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >Feature</th>        <th class="col_heading level0 col1" >Importance_gain</th>    </tr></thead><tbody>
                 <tr>
-                        <th id="T_ef888f1e_25c7_11eb_9d79_0242ac1c0002level0_row0" class="row_heading level0 row0" >84</th>
-                        <td id="T_ef888f1e_25c7_11eb_9d79_0242ac1c0002row0_col0" class="data row0 col0" >lat</td>
-                        <td id="T_ef888f1e_25c7_11eb_9d79_0242ac1c0002row0_col1" class="data row0 col1" >40.660175</td>
+                        <th id="T_c12a6fda_25e9_11eb_8a38_0242ac1c0002level0_row0" class="row_heading level0 row0" >84</th>
+                        <td id="T_c12a6fda_25e9_11eb_8a38_0242ac1c0002row0_col0" class="data row0 col0" >lat</td>
+                        <td id="T_c12a6fda_25e9_11eb_8a38_0242ac1c0002row0_col1" class="data row0 col1" >40.660175</td>
             </tr>
             <tr>
-                        <th id="T_ef888f1e_25c7_11eb_9d79_0242ac1c0002level0_row1" class="row_heading level0 row1" >70</th>
-                        <td id="T_ef888f1e_25c7_11eb_9d79_0242ac1c0002row1_col0" class="data row1 col0" >grade / yr_built</td>
-                        <td id="T_ef888f1e_25c7_11eb_9d79_0242ac1c0002row1_col1" class="data row1 col1" >13.759794</td>
+                        <th id="T_c12a6fda_25e9_11eb_8a38_0242ac1c0002level0_row1" class="row_heading level0 row1" >70</th>
+                        <td id="T_c12a6fda_25e9_11eb_8a38_0242ac1c0002row1_col0" class="data row1 col0" >grade / yr_built</td>
+                        <td id="T_c12a6fda_25e9_11eb_8a38_0242ac1c0002row1_col1" class="data row1 col1" >13.759794</td>
             </tr>
             <tr>
-                        <th id="T_ef888f1e_25c7_11eb_9d79_0242ac1c0002level0_row2" class="row_heading level0 row2" >97</th>
-                        <td id="T_ef888f1e_25c7_11eb_9d79_0242ac1c0002row2_col0" class="data row2 col0" >long</td>
-                        <td id="T_ef888f1e_25c7_11eb_9d79_0242ac1c0002row2_col1" class="data row2 col1" >5.748209</td>
+                        <th id="T_c12a6fda_25e9_11eb_8a38_0242ac1c0002level0_row2" class="row_heading level0 row2" >97</th>
+                        <td id="T_c12a6fda_25e9_11eb_8a38_0242ac1c0002row2_col0" class="data row2 col0" >long</td>
+                        <td id="T_c12a6fda_25e9_11eb_8a38_0242ac1c0002row2_col1" class="data row2 col1" >5.748209</td>
             </tr>
             <tr>
-                        <th id="T_ef888f1e_25c7_11eb_9d79_0242ac1c0002level0_row3" class="row_heading level0 row3" >129</th>
-                        <td id="T_ef888f1e_25c7_11eb_9d79_0242ac1c0002row3_col0" class="data row3 col0" >sqft_living / yr_built</td>
-                        <td id="T_ef888f1e_25c7_11eb_9d79_0242ac1c0002row3_col1" class="data row3 col1" >3.082216</td>
+                        <th id="T_c12a6fda_25e9_11eb_8a38_0242ac1c0002level0_row3" class="row_heading level0 row3" >129</th>
+                        <td id="T_c12a6fda_25e9_11eb_8a38_0242ac1c0002row3_col0" class="data row3 col0" >sqft_living / yr_built</td>
+                        <td id="T_c12a6fda_25e9_11eb_8a38_0242ac1c0002row3_col1" class="data row3 col1" >3.082216</td>
             </tr>
             <tr>
-                        <th id="T_ef888f1e_25c7_11eb_9d79_0242ac1c0002level0_row4" class="row_heading level0 row4" >92</th>
-                        <td id="T_ef888f1e_25c7_11eb_9d79_0242ac1c0002row4_col0" class="data row4 col0" >log1p_sqft_living_sq</td>
-                        <td id="T_ef888f1e_25c7_11eb_9d79_0242ac1c0002row4_col1" class="data row4 col1" >2.855473</td>
+                        <th id="T_c12a6fda_25e9_11eb_8a38_0242ac1c0002level0_row4" class="row_heading level0 row4" >92</th>
+                        <td id="T_c12a6fda_25e9_11eb_8a38_0242ac1c0002row4_col0" class="data row4 col0" >log1p_sqft_living_sq</td>
+                        <td id="T_c12a6fda_25e9_11eb_8a38_0242ac1c0002row4_col1" class="data row4 col1" >2.855473</td>
             </tr>
             <tr>
-                        <th id="T_ef888f1e_25c7_11eb_9d79_0242ac1c0002level0_row5" class="row_heading level0 row5" >192</th>
-                        <td id="T_ef888f1e_25c7_11eb_9d79_0242ac1c0002row5_col0" class="data row5 col0" >zipcode</td>
-                        <td id="T_ef888f1e_25c7_11eb_9d79_0242ac1c0002row5_col1" class="data row5 col1" >2.725152</td>
+                        <th id="T_c12a6fda_25e9_11eb_8a38_0242ac1c0002level0_row5" class="row_heading level0 row5" >192</th>
+                        <td id="T_c12a6fda_25e9_11eb_8a38_0242ac1c0002row5_col0" class="data row5 col0" >zipcode</td>
+                        <td id="T_c12a6fda_25e9_11eb_8a38_0242ac1c0002row5_col1" class="data row5 col1" >2.725152</td>
             </tr>
             <tr>
-                        <th id="T_ef888f1e_25c7_11eb_9d79_0242ac1c0002level0_row6" class="row_heading level0 row6" >121</th>
-                        <td id="T_ef888f1e_25c7_11eb_9d79_0242ac1c0002row6_col0" class="data row6 col0" >sqft_living</td>
-                        <td id="T_ef888f1e_25c7_11eb_9d79_0242ac1c0002row6_col1" class="data row6 col1" >2.214983</td>
+                        <th id="T_c12a6fda_25e9_11eb_8a38_0242ac1c0002level0_row6" class="row_heading level0 row6" >121</th>
+                        <td id="T_c12a6fda_25e9_11eb_8a38_0242ac1c0002row6_col0" class="data row6 col0" >sqft_living</td>
+                        <td id="T_c12a6fda_25e9_11eb_8a38_0242ac1c0002row6_col1" class="data row6 col1" >2.214983</td>
             </tr>
             <tr>
-                        <th id="T_ef888f1e_25c7_11eb_9d79_0242ac1c0002level0_row7" class="row_heading level0 row7" >89</th>
-                        <td id="T_ef888f1e_25c7_11eb_9d79_0242ac1c0002row7_col0" class="data row7 col0" >log1p_sqft_living</td>
-                        <td id="T_ef888f1e_25c7_11eb_9d79_0242ac1c0002row7_col1" class="data row7 col1" >1.791688</td>
+                        <th id="T_c12a6fda_25e9_11eb_8a38_0242ac1c0002level0_row7" class="row_heading level0 row7" >89</th>
+                        <td id="T_c12a6fda_25e9_11eb_8a38_0242ac1c0002row7_col0" class="data row7 col0" >log1p_sqft_living</td>
+                        <td id="T_c12a6fda_25e9_11eb_8a38_0242ac1c0002row7_col1" class="data row7 col1" >1.791688</td>
             </tr>
             <tr>
-                        <th id="T_ef888f1e_25c7_11eb_9d79_0242ac1c0002level0_row8" class="row_heading level0 row8" >67</th>
-                        <td id="T_ef888f1e_25c7_11eb_9d79_0242ac1c0002row8_col0" class="data row8 col0" >grade / sqft_living</td>
-                        <td id="T_ef888f1e_25c7_11eb_9d79_0242ac1c0002row8_col1" class="data row8 col1" >0.934881</td>
+                        <th id="T_c12a6fda_25e9_11eb_8a38_0242ac1c0002level0_row8" class="row_heading level0 row8" >67</th>
+                        <td id="T_c12a6fda_25e9_11eb_8a38_0242ac1c0002row8_col0" class="data row8 col0" >grade / sqft_living</td>
+                        <td id="T_c12a6fda_25e9_11eb_8a38_0242ac1c0002row8_col1" class="data row8 col1" >0.934881</td>
             </tr>
             <tr>
-                        <th id="T_ef888f1e_25c7_11eb_9d79_0242ac1c0002level0_row9" class="row_heading level0 row9" >141</th>
-                        <td id="T_ef888f1e_25c7_11eb_9d79_0242ac1c0002row9_col0" class="data row9 col0" >sqft_living15 / yr_built</td>
-                        <td id="T_ef888f1e_25c7_11eb_9d79_0242ac1c0002row9_col1" class="data row9 col1" >0.763274</td>
+                        <th id="T_c12a6fda_25e9_11eb_8a38_0242ac1c0002level0_row9" class="row_heading level0 row9" >141</th>
+                        <td id="T_c12a6fda_25e9_11eb_8a38_0242ac1c0002row9_col0" class="data row9 col0" >sqft_living15 / yr_built</td>
+                        <td id="T_c12a6fda_25e9_11eb_8a38_0242ac1c0002row9_col1" class="data row9 col1" >0.763274</td>
             </tr>
     </tbody></table>
 </div>
@@ -20901,7 +20947,7 @@ Wall time: 8min 31s
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[39]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[38]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="p">(</span><span class="n">df_imp</span>
@@ -20946,102 +20992,35 @@ Wall time: 8min 31s
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Feature-selection-using-feature-importances">Feature selection using feature importances<a class="anchor-link" href="#Feature-selection-using-feature-importances">&#182;</a></h1>
+<h1 id="HPO-using-hyperopt">HPO using hyperopt<a class="anchor-link" href="#HPO-using-hyperopt">&#182;</a></h1>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[48]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_imp</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Importance_gain&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[48]:</div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Feature</th>
-      <th>Importance_gain</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>98</th>
-      <td>renovation_bool</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>61</th>
-      <td>floors_sq</td>
-      <td>0.001581</td>
-    </tr>
-    <tr>
-      <th>189</th>
-      <td>yr_renovated / view</td>
-      <td>0.001857</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>bedrooms</td>
-      <td>0.003916</td>
-    </tr>
-    <tr>
-      <th>35</th>
-      <td>bedrooms_sq</td>
-      <td>0.006028</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[45]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cols_zero_imp</span> <span class="o">=</span> <span class="n">df_imp</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;Importance_gain &lt;= 0.001&quot;</span><span class="p">)[</span><span class="s1">&#39;Feature&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
-<span class="nb">len</span><span class="p">(</span><span class="n">cols_zero_imp</span><span class="p">),</span> <span class="n">cols_zero_imp</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">hyperopt</span>
+
+<span class="k">def</span> <span class="nf">hyperopt_objective</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+    <span class="n">metric</span> <span class="o">=</span> <span class="s1">&#39;RMSE&#39;</span> <span class="c1"># Accuracy for clf, RMSE for regr</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">cb</span><span class="o">.</span><span class="n">CatBoostRegressor</span><span class="p">(</span>
+        <span class="c1"># fixed</span>
+        <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">iterations</span><span class="o">=</span><span class="mi">10_000</span><span class="p">,</span>
+        <span class="n">eval_metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">use_best_model</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+
+        <span class="c1"># change these</span>
+        <span class="n">l2_leaf_reg</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;l2_leaf_reg&#39;</span><span class="p">]),</span>
+        <span class="n">learning_rate</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;learning_rate&#39;</span><span class="p">],</span>  
+    <span class="p">)</span>
+
+    <span class="n">cv_data</span> <span class="o">=</span> <span class="n">cb</span><span class="o">.</span><span class="n">cv</span><span class="p">(</span><span class="n">cb</span><span class="o">.</span><span class="n">Pool</span><span class="p">(</span><span class="n">df_Xtrain</span><span class="p">[</span><span class="n">features</span><span class="p">],</span> <span class="n">ytrain_log1p</span><span class="p">),</span><span class="n">model</span><span class="o">.</span><span class="n">get_params</span><span class="p">())</span>
+    <span class="n">best_accuracy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">cv_data</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;test-</span><span class="si">{</span><span class="n">metric</span><span class="si">}</span><span class="s1">-mean&#39;</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">best_accuracy</span>
 </pre></div>
 
      </div>
@@ -21049,42 +21028,31 @@ Wall time: 8min 31s
 </div>
 </div>
 
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[45]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>(1, [&#39;renovation_bool&#39;])</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[51]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[46]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">n_least_imp_feats</span> <span class="o">=</span> <span class="mi">50</span>
-<span class="n">least_imp_feats</span> <span class="o">=</span> <span class="n">df_imp</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Importance_gain&#39;</span><span class="p">)[</span><span class="s1">&#39;Feature&#39;</span><span class="p">][:</span><span class="n">n_least_imp_feats</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">RandomState</span>
 
-<span class="c1"># print(least_imp_feats)</span>
+<span class="n">params_space</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;l2_leaf_reg&#39;</span><span class="p">:</span> <span class="n">hyperopt</span><span class="o">.</span><span class="n">hp</span><span class="o">.</span><span class="n">qloguniform</span><span class="p">(</span><span class="s1">&#39;l2_leaf_reg&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="s1">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="n">hyperopt</span><span class="o">.</span><span class="n">hp</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="s1">&#39;learning_rate&#39;</span><span class="p">,</span> <span class="mf">1e-3</span><span class="p">,</span> <span class="mf">5e-1</span><span class="p">),</span>
+<span class="p">}</span>
 
-<span class="n">features2</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">features</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">least_imp_feats</span><span class="p">]</span>
-<span class="nb">len</span><span class="p">(</span><span class="n">features2</span><span class="p">),</span> <span class="n">features2</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">trials</span> <span class="o">=</span> <span class="n">hyperopt</span><span class="o">.</span><span class="n">Trials</span><span class="p">()</span>
+
+<span class="c1"># best = hyperopt.fmin(</span>
+<span class="c1">#     hyperopt_objective,</span>
+<span class="c1">#     space=params_space,</span>
+<span class="c1">#     algo=hyperopt.tpe.suggest,</span>
+<span class="c1">#     max_evals=10,</span>
+<span class="c1">#     trials=trials,</span>
+<span class="c1">#     rstate=RandomState(SEED)</span>
+<span class="c1"># )</span>
+
+<span class="c1"># print(best)</span>
 </pre></div>
 
      </div>
@@ -21092,105 +21060,110 @@ Wall time: 8min 31s
 </div>
 </div>
 
-<div class="jp-Cell-outputWrapper">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[47]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">run_trials</span><span class="p">(</span><span class="n">my_obj</span><span class="p">,</span><span class="n">params_space</span><span class="p">,</span><span class="n">new_trials</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
 
+    <span class="n">model_name</span>   <span class="o">=</span> <span class="s1">&#39;model.hyperopt&#39;</span>
+    <span class="n">init_trials</span>  <span class="o">=</span> <span class="mi">1</span> <span class="c1"># first time runs</span>
 
-<div class="jp-OutputArea jp-Cell-outputArea">
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">trials</span>    <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">))</span>
+        <span class="n">max_evals</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">trials</span><span class="o">.</span><span class="n">trials</span><span class="p">)</span> <span class="o">+</span> <span class="n">new_trials</span>
 
-<div class="jp-OutputArea-child">
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Found saved Trials! Loading...&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Re-running from </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">trials</span><span class="o">.</span><span class="n">trials</span><span class="p">)</span><span class="si">}</span><span class="s2"> &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;trials to </span><span class="si">{</span><span class="n">max_evals</span><span class="si">}</span><span class="s2"> (+</span><span class="si">{</span><span class="n">new_trials</span><span class="si">}</span><span class="s2">) trials.&quot;</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">trials</span>    <span class="o">=</span> <span class="n">hyperopt</span><span class="o">.</span><span class="n">Trials</span><span class="p">()</span>
+        <span class="n">max_evals</span> <span class="o">=</span> <span class="n">init_trials</span>
 
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[51]:</div>
+    <span class="n">best</span> <span class="o">=</span> <span class="n">hyperopt</span><span class="o">.</span><span class="n">fmin</span><span class="p">(</span>
+            <span class="n">fn</span>        <span class="o">=</span> <span class="n">my_obj</span><span class="p">,</span>
+            <span class="n">space</span>     <span class="o">=</span> <span class="n">params_space</span><span class="p">,</span>
+            <span class="n">algo</span>      <span class="o">=</span><span class="n">hyperopt</span><span class="o">.</span><span class="n">tpe</span><span class="o">.</span><span class="n">suggest</span><span class="p">,</span>
+            <span class="n">max_evals</span> <span class="o">=</span> <span class="n">max_evals</span><span class="p">,</span>
+            <span class="n">rstate</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="n">SEED</span><span class="p">),</span>
+            <span class="n">trials</span>    <span class="o">=</span> <span class="n">trials</span>
+            <span class="p">)</span>
 
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best:&quot;</span><span class="p">,</span> <span class="n">best</span><span class="p">)</span>
 
+    <span class="c1"># save the trials object</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">trials</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+</pre></div>
 
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>(143,
- [&#39;age&#39;,
-  &#39;age_after_renovation&#39;,
-  &#39;age_after_renovation_cat&#39;,
-  &#39;age_after_renovation_sq&#39;,
-  &#39;age_cat&#39;])</pre>
+     </div>
+</div>
+</div>
 </div>
 
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[48]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># run_trials(hyperopt_objective,params_space)</span>
+<span class="n">out</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Best: {&#39;l2_leaf_reg&#39;: 7.0, &#39;learning_rate&#39;: 0.2918512365379629}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
 </div>
 
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[50]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># run_trials(hyperopt_objective,params_space,new_trials=2)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
 </div>
 
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[52]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="n">params_best</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;l2_leaf_reg&#39;</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span> <span class="s1">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="mf">0.13945494648164383</span><span class="p">}</span>
 <span class="n">params_cb</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                  <span class="n">iterations</span><span class="o">=</span><span class="mi">10_000</span><span class="p">,</span>
                  <span class="n">verbose</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">params_cb</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params_best</span><span class="p">)</span>
 
 <span class="c1"># log transform target</span>
 <span class="n">ytrain_log1p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log1p</span><span class="p">(</span><span class="n">ytrain</span><span class="p">)</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">catboost</span><span class="o">.</span><span class="n">CatBoostRegressor</span><span class="p">(</span><span class="o">**</span><span class="n">params_cb</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df_Xtrain</span><span class="p">[</span><span class="n">features2</span><span class="p">],</span> <span class="n">ytrain_log1p</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df_Xtrain</span><span class="p">,</span> <span class="n">ytrain_log1p</span><span class="p">)</span>
 
-<span class="n">ypreds_log1p</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df_Xtest</span><span class="p">[</span><span class="n">features2</span><span class="p">])</span>
+<span class="n">ypreds_log1p</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df_Xtest</span><span class="p">)</span>
 <span class="n">ypreds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expm1</span><span class="p">(</span><span class="n">ypreds_log1p</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ytest:&#39;</span><span class="p">,</span> <span class="n">ytest</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ypreds: &#39;</span><span class="p">,</span> <span class="n">ypreds</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
-<span class="n">print_regr_eval</span><span class="p">(</span><span class="n">ytest</span><span class="p">,</span><span class="n">ypreds</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">features2</span><span class="p">))</span>
+<span class="n">print_regr_eval</span><span class="p">(</span><span class="n">ytest</span><span class="p">,</span><span class="n">ypreds</span><span class="p">,</span><span class="n">df_Xtest</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 
      </div>
 </div>
 </div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Learning rate set to 0.011265
-0:	learn: 0.5217652	total: 55.2ms	remaining: 9m 11s
-1000:	learn: 0.1630169	total: 42.2s	remaining: 6m 19s
-2000:	learn: 0.1458690	total: 1m 23s	remaining: 5m 35s
-3000:	learn: 0.1363585	total: 2m 5s	remaining: 4m 52s
-4000:	learn: 0.1292728	total: 2m 47s	remaining: 4m 10s
-5000:	learn: 0.1233119	total: 3m 28s	remaining: 3m 28s
-6000:	learn: 0.1180297	total: 4m 10s	remaining: 2m 46s
-7000:	learn: 0.1132765	total: 4m 52s	remaining: 2m 5s
-8000:	learn: 0.1089653	total: 5m 33s	remaining: 1m 23s
-9000:	learn: 0.1049099	total: 6m 15s	remaining: 41.7s
-9999:	learn: 0.1011531	total: 6m 57s	remaining: 0us
-ytest: [285000. 239950. 460000.]
-ypreds:  [322159.41998623 221862.15582313 531841.54160996]
-
-             RMSE : 109,090.10
-Explained Variance: 0.912607
-         R-Squared: 0.911696
-Adjusted R-squared: 0.908696
-
-
-CPU times: user 13min 23s, sys: 17.3 s, total: 13min 41s
-Wall time: 6min 59s
-</pre>
-</div>
-</div>
-
-</div>
-
 </div>
 
 </div>
@@ -21198,10 +21171,10 @@ Wall time: 6min 59s
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Time-Taken">Time Taken<a class="anchor-link" href="#Time-Taken">&#182;</a></h1>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[42]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">time_taken</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">time_start_notebook</span>
@@ -21213,27 +21186,6 @@ Wall time: 6min 59s
      </div>
 </div>
 </div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Time taken to run whole notebook: 0 hr 11 min 32 secs
-</pre>
-</div>
-</div>
-
-</div>
-
 </div>
 
 </div>
