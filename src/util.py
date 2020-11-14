@@ -77,10 +77,6 @@ def write_regr_eval(ytest,ypreds,ncols,ofile):
     df_out.to_csv(ofile, index=False)
 
 def clean_data(df,log=True,sq=True,logsq=True,dummy=True,dummy_cat=False):
-    # log sq
-    if logsq:
-        log = True
-        sq = True
 
     df = df.copy()
 
