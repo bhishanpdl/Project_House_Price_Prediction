@@ -1,0 +1,7 @@
+sql,random_id,type,instance_id
+SELECT * FROM df,83Q71UB18T,feature_impact,TCNGLZFNTU
+sql,random_id,type,instance_id
+SELECT * FROM df,NXGUT7XGH7,feature_importance,TCNGLZFNTU
+SELECT * FROM df,1HZEQ7O72E,filtered_df,TCNGLZFNTU
+SELECT * FROM df,HTWTGFPTPZ,pdp,TCNGLZFNTU
+SELECT * FROM df,YGBQQGWUR3,summary_plot,TCNGLZFNTU

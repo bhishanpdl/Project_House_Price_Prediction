@@ -10,6 +10,10 @@ data_path_train = os.path.join(dat_dir, 'raw/train.csv')
 data_path_test = os.path.join(dat_dir, 'raw/test.csv')
 compression = None
 
+report_dir = os.path.join('..','reports')
+path_report_pandas_profiling = os.path.join(report_dir,'report_pandas_profiling.html')
+path_report_sweetviz = os.path.join(report_dir,'report_sweetviz.html')
+
 # params
 model_type = 'regression'
 target = 'price'
