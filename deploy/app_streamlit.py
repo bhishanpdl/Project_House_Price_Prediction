@@ -3,6 +3,9 @@ import numpy as np
 import pandas as pd
 import os
 import time
+
+# internet
+import urllib
 import codecs
 import base64
 
@@ -10,14 +13,14 @@ import base64
 import shap
 import pandas_profiling
 import sweetviz as sv
+
+# model deploy
 import streamlit as st
 import streamlit.components.v1 as stc
 from streamlit_pandas_profiling import st_profile_report
 
 # visualization
 import matplotlib.pyplot as plt
-import seaborn as sns
-sns.set()
 
 # local imports
 import config
@@ -84,7 +87,7 @@ def load_data(data_path, nrows=None):
     data = pd.read_csv(data_path, nrows=nrows)
     return data
 
-def main():
+def home():
     """Main function """
 
     # Project Title
@@ -163,6 +166,10 @@ def main():
     if logtarget:
         ypreds = np.expm1(ypreds)
 
+    return (model,df_test,ypreds,features)
+
+def model_evaluation(model,df_test,ypreds,features):
+    df_Xtest = df_test[features]
     df_out = pd.DataFrame()
     df_out[target] = df_test[target]
     df_out["predicted_" + target] = ypreds
@@ -181,6 +188,9 @@ def main():
     df_fimp = model.get_feature_importance(prettified=True)[['Importances','Feature Id']]
     df_fimp_style = df_fimp.style.background_gradient(subset=['Importances'])
     st.dataframe(df_fimp_style)
+
+def model_evaluation_shap(model,df_test,features):
+    df_Xtest = df_test[features]
 
     # shap
     explainer = shap.TreeExplainer(model)
@@ -211,7 +221,7 @@ def main():
 
     # https://slundberg.github.io/shap/notebooks/plots/dependence_plot.html
     st.subheader("Dependence plot for Nth rank feature")
-    st.text("0 is the most importance feature determined by np.abs(shap_values).mean(0)")
+    st.text("Note: 0 is the most importance feature not 1.\nThe y-axis feature is selected automatically.")
     rank_n = st.slider("rank_n", 0, len(features)-1,0)
     fig, ax = plt.subplots()
     shap.dependence_plot(ind="rank("+str(rank_n)+")",
@@ -248,11 +258,17 @@ if __name__ == "__main__":
     choice = st.sidebar.selectbox("Menu", menu)
 
     if choice == "Home":
-        main()
+        model,df_test,ypreds,features = home()
+        if target not in df_test.columns:
+            st.header("Model predictions")
+            st.write(ypreds)
+        else:
+            model_evaluation(model,df_test,ypreds,features)
+            model_evaluation_shap(model,df_test,features)
     elif choice == "Pandas Profile":
         get_pandas_profile_st()
     elif choice == "Sweetviz Profile":
         get_sweetviz_profile_st()
     else:
-        st.subheader("About")
-        st.write("This app is created by Bhishan Poudel.")
+        page = codecs.open('about.md','r').read()
+        st.markdown(page)

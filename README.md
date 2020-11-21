@@ -1,7 +1,7 @@
 
 <h1 style="background-color:tomato;">Project Description</h1>
 
-In this project, the dataset contains house sale prices for King County, which includes Seattle. It includes homes sold between May 2014 and May 2015. There are 19 house features and one dependent feature `price`. The aim of the project is to estimate the house price.
+In this project, the dataset contains house sale prices for King County, which includes Seattle. The data is taken from kaggle competition [House Sales in King County, USA](https://www.kaggle.com/harlfoxem/housesalesprediction). It includes homes sold between May 2014 and May 2015. There are 19 house features and one dependent feature `price`. The aim of the project is to estimate the house price.
 
 
 <h1 style="background-color:tomato;">Data processing</h1>
