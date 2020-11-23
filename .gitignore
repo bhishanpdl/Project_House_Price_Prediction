@@ -4,6 +4,8 @@
 *.pkl
 src/outputs
 *catboost_info*
+*.joblib # dalex pdp file is 6GB
+
 
 ##==============================================
 ## Compressed files
