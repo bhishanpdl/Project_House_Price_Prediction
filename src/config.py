@@ -2,12 +2,12 @@ import os
 
 # data
 dat_dir = os.path.join('..','data')
-data_path = os.path.join(dat_dir, 'raw/kc_house_data.csv')
-data_path_raw = os.path.join(dat_dir, 'raw/kc_house_data.csv')
-data_path_clean = os.path.join(dat_dir, 'processed/data_cleaned_encoded.csv')
+path_data = os.path.join(dat_dir, 'raw/kc_house_data.csv')
+path_data_raw = os.path.join(dat_dir, 'raw/kc_house_data.csv')
+path_data_clean = os.path.join(dat_dir, 'processed/data_cleaned_encoded.csv')
 
-data_path_train = os.path.join(dat_dir, 'raw/train.csv')
-data_path_test = os.path.join(dat_dir, 'raw/test.csv')
+path_data_train = os.path.join(dat_dir, 'raw/train.csv')
+path_data_test = os.path.join(dat_dir, 'raw/test.csv')
 compression = None
 
 report_dir = os.path.join('..','reports')

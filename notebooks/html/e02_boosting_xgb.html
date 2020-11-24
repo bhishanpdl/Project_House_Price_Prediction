@@ -14355,6 +14355,7 @@ It includes homes sold between May 2014 and May 2015.</p>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<span class="kn">import</span> <span class="nn">joblib</span>
 
 <span class="c1"># random state</span>
 <span class="n">SEED</span><span class="o">=</span><span class="mi">100</span>
@@ -14404,7 +14405,7 @@ It includes homes sold between May 2014 and May 2015.</p>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Bhishan Poudel 2020-11-21 
+<pre>Bhishan Poudel 2020-11-23 
 
 CPython 3.7.7
 IPython 7.19.0
@@ -14418,14 +14419,15 @@ CPU cores  : 4
 interpreter: 64bit
 
 xgboost    1.2.0
-catboost   0.23.2
-pandas     1.1.0
-matplotlib 3.2.1
-seaborn    0.11.0
-numpy      1.18.4
 json       2.0.9
+seaborn    0.11.0
+catboost   0.23.2
 lightgbm   2.3.1
+matplotlib 3.2.1
+joblib     0.17.0
+pandas     1.1.0
 sklearn    0.23.1
+numpy      1.18.4
 watermark  2.0.2
 
 </pre>
@@ -15577,8 +15579,8 @@ Adjusted R-squared: 0.883249
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>neg_mean_squared_error: -16,122,317,314.99
  std : 2,821,145,115.10
-CPU times: user 23.8 s, sys: 129 ms, total: 23.9 s
-Wall time: 24.6 s
+CPU times: user 23.1 s, sys: 86.4 ms, total: 23.2 s
+Wall time: 23.5 s
 </pre>
 </div>
 </div>
@@ -15782,8 +15784,8 @@ Wall time: 24.6 s
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>CPU times: user 39.6 s, sys: 198 ms, total: 39.8 s
-Wall time: 40.5 s
+<pre>CPU times: user 39 s, sys: 182 ms, total: 39.2 s
+Wall time: 40.2 s
 </pre>
 </div>
 </div>
@@ -15887,8 +15889,8 @@ Explained Variance: 0.902373
 Adjusted R-squared: 0.900820
 
 
-CPU times: user 35.1 s, sys: 225 ms, total: 35.4 s
-Wall time: 36.4 s
+CPU times: user 33.4 s, sys: 83.9 ms, total: 33.5 s
+Wall time: 34.4 s
 </pre>
 </div>
 </div>
@@ -15917,6 +15919,11 @@ Wall time: 36.4 s
 <span class="c1"># persist the model</span>
 <span class="n">path_model_xgb</span> <span class="o">=</span> <span class="s1">&#39;../models/model_xgb_logtarget.dump&#39;</span>
 <span class="n">model</span><span class="o">.</span><span class="n">save_model</span><span class="p">(</span><span class="n">path_model_xgb</span><span class="p">)</span>
+
+<span class="c1"># persist using joblib</span>
+<span class="n">path_model_xgb_joblib</span> <span class="o">=</span> <span class="s1">&#39;../models/model_xgb_logtarget.joblib&#39;</span>
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="n">path_model_xgb_joblib</span><span class="p">)</span>
+
 <span class="n">model</span> <span class="o">=</span> <span class="n">xgboost</span><span class="o">.</span><span class="n">XGBRegressor</span><span class="p">()</span>
 <span class="n">model</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="n">fname</span><span class="o">=</span><span class="s1">&#39;../models/model_xgb_logtarget.dump&#39;</span><span class="p">)</span>
 
@@ -15954,8 +15961,8 @@ Explained Variance: 0.910365
 Adjusted R-squared: 0.908041
 
 
-CPU times: user 35 s, sys: 168 ms, total: 35.2 s
-Wall time: 36.1 s
+CPU times: user 35.4 s, sys: 211 ms, total: 35.6 s
+Wall time: 38.1 s
 </pre>
 </div>
 </div>
@@ -16002,86 +16009,86 @@ Wall time: 36.1 s
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
 <style  type="text/css" >
-#T_f02cbe9e_2c71_11eb_9d9e_acde48001122row0_col1{
+#T_72dbc83c_2ddd_11eb_8122_acde48001122row0_col1{
             background-color:  #023858;
             color:  #f1f1f1;
-        }#T_f02cbe9e_2c71_11eb_9d9e_acde48001122row1_col1{
+        }#T_72dbc83c_2ddd_11eb_8122_acde48001122row1_col1{
             background-color:  #5a9ec9;
             color:  #000000;
-        }#T_f02cbe9e_2c71_11eb_9d9e_acde48001122row2_col1{
+        }#T_72dbc83c_2ddd_11eb_8122_acde48001122row2_col1{
             background-color:  #9cb9d9;
             color:  #000000;
-        }#T_f02cbe9e_2c71_11eb_9d9e_acde48001122row3_col1{
+        }#T_72dbc83c_2ddd_11eb_8122_acde48001122row3_col1{
             background-color:  #d9d8ea;
             color:  #000000;
-        }#T_f02cbe9e_2c71_11eb_9d9e_acde48001122row4_col1{
+        }#T_72dbc83c_2ddd_11eb_8122_acde48001122row4_col1{
             background-color:  #e5e1ef;
             color:  #000000;
-        }#T_f02cbe9e_2c71_11eb_9d9e_acde48001122row5_col1{
+        }#T_72dbc83c_2ddd_11eb_8122_acde48001122row5_col1{
             background-color:  #f8f1f8;
             color:  #000000;
-        }#T_f02cbe9e_2c71_11eb_9d9e_acde48001122row6_col1{
+        }#T_72dbc83c_2ddd_11eb_8122_acde48001122row6_col1{
             background-color:  #f9f2f8;
             color:  #000000;
-        }#T_f02cbe9e_2c71_11eb_9d9e_acde48001122row7_col1{
+        }#T_72dbc83c_2ddd_11eb_8122_acde48001122row7_col1{
             background-color:  #fbf3f9;
             color:  #000000;
-        }#T_f02cbe9e_2c71_11eb_9d9e_acde48001122row8_col1{
+        }#T_72dbc83c_2ddd_11eb_8122_acde48001122row8_col1{
             background-color:  #fdf5fa;
             color:  #000000;
-        }#T_f02cbe9e_2c71_11eb_9d9e_acde48001122row9_col1{
+        }#T_72dbc83c_2ddd_11eb_8122_acde48001122row9_col1{
             background-color:  #fff7fb;
             color:  #000000;
-        }</style><table id="T_f02cbe9e_2c71_11eb_9d9e_acde48001122" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >Feature</th>        <th class="col_heading level0 col1" >Importance_gain</th>    </tr></thead><tbody>
+        }</style><table id="T_72dbc83c_2ddd_11eb_8122_acde48001122" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >Feature</th>        <th class="col_heading level0 col1" >Importance_gain</th>    </tr></thead><tbody>
                 <tr>
-                        <th id="T_f02cbe9e_2c71_11eb_9d9e_acde48001122level0_row0" class="row_heading level0 row0" >19</th>
-                        <td id="T_f02cbe9e_2c71_11eb_9d9e_acde48001122row0_col0" class="data row0 col0" >grade</td>
-                        <td id="T_f02cbe9e_2c71_11eb_9d9e_acde48001122row0_col1" class="data row0 col1" >0.308453</td>
+                        <th id="T_72dbc83c_2ddd_11eb_8122_acde48001122level0_row0" class="row_heading level0 row0" >19</th>
+                        <td id="T_72dbc83c_2ddd_11eb_8122_acde48001122row0_col0" class="data row0 col0" >grade</td>
+                        <td id="T_72dbc83c_2ddd_11eb_8122_acde48001122row0_col1" class="data row0 col1" >0.308453</td>
             </tr>
             <tr>
-                        <th id="T_f02cbe9e_2c71_11eb_9d9e_acde48001122level0_row1" class="row_heading level0 row1" >35</th>
-                        <td id="T_f02cbe9e_2c71_11eb_9d9e_acde48001122row1_col0" class="data row1 col0" >log1p_sqft_living</td>
-                        <td id="T_f02cbe9e_2c71_11eb_9d9e_acde48001122row1_col1" class="data row1 col1" >0.177563</td>
+                        <th id="T_72dbc83c_2ddd_11eb_8122_acde48001122level0_row1" class="row_heading level0 row1" >35</th>
+                        <td id="T_72dbc83c_2ddd_11eb_8122_acde48001122row1_col0" class="data row1 col0" >log1p_sqft_living</td>
+                        <td id="T_72dbc83c_2ddd_11eb_8122_acde48001122row1_col1" class="data row1 col1" >0.177563</td>
             </tr>
             <tr>
-                        <th id="T_f02cbe9e_2c71_11eb_9d9e_acde48001122level0_row2" class="row_heading level0 row2" >51</th>
-                        <td id="T_f02cbe9e_2c71_11eb_9d9e_acde48001122row2_col0" class="data row2 col0" >view</td>
-                        <td id="T_f02cbe9e_2c71_11eb_9d9e_acde48001122row2_col1" class="data row2 col1" >0.132501</td>
+                        <th id="T_72dbc83c_2ddd_11eb_8122_acde48001122level0_row2" class="row_heading level0 row2" >51</th>
+                        <td id="T_72dbc83c_2ddd_11eb_8122_acde48001122row2_col0" class="data row2 col0" >view</td>
+                        <td id="T_72dbc83c_2ddd_11eb_8122_acde48001122row2_col1" class="data row2 col1" >0.132501</td>
             </tr>
             <tr>
-                        <th id="T_f02cbe9e_2c71_11eb_9d9e_acde48001122level0_row3" class="row_heading level0 row3" >58</th>
-                        <td id="T_f02cbe9e_2c71_11eb_9d9e_acde48001122row3_col0" class="data row3 col0" >waterfront</td>
-                        <td id="T_f02cbe9e_2c71_11eb_9d9e_acde48001122row3_col1" class="data row3 col1" >0.076463</td>
+                        <th id="T_72dbc83c_2ddd_11eb_8122_acde48001122level0_row3" class="row_heading level0 row3" >58</th>
+                        <td id="T_72dbc83c_2ddd_11eb_8122_acde48001122row3_col0" class="data row3 col0" >waterfront</td>
+                        <td id="T_72dbc83c_2ddd_11eb_8122_acde48001122row3_col1" class="data row3 col1" >0.076463</td>
             </tr>
             <tr>
-                        <th id="T_f02cbe9e_2c71_11eb_9d9e_acde48001122level0_row4" class="row_heading level0 row4" >30</th>
-                        <td id="T_f02cbe9e_2c71_11eb_9d9e_acde48001122row4_col0" class="data row4 col0" >lat</td>
-                        <td id="T_f02cbe9e_2c71_11eb_9d9e_acde48001122row4_col1" class="data row4 col1" >0.061198</td>
+                        <th id="T_72dbc83c_2ddd_11eb_8122_acde48001122level0_row4" class="row_heading level0 row4" >30</th>
+                        <td id="T_72dbc83c_2ddd_11eb_8122_acde48001122row4_col0" class="data row4 col0" >lat</td>
+                        <td id="T_72dbc83c_2ddd_11eb_8122_acde48001122row4_col1" class="data row4 col1" >0.061198</td>
             </tr>
             <tr>
-                        <th id="T_f02cbe9e_2c71_11eb_9d9e_acde48001122level0_row5" class="row_heading level0 row5" >11</th>
-                        <td id="T_f02cbe9e_2c71_11eb_9d9e_acde48001122row5_col0" class="data row5 col0" >condition</td>
-                        <td id="T_f02cbe9e_2c71_11eb_9d9e_acde48001122row5_col1" class="data row5 col1" >0.028256</td>
+                        <th id="T_72dbc83c_2ddd_11eb_8122_acde48001122level0_row5" class="row_heading level0 row5" >11</th>
+                        <td id="T_72dbc83c_2ddd_11eb_8122_acde48001122row5_col0" class="data row5 col0" >condition</td>
+                        <td id="T_72dbc83c_2ddd_11eb_8122_acde48001122row5_col1" class="data row5 col1" >0.028256</td>
             </tr>
             <tr>
-                        <th id="T_f02cbe9e_2c71_11eb_9d9e_acde48001122level0_row6" class="row_heading level0 row6" >36</th>
-                        <td id="T_f02cbe9e_2c71_11eb_9d9e_acde48001122row6_col0" class="data row6 col0" >log1p_sqft_living15</td>
-                        <td id="T_f02cbe9e_2c71_11eb_9d9e_acde48001122row6_col1" class="data row6 col1" >0.026587</td>
+                        <th id="T_72dbc83c_2ddd_11eb_8122_acde48001122level0_row6" class="row_heading level0 row6" >36</th>
+                        <td id="T_72dbc83c_2ddd_11eb_8122_acde48001122row6_col0" class="data row6 col0" >log1p_sqft_living15</td>
+                        <td id="T_72dbc83c_2ddd_11eb_8122_acde48001122row6_col1" class="data row6 col1" >0.026587</td>
             </tr>
             <tr>
-                        <th id="T_f02cbe9e_2c71_11eb_9d9e_acde48001122level0_row7" class="row_heading level0 row7" >65</th>
-                        <td id="T_f02cbe9e_2c71_11eb_9d9e_acde48001122row7_col0" class="data row7 col0" >yr_sales</td>
-                        <td id="T_f02cbe9e_2c71_11eb_9d9e_acde48001122row7_col1" class="data row7 col1" >0.023181</td>
+                        <th id="T_72dbc83c_2ddd_11eb_8122_acde48001122level0_row7" class="row_heading level0 row7" >65</th>
+                        <td id="T_72dbc83c_2ddd_11eb_8122_acde48001122row7_col0" class="data row7 col0" >yr_sales</td>
+                        <td id="T_72dbc83c_2ddd_11eb_8122_acde48001122row7_col1" class="data row7 col1" >0.023181</td>
             </tr>
             <tr>
-                        <th id="T_f02cbe9e_2c71_11eb_9d9e_acde48001122level0_row8" class="row_heading level0 row8" >0</th>
-                        <td id="T_f02cbe9e_2c71_11eb_9d9e_acde48001122row8_col0" class="data row8 col0" >age</td>
-                        <td id="T_f02cbe9e_2c71_11eb_9d9e_acde48001122row8_col1" class="data row8 col1" >0.020266</td>
+                        <th id="T_72dbc83c_2ddd_11eb_8122_acde48001122level0_row8" class="row_heading level0 row8" >0</th>
+                        <td id="T_72dbc83c_2ddd_11eb_8122_acde48001122row8_col0" class="data row8 col0" >age</td>
+                        <td id="T_72dbc83c_2ddd_11eb_8122_acde48001122row8_col1" class="data row8 col1" >0.020266</td>
             </tr>
             <tr>
-                        <th id="T_f02cbe9e_2c71_11eb_9d9e_acde48001122level0_row9" class="row_heading level0 row9" >63</th>
-                        <td id="T_f02cbe9e_2c71_11eb_9d9e_acde48001122row9_col0" class="data row9 col0" >yr_renovated</td>
-                        <td id="T_f02cbe9e_2c71_11eb_9d9e_acde48001122row9_col1" class="data row9 col1" >0.014971</td>
+                        <th id="T_72dbc83c_2ddd_11eb_8122_acde48001122level0_row9" class="row_heading level0 row9" >63</th>
+                        <td id="T_72dbc83c_2ddd_11eb_8122_acde48001122row9_col0" class="data row9 col0" >yr_renovated</td>
+                        <td id="T_72dbc83c_2ddd_11eb_8122_acde48001122row9_col1" class="data row9 col1" >0.014971</td>
             </tr>
     </tbody></table>
 </div>
@@ -16315,7 +16322,7 @@ Wall time: 36.1 s
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>&lt;xgboost.core.Booster at 0x7fc15ec6d610&gt;</pre>
+<pre>&lt;xgboost.core.Booster at 0x7fe077d74510&gt;</pre>
 </div>
 
 </div>
@@ -16353,7 +16360,7 @@ Wall time: 36.1 s
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fc144eaa090&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fe05da65cd0&gt;</pre>
 </div>
 
 </div>
@@ -16506,8 +16513,8 @@ Wall time: 36.1 s
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>CPU times: user 28.6 s, sys: 268 ms, total: 28.8 s
-Wall time: 1min 25s
+<pre>CPU times: user 28.9 s, sys: 219 ms, total: 29.1 s
+Wall time: 1min 22s
 </pre>
 </div>
 </div>
@@ -16802,8 +16809,8 @@ Explained Variance: 0.897784
 Adjusted R-squared: 0.896843
 
 
-CPU times: user 21.3 s, sys: 131 ms, total: 21.5 s
-Wall time: 22.3 s
+CPU times: user 20.9 s, sys: 142 ms, total: 21.1 s
+Wall time: 23.7 s
 </pre>
 </div>
 </div>
@@ -16858,7 +16865,7 @@ for this dataset.
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Time taken to run whole notebook: 0 hr 4 min 20 secs
+<pre>Time taken to run whole notebook: 0 hr 4 min 18 secs
 </pre>
 </div>
 </div>
