@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<h1 style="background-color:tomato;">
+Project Description
+</h1>
+<p>In this project, the dataset contains house sale prices for King County, which includes Seattle. The data is taken from kaggle competition <a href="https://www.kaggle.com/harlfoxem/housesalesprediction">House Sales in King County, USA</a>. It includes homes sold between May 2014 and May 2015. There are 19 house features and one dependent feature <code>price</code>. The aim of the project is to estimate the house price.</p>
+<h1 style="background-color:tomato;">
+Data processing
+</h1>
+<ul>
+<li>Linear models and svm benefits from scaling (and removing outliers), I did normalizing and robust scaling.</li>
+<li>Created a new feature <code>age_after_renovation</code> using <code>yr_sales</code> and <code>yr_renovated</code> features.</li>
+<li><code>zipcode</code> has too many unique values, reduced it to 70 values.</li>
+<li>Created a new feature called <code>zipcode_houses</code> which gives number of houses in each zipcode.</li>
+<li>Created binned features from <code>age</code> and <code>age_after_renovation</code>.</li>
+<li>Did <code>log1p</code> transformation of continuous numerical features.</li>
+</ul>
+<h1 style="background-color:tomato;">
+Best Results
+</h1>
+<p>After comprehensive data cleaning and variable encodings, I tried various scikit learn algorithms including stacking and blending. I had created many categorical features and the catboost algorithm after standard scaling gave me the best adjusted r-squared value.</p>
+<div class="figure">
+<img src="images/boost_res.png" />
+
+</div>
+<h1 style="background-color:tomato;">
+Modelling with featuretools
+</h1>
+<p>Here I used the module <code>featuretools</code> to create the features. I used none of aggreation primitives and only one transform primitive &quot;divide_numeric&quot; to create new features using featuretools. Then I also created domain knowledge features such as boolean features and log-transform large numeric features but did not create dummy variables from them. Few notes: - Using both mutliply and divide primitives gave worse results than only using divide primitive. - Removing zero feature importance features not not removing gave almost same RMSE. - Using log(target) gave better results (note: we need to inverse log-transform to do model evaluation).</p>
+<pre><code>             RMSE : 108,184.48
+Explained Variance: 0.913972
+         R-Squared: 0.913156
+Adjusted R-squared: 0.910206</code></pre>
+<h1 style="background-color:tomato;">
+Big data modelling
+</h1>
+<ul>
+<li><code>scikit-learn</code> and <code>pandas</code> can not deal with large data (<code>&gt;1GB</code>). To scale up the project, I used big data platform <code>PySpark</code>.</li>
+<li><code>spark</code> is a scala package and <code>pyspark</code> is the a python wrapper around it.</li>
+<li>In <code>pyspark</code>, <code>mllib</code> is deprecated, so, I used only <code>pyspark.ml</code>.</li>
+<li>I used <code>Random Forest</code> in pyspark and tuned the hyper parameters to get the best Adjusted R-squared value.</li>
+</ul>
+<h1 style="background-color:tomato;">
+Deep Learning: Keras modelling
+</h1>
+<p>Using keras framework gave lower evaluation than boosting algorithms. I tried various artichitectures to deal with this regression problem.</p>
+<p>Some observations: - making dummy variables gave worse result. - doing log transform of target gave worse result.</p>
+<p>My results:</p>
+<pre><code>Explained Variance: 0.874334
+         R-Squared: 0.872386
+
+             RMSE : 131,142.79
+Adjusted R-squared: 0.871464</code></pre>
+<h1 style="background-color:tomato;">
+Some of the EDA results
+</h1>
+<p><img src="images/correlation_matrix.png" /> <img src="images/correlation_matrix2.png" /> <img src="images/sns_heatmap.png" /> <img src="images/some_histograms.png" /> <img src="images/bedroom_bathrooms_waterfron_view.png" /> <img src="images/bedroom_counts.png" /></p>
+<h1 style="background-color:tomato;">
+Boosting Params Comparison
+</h1>
+<div class="figure">
+<img src="images/boosting_comparison.png" />
+
+</div>
+</body>
+</html>
