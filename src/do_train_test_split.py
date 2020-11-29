@@ -4,12 +4,17 @@ __doc__ = """
 Author: Bhishan Poudel
 
 We must start a project with train test split.
-We do all the modelling on train data and then test the model
-performance on test data in the end.
+We do all the modelling on train data and then test the
+model performance on test data in the end.
 
-To avoid data leakage we should do some tests:
-- look at modified target feature, e.g log(target) on columns
-- If we do log(target), then when doing model eval we must do exp(ypreds)
+When training the model, we should always be careful about data leakage.
+To avoid the data leakage we can check following:
+- look for modified target feature, e.g log(target)
+
+Notes on model evaluation
+-------------------------
+If we fit the model with log1p(target), then when doing model evaluation,
+we must do ypreds = np.expm1(ypreds_log1p)
 """
 
 # Imports
@@ -26,14 +31,18 @@ SEED = 100 # keep it fixed here, do not use from config file
 np.random.seed(SEED)
 
 # params
-data_path_raw   = config.data_path_raw
-data_path_train = config.data_path_train
-data_path_test  = config.data_path_test
+path_data_raw   = config.path_data_raw
+path_data_train = config.path_data_train
+path_data_test  = config.path_data_test
+train_size      = config.train_size
+compression     = config.compression
+
 train_size      = config.train_size
 model_type      = config.model_type
+target          = config.target
 
 # Load the data
-df = pd.read_csv(data_path_raw)
+df = pd.read_csv(path_data_raw)
 
 # regression vs classification
 if model_type == 'regression':
@@ -65,5 +74,5 @@ if model_type == 'classification':
     print(df_test[target].value_counts(normalize=True))
 
 # write files
-df_train.to_csv(data_path_train,index=False)
-df_test.to_csv(data_path_test,index=False)
+df_train.to_csv(path_data_train,index=False)
+df_test.to_csv(path_data_test,index=False)
