@@ -9,10 +9,10 @@
 
 
 <style type="text/css">
-    pre { line-height: 125%; margin: 0; }
-td.linenos pre { color: #000000; background-color: #f0f0f0; padding-left: 5px; padding-right: 5px; }
-span.linenos { color: #000000; background-color: #f0f0f0; padding-left: 5px; padding-right: 5px; }
-td.linenos pre.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+    pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
 span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
 .highlight .hll { background-color: var(--jp-cell-editor-active-background) }
 .highlight { background: var(--jp-cell-editor-background); color: var(--jp-mirror-editor-variable-color) }
@@ -14369,9 +14369,9 @@ We can make it little bit faster with dask backend:
 
 
 
-<div id="a433e4c2-8d65-4887-877a-4601e7c508ea" class="jp-RenderedJavaScript jp-OutputArea-output " data-mime-type="application/javascript">
+<div id="09d68161-9076-46c7-8aa3-dd1354b0a64b" class="jp-RenderedJavaScript jp-OutputArea-output " data-mime-type="application/javascript">
 <script type="text/javascript">
-var element = document.getElementById('a433e4c2-8d65-4887-877a-4601e7c508ea');
+var element = document.getElementById('09d68161-9076-46c7-8aa3-dd1354b0a64b');
 IPython.OutputArea.auto_scroll_threshold = 9999;
 </script>
 </div>
@@ -14450,8 +14450,8 @@ IPython.OutputArea.auto_scroll_threshold = 9999;
 <span class="kn">import</span> <span class="nn">json</span>
 
 <span class="c1"># random state</span>
-<span class="n">SEED</span><span class="o">=</span><span class="mi">100</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">SEED</span><span class="p">)</span> <span class="c1"># we need this in each cell</span>
+<span class="n">SEED</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">RNG</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="n">SEED</span><span class="p">)</span>
 
 
 <span class="c1"># Jupyter notebook settings for pandas</span>
@@ -14661,9 +14661,9 @@ IPython.OutputArea.auto_scroll_threshold = 9999;
 
 
 
-<div id="a433e4c2-8d65-4887-877a-4601e7c508ea" class="jp-RenderedJavaScript jp-OutputArea-output " data-mime-type="application/javascript">
+<div id="09d68161-9076-46c7-8aa3-dd1354b0a64b" class="jp-RenderedJavaScript jp-OutputArea-output " data-mime-type="application/javascript">
 <script type="text/javascript">
-var element = document.getElementById('a433e4c2-8d65-4887-877a-4601e7c508ea');
+var element = document.getElementById('09d68161-9076-46c7-8aa3-dd1354b0a64b');
 IPython.OutputArea.auto_scroll_threshold = 9999;
 </script>
 </div>
@@ -18350,9 +18350,9 @@ $$</p>
 
 
 
-<div id="a433e4c2-8d65-4887-877a-4601e7c508ea" class="jp-RenderedJavaScript jp-OutputArea-output " data-mime-type="application/javascript">
+<div id="09d68161-9076-46c7-8aa3-dd1354b0a64b" class="jp-RenderedJavaScript jp-OutputArea-output " data-mime-type="application/javascript">
 <script type="text/javascript">
-var element = document.getElementById('a433e4c2-8d65-4887-877a-4601e7c508ea');
+var element = document.getElementById('09d68161-9076-46c7-8aa3-dd1354b0a64b');
 IPython.OutputArea.auto_scroll_threshold = 9999;
 </script>
 </div>

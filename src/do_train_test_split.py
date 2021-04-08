@@ -27,8 +27,8 @@ import util
 import config
 
 # random state
-SEED = 100 # keep it fixed here, do not use from config file
-np.random.seed(SEED)
+SEED = 0
+RNG = np.random.RandomState(SEED)
 
 # params
 path_data_raw   = config.path_data_raw

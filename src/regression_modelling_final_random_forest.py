@@ -39,29 +39,27 @@ from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import cross_val_score
 
 # random state
-random_state=100
-np.random.seed=random_state
-np.random.set_state=random_state
-
+SEED = 0
+RNG = np.random.RandomState(SEED)
 
 #=============================================================================
 # Utilities
 #=============================================================================
 def multiple_linear_regression(df,features,target,model,
-                               verbose=1,cv=5,test_size=0.3):
+                            verbose=1,cv=5,test_size=0.3):
     """ Multiple Linear Regression Modelling using given model.
-    
+
     Depends:
     Depends on function adjusted r-squared.
-    
-    
+
+
     Returns:
     rmse, r2_train, ar2_train, r2_test, ar2_test, cv
     """
     def adjustedR2(rsquared,nrows,kcols):
         return rsquared- (kcols-1)/(nrows-kcols) * (1-rsquared)
 
-    
+
     # train test split
     train, test = train_test_split(df, test_size=0.2, random_state=100)
 
@@ -74,7 +72,7 @@ def multiple_linear_regression(df,features,target,model,
 
     Xtest = test[features].values
     ytest = test[target].values.ravel()
-    
+
     # fitting
     model.fit(Xtrain,ytrain)
 
@@ -119,7 +117,7 @@ df_raw = pd.read_csv('../data/processed/data_cleaned_encoded.csv')
 # Train test split
 #=============================================================================
 # train test split
-train, test = train_test_split(df_raw,train_size = 0.8,random_state=random_state)
+train, test = train_test_split(df_raw,train_size = 0.8,random_state=RNG)
 
 #=============================================================================
 # Feature Selection

@@ -9,10 +9,10 @@
 
 
 <style type="text/css">
-    pre { line-height: 125%; margin: 0; }
-td.linenos pre { color: #000000; background-color: #f0f0f0; padding-left: 5px; padding-right: 5px; }
-span.linenos { color: #000000; background-color: #f0f0f0; padding-left: 5px; padding-right: 5px; }
-td.linenos pre.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+    pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
 span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
 .highlight .hll { background-color: var(--jp-cell-editor-active-background) }
 .highlight { background: var(--jp-cell-editor-background); color: var(--jp-mirror-editor-variable-color) }
@@ -14348,6 +14348,10 @@ Here, we use the tool for xgboost model interpretation.</p>
 <span class="kn">from</span> <span class="nn">witwidget.notebook.visualization</span> <span class="kn">import</span> <span class="n">WitConfigBuilder</span>
 <span class="kn">from</span> <span class="nn">witwidget.notebook.visualization</span> <span class="kn">import</span> <span class="n">WitWidget</span>
 
+<span class="c1"># random state</span>
+<span class="n">SEED</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">RNG</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="n">SEED</span><span class="p">)</span>
+
 <span class="c1"># versions</span>
 <span class="kn">import</span> <span class="nn">watermark</span>
 <span class="o">%</span><span class="k">load_ext</span> watermark
@@ -14851,9 +14855,9 @@ Adjusted R-squared: 0.908041
 
 
 
-<div id="e8181cd7-db6b-4b0c-a6f6-364512cc0962" class="jupyter-widgets jp-OutputArea-output ">
+<div id="62b3eab7-c4c2-4e0e-9649-c6a897e6ce8d" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('e8181cd7-db6b-4b0c-a6f6-364512cc0962');
+var element = document.getElementById('62b3eab7-c4c2-4e0e-9649-c6a897e6ce8d');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "4316bd3bed6e4ba8b496b48c9ada134b", "version_major": 2, "version_minor": 0}

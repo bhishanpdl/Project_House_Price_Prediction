@@ -16,7 +16,8 @@ model_type = 'regression'
 target = 'price'
 train_size = 0.8
 test_size = 1-train_size
-SEED = 100
+SEED = 0
+RNG = np.random.RandomState(SEED)
 
 
 # params

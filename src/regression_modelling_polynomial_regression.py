@@ -21,9 +21,8 @@ import os
 import time
 
 # random state
-random_state=100
-np.random.seed=random_state
-np.random.set_state=random_state
+SEED = 0
+RNG = np.random.RandomState(SEED)
 
 
 # scale and split
@@ -68,7 +67,7 @@ df = pd.read_csv('../data/processed/data_cleaned_encoded.csv')
 #=============================================================================
 
 # train test split
-train, test = train_test_split(df,train_size = 0.8,random_state=random_state)
+train, test = train_test_split(df,train_size = 0.8,random_state=RNG)
 
 #=============================================================================
 # Feature Selection

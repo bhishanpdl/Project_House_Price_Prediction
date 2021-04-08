@@ -17,9 +17,7 @@ import sys
 import random
 import numpy as np
 SEED=config.SEED
-random.seed(SEED)
-np.random.seed(SEED)
-os.environ['PYTHONHASHSEED']=str(SEED)
+RNG = np.random.RandomState(SEED)
 
 # machine learning
 import functools

@@ -19,8 +19,8 @@ import numpy as np
 import pandas as pd
 
 # random state
-SEED=100
-np.random.seed(SEED) # we need this in each cell
+SEED = 0
+RNG = np.random.RandomState(SEED)
 
 
 # Load the data
@@ -31,6 +31,7 @@ df = pd.read_csv('../data/raw/kc_house_data.csv')
 df['date'] = pd.to_datetime(df['date'])
 df['yr_sales'] = df['date'].dt.year
 df['age'] = df['yr_sales'] - df['yr_built']
+df[['yr_sales','yr_built','age']].head(2)
 df['yr_renovated2'] = np.where(df['yr_renovated'].eq(0), df['yr_built'], df['yr_renovated'])
 df['age_after_renovation'] = df['yr_sales'] - df['yr_renovated2']
 
@@ -44,7 +45,7 @@ cols_obj = df.select_dtypes(['object','category']).columns
 cols_obj_small = ['waterfront', 'view', 'condition', 'grade']
 # zipcode is related to house price, we may not want to drop it.
 # there are 70 unique zipcode values, it will create too many dummies.
-# one choice is taking top 5 or top 10 zipcodes
+# one choice is taking top 5 or top 10 zipcodes 
 # we can choose top 10 zipcodes with largest house price.
 # (or may be largest number of houses in that zipcode.)
 most_expensive9_zipcodes = (df[['zipcode','price']]
@@ -82,11 +83,12 @@ df_dummy = pd.get_dummies(df[cols_dummy],drop_first=False)
 df_encoded = pd.concat([df,df_dummy], axis=1)
 
 # Log transformation of large numerical values
-cols_log = ['sqft_living', 'sqft_lot', 'sqft_above',
+cols_log = ['price', 'sqft_living', 'sqft_lot', 'sqft_above',
             'sqft_basement', 'sqft_living15', 'sqft_lot15']
 
 for col in cols_log:
     df_encoded['log1p_' + col] = np.log1p(df[col])
+
 
 # Drop unwanted columns
 df.drop('id',inplace=True,axis=1)

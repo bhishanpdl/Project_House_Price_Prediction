@@ -9,10 +9,10 @@
 
 
 <style type="text/css">
-    pre { line-height: 125%; margin: 0; }
-td.linenos pre { color: #000000; background-color: #f0f0f0; padding-left: 5px; padding-right: 5px; }
-span.linenos { color: #000000; background-color: #f0f0f0; padding-left: 5px; padding-right: 5px; }
-td.linenos pre.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+    pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
 span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
 .highlight .hll { background-color: var(--jp-cell-editor-active-background) }
 .highlight { background: var(--jp-cell-editor-background); color: var(--jp-mirror-editor-variable-color) }
@@ -14260,7 +14260,7 @@ a.anchor-link {
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><h1>Table of Contents<span class="tocSkip"></span></h1></p>
-<div class="toc"><ul class="toc-item"><li><span><a href="#Data-Description" data-toc-modified-id="Data-Description-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Data Description</a></span></li><li><span><a href="#Imports" data-toc-modified-id="Imports-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Imports</a></span></li><li><span><a href="#Useful-Scripts" data-toc-modified-id="Useful-Scripts-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Useful Scripts</a></span></li><li><span><a href="#Load-the-data" data-toc-modified-id="Load-the-data-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>Load the data</a></span></li><li><span><a href="#Data-Processing-and-Feature-Engineering" data-toc-modified-id="Data-Processing-and-Feature-Engineering-5"><span class="toc-item-num">5&nbsp;&nbsp;</span>Data Processing and Feature Engineering</a></span><ul class="toc-item"><li><span><a href="#Date-time-features" data-toc-modified-id="Date-time-features-5.1"><span class="toc-item-num">5.1&nbsp;&nbsp;</span>Date time features</a></span></li><li><span><a href="#Categorical-Features" data-toc-modified-id="Categorical-Features-5.2"><span class="toc-item-num">5.2&nbsp;&nbsp;</span>Categorical Features</a></span></li><li><span><a href="#Boolean-data-types" data-toc-modified-id="Boolean-data-types-5.3"><span class="toc-item-num">5.3&nbsp;&nbsp;</span>Boolean data types</a></span></li><li><span><a href="#Numerical-features-binning" data-toc-modified-id="Numerical-features-binning-5.4"><span class="toc-item-num">5.4&nbsp;&nbsp;</span>Numerical features binning</a></span></li><li><span><a href="#Create-dummy-variables-from-object-and-categories" data-toc-modified-id="Create-dummy-variables-from-object-and-categories-5.5"><span class="toc-item-num">5.5&nbsp;&nbsp;</span>Create dummy variables from object and categories</a></span></li></ul></li><li><span><a href="#Log-transformation-of-large-numerical-values" data-toc-modified-id="Log-transformation-of-large-numerical-values-6"><span class="toc-item-num">6&nbsp;&nbsp;</span>Log transformation of large numerical values</a></span></li><li><span><a href="#Drop-unwanted-columns" data-toc-modified-id="Drop-unwanted-columns-7"><span class="toc-item-num">7&nbsp;&nbsp;</span>Drop unwanted columns</a></span></li><li><span><a href="#Save-clean-data" data-toc-modified-id="Save-clean-data-8"><span class="toc-item-num">8&nbsp;&nbsp;</span>Save clean data</a></span></li><li><span><a href="#For-Modelling" data-toc-modified-id="For-Modelling-9"><span class="toc-item-num">9&nbsp;&nbsp;</span>For Modelling</a></span></li></ul></div>
+<div class="toc"><ul class="toc-item"><li><span><a href="#Data-Description" data-toc-modified-id="Data-Description-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Data Description</a></span></li><li><span><a href="#Imports" data-toc-modified-id="Imports-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Imports</a></span></li><li><span><a href="#Useful-Scripts" data-toc-modified-id="Useful-Scripts-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Useful Scripts</a></span></li><li><span><a href="#Load-the-data" data-toc-modified-id="Load-the-data-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>Load the data</a></span></li><li><span><a href="#Data-Processing-and-Feature-Engineering" data-toc-modified-id="Data-Processing-and-Feature-Engineering-5"><span class="toc-item-num">5&nbsp;&nbsp;</span>Data Processing and Feature Engineering</a></span><ul class="toc-item"><li><span><a href="#Date-time-features" data-toc-modified-id="Date-time-features-5.1"><span class="toc-item-num">5.1&nbsp;&nbsp;</span>Date time features</a></span></li><li><span><a href="#Categorical-Features" data-toc-modified-id="Categorical-Features-5.2"><span class="toc-item-num">5.2&nbsp;&nbsp;</span>Categorical Features</a></span></li><li><span><a href="#Boolean-data-types" data-toc-modified-id="Boolean-data-types-5.3"><span class="toc-item-num">5.3&nbsp;&nbsp;</span>Boolean data types</a></span></li><li><span><a href="#Numerical-features-binning" data-toc-modified-id="Numerical-features-binning-5.4"><span class="toc-item-num">5.4&nbsp;&nbsp;</span>Numerical features binning</a></span></li><li><span><a href="#Create-dummy-variables-from-object-and-categories" data-toc-modified-id="Create-dummy-variables-from-object-and-categories-5.5"><span class="toc-item-num">5.5&nbsp;&nbsp;</span>Create dummy variables from object and categories</a></span></li></ul></li><li><span><a href="#Log-transformation-of-large-numerical-values" data-toc-modified-id="Log-transformation-of-large-numerical-values-6"><span class="toc-item-num">6&nbsp;&nbsp;</span>Log transformation of large numerical values</a></span></li><li><span><a href="#Drop-unwanted-columns" data-toc-modified-id="Drop-unwanted-columns-7"><span class="toc-item-num">7&nbsp;&nbsp;</span>Drop unwanted columns</a></span></li><li><span><a href="#Save-clean-data" data-toc-modified-id="Save-clean-data-8"><span class="toc-item-num">8&nbsp;&nbsp;</span>Save clean data</a></span></li><li><span><a href="#For-Modelling" data-toc-modified-id="For-Modelling-9"><span class="toc-item-num">9&nbsp;&nbsp;</span>For Modelling</a></span></li><li><span><a href="#Time-Taken" data-toc-modified-id="Time-Taken-10"><span class="toc-item-num">10&nbsp;&nbsp;</span>Time Taken</a></span></li></ul></div>
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
@@ -14304,20 +14304,74 @@ It includes homes sold between May 2014 and May 2015.</p>
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># my local library</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/Users/poudel/Dropbox/a00_Bhishan_Modules/&quot;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/Users/poudel/Dropbox/a00_Bhishan_Modules/bhishan&quot;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">bhishan</span> <span class="kn">import</span> <span class="n">bp</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>/Users/poudel/opt/miniconda3/envs/dataSc/lib/python3.7/importlib/_bootstrap.py:219: RuntimeWarning:
+
+numpy.ufunc size changed, may indicate binary incompatibility. Expected 192 from C header, got 216 from PyObject
+
+/Users/poudel/opt/miniconda3/envs/dataSc/lib/python3.7/importlib/_bootstrap.py:219: RuntimeWarning:
+
+numpy.ufunc size changed, may indicate binary incompatibility. Expected 192 from C header, got 216 from PyObject
+
+/Users/poudel/opt/miniconda3/envs/dataSc/lib/python3.7/importlib/_bootstrap.py:219: RuntimeWarning:
+
+numpy.ufunc size changed, may indicate binary incompatibility. Expected 192 from C header, got 216 from PyObject
+
+/Users/poudel/opt/miniconda3/envs/dataSc/lib/python3.7/importlib/_bootstrap.py:219: RuntimeWarning:
+
+numpy.ufunc size changed, may indicate binary incompatibility. Expected 192 from C header, got 216 from PyObject
+
+/Users/poudel/opt/miniconda3/envs/dataSc/lib/python3.7/importlib/_bootstrap.py:219: RuntimeWarning:
+
+numpy.ufunc size changed, may indicate binary incompatibility. Expected 192 from C header, got 216 from PyObject
+
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># usual imports</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-
-<span class="c1"># local imports</span>
-<span class="kn">from</span> <span class="nn">bhishan</span> <span class="kn">import</span> <span class="n">bp</span>
 
 <span class="c1"># mixed</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">time</span>
 
 <span class="c1"># random state</span>
-<span class="n">SEED</span><span class="o">=</span><span class="mi">100</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">SEED</span><span class="p">)</span> <span class="c1"># we need this in each cell</span>
+<span class="n">RNG</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1"># versions</span>
 <span class="kn">import</span> <span class="nn">watermark</span>
@@ -14343,25 +14397,47 @@ It includes homes sold between May 2014 and May 2015.</p>
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Bhishan Poudel 2020-11-03 
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>/Users/poudel/opt/miniconda3/envs/dataSc/lib/python3.7/importlib/_bootstrap.py:219: RuntimeWarning:
 
-CPython 3.7.7
-IPython 7.18.1
-
-compiler   : Clang 4.0.1 (tags/RELEASE_401/final)
-system     : Darwin
-release    : 19.6.0
-machine    : x86_64
-processor  : i386
-CPU cores  : 4
-interpreter: 64bit
-
-watermark 2.0.2
-numpy     1.18.4
-pandas    1.1.0
+numpy.ufunc size changed, may indicate binary incompatibility. Expected 192 from C header, got 216 from PyObject
 
 </pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-1-9740b3cc0240&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">      4</span> 
+<span class="ansi-green-intense-fg ansi-bold">      5</span> <span class="ansi-red-fg"># local imports</span>
+<span class="ansi-green-fg">----&gt; 6</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">from</span> bhishan <span class="ansi-green-fg">import</span> bp
+<span class="ansi-green-intense-fg ansi-bold">      7</span> 
+<span class="ansi-green-intense-fg ansi-bold">      8</span> <span class="ansi-red-fg"># mixed</span>
+
+<span class="ansi-green-fg">~/Dropbox/a00_Bhishan_Modules/bhishan/__init__.py</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">     12</span> __version__ <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">&#39;0.4.0&#39;</span>
+<span class="ansi-green-intense-fg ansi-bold">     13</span> 
+<span class="ansi-green-fg">---&gt; 14</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">from</span> <span class="ansi-blue-fg">.</span>pandas_api <span class="ansi-green-fg">import</span> BPAccessor
+<span class="ansi-green-intense-fg ansi-bold">     15</span> 
+<span class="ansi-green-intense-fg ansi-bold">     16</span> 
+
+<span class="ansi-green-fg">~/Dropbox/a00_Bhishan_Modules/bhishan/pandas_api.py</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">     58</span> 
+<span class="ansi-green-intense-fg ansi-bold">     59</span> <span class="ansi-red-fg"># it was .plot_utils I changed only plot_utils</span>
+<span class="ansi-green-fg">---&gt; 60</span><span class="ansi-red-fg"> from plot_utils import (add_text_barplot, magnify,
+</span><span class="ansi-green-intense-fg ansi-bold">     61</span>                         get_mpl_style, get_plotly_colorscale)
+<span class="ansi-green-intense-fg ansi-bold">     62</span> 
+
+<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;plot_utils&#39;</pre>
 </div>
 </div>
 
@@ -14397,9 +14473,9 @@ pandas    1.1.0
 
 
 
-<div id="0e8aec16-b198-4390-9bbf-73cf97cc2f67" class="jp-RenderedJavaScript jp-OutputArea-output " data-mime-type="application/javascript">
+<div id="888eae2d-b6e9-4848-b5a0-5bc918afb909" class="jp-RenderedJavaScript jp-OutputArea-output " data-mime-type="application/javascript">
 <script type="text/javascript">
-var element = document.getElementById('0e8aec16-b198-4390-9bbf-73cf97cc2f67');
+var element = document.getElementById('888eae2d-b6e9-4848-b5a0-5bc918afb909');
 IPython.OutputArea.auto_scroll_threshold = 9999;
 
 </script>

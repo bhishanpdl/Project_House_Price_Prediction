@@ -9,10 +9,10 @@
 
 
 <style type="text/css">
-    pre { line-height: 125%; margin: 0; }
-td.linenos pre { color: #000000; background-color: #f0f0f0; padding-left: 5px; padding-right: 5px; }
-span.linenos { color: #000000; background-color: #f0f0f0; padding-left: 5px; padding-right: 5px; }
-td.linenos pre.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+    pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
 span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
 .highlight .hll { background-color: var(--jp-cell-editor-active-background) }
 .highlight { background: var(--jp-cell-editor-background); color: var(--jp-mirror-editor-variable-color) }
@@ -14395,8 +14395,8 @@ It includes homes sold between May 2014 and May 2015.</p>
 <span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
 
 <span class="c1"># random state</span>
-<span class="n">SEED</span><span class="o">=</span><span class="mi">100</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">SEED</span><span class="p">)</span>
+<span class="n">SEED</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">RNG</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="n">SEED</span><span class="p">)</span>
 
 <span class="c1"># settings</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
@@ -18592,9 +18592,9 @@ define('catboost_module', modules, function(widgets) {
 
 
 
-<div id="d095c44a-c7d8-46f8-914b-5bfc13dde2b3" class="jupyter-widgets jp-OutputArea-output ">
+<div id="be9dbfbc-2169-41c4-b443-9e824e514709" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('d095c44a-c7d8-46f8-914b-5bfc13dde2b3');
+var element = document.getElementById('be9dbfbc-2169-41c4-b443-9e824e514709');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "1c754e27a141445faf6e32ec9199c1e3", "version_major": 2, "version_minor": 0}
@@ -20699,9 +20699,9 @@ define('catboost_module', modules, function(widgets) {
 
 
 
-<div id="62a1b48b-fcb4-4ecf-84a7-7b286d1bde23" class="jupyter-widgets jp-OutputArea-output ">
+<div id="9acb7bd9-ac6b-44f3-a3d0-460156d83c01" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('62a1b48b-fcb4-4ecf-84a7-7b286d1bde23');
+var element = document.getElementById('9acb7bd9-ac6b-44f3-a3d0-460156d83c01');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "703ae313f2fd4a908b37a5b440fd4703", "version_major": 2, "version_minor": 0}
@@ -22768,9 +22768,9 @@ define('catboost_module', modules, function(widgets) {
 
 
 
-<div id="a8688bc3-3a08-4ee6-8917-f33b78fc722f" class="jupyter-widgets jp-OutputArea-output ">
+<div id="a9592fe9-5fd7-4413-9189-b09eb4b1ae8a" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('a8688bc3-3a08-4ee6-8917-f33b78fc722f');
+var element = document.getElementById('a9592fe9-5fd7-4413-9189-b09eb4b1ae8a');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "c780590a55fe43619d9418dae5efb547", "version_major": 2, "version_minor": 0}
